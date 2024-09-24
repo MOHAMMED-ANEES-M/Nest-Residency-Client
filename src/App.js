@@ -7,6 +7,7 @@ import AdminPage from './pages/AdminPage';
 import ProtectedRoute from './utils/ProtectedRoute';
 import Navbar from './components/Navbar/Navbar';
 import Signin from './auth/Signin';
+import './App.css'
 
 function App() {
   return (

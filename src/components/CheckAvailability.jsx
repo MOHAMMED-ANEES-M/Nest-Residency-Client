@@ -1,8 +1,10 @@
+// src/components/CheckAvailability.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkRoomAvailability } from '../services/api';
 import { setAvailableRooms, setLoading, setError } from '../redux/slices/bookingSlice';
 import { roomDetails } from '../data/room';
+import AvailabilityForm from './AvailabilityForm';
 
 const CheckAvailability = () => {
   const [checkInDate, setCheckInDate] = useState('');
@@ -17,7 +19,7 @@ const CheckAvailability = () => {
       console.log('available rooms', data);
       dispatch(setAvailableRooms(data.availableRooms));
     } catch (err) {
-      dispatch(setError('Unable to check room availability.'));
+      dispatch(setError(err));
     } finally {
       dispatch(setLoading(false));
     }
@@ -25,34 +27,35 @@ const CheckAvailability = () => {
 
   return (
     <div>
-      <h2>Check Room Availability</h2>
-      <input
-        type="date"
-        value={checkInDate}
-        onChange={(e) => setCheckInDate(e.target.value)}
+      <AvailabilityForm
+        checkInDate={checkInDate}
+        setCheckInDate={setCheckInDate}
+        checkOutDate={checkOutDate}
+        setCheckOutDate={setCheckOutDate}
+        loading={loading}
+        handleCheckAvailability={handleCheckAvailability}
       />
-      <input
-        type="date"
-        value={checkOutDate}
-        onChange={(e) => setCheckOutDate(e.target.value)}
-      />
-      <button onClick={handleCheckAvailability} disabled={loading}>
-        {loading ? 'Checking...' : 'Check Availability'}
-      </button>
+
       {error && <p>{error}</p>}
-      {availableRooms.length > 0 && (
+
+      {availableRooms?.length > 0 && (
         <div>
-          <h3>Available Rooms</h3>
-          <ul>
-            {availableRooms.map((roomId) => {
-              const room = roomDetails.find((r) => r.roomId === roomId);
+          <h3 className='my-10 text-center font-bold text-3xl'>Available Rooms</h3>
+          <div className='grid grid-cols-1 gap-10 justify-center mx-20'>
+            {availableRooms?.map((roomId) => {
+              const room = roomDetails?.find((r) => r.roomId === roomId);
               return (
-                <li key={roomId}>
-                  {room.name} - ${room.price}
-                </li>
+                <div key={roomId} className='flex justify-center'>
+                    <img src={room.src} alt={room.name} className='h-80'/>
+                    <div className='w-fit m-auto text-center'>
+                      <p className='text-lg font-semibold my-3'>{room.name}</p>
+                      <p className='text-lg font-semibold my-3'>${room.price}</p>
+                      <button className='bg-[#66370c] py-3 px-6 rounded-full text-white'>Book Now</button>
+                    </div>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       )}
     </div>
