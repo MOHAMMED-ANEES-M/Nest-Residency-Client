@@ -1,11 +1,11 @@
 .navbar {
   background-color: white;
-  color: #66370c; /* Brown text color */
+  color: #66370c; 
 }
 
 .navbar .nav-links a:hover,
 .navbar .book-now-btn:hover {
-  color: #a0522d; /* Lighter brown on hover */
+  color: #a0522d;
 }
 
 .book-now-btn {

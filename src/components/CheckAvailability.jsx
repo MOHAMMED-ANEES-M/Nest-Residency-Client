@@ -1,14 +1,18 @@
 // src/components/CheckAvailability.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkRoomAvailability } from '../services/api';
 import { setAvailableRooms, setLoading, setError } from '../redux/slices/bookingSlice';
 import { roomDetails } from '../data/room';
 import AvailabilityForm from './AvailabilityForm';
+import { useLocation } from 'react-router-dom';
 
 const CheckAvailability = () => {
-  const [checkInDate, setCheckInDate] = useState('');
-  const [checkOutDate, setCheckOutDate] = useState('');
+  const location = useLocation();
+  const { checkInDate: initialCheckInDate, checkOutDate: initialCheckOutDate } = location.state || {};
+  
+  const [checkInDate, setCheckInDate] = useState(initialCheckInDate || '');
+  const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate || '');
   const dispatch = useDispatch();
   const { availableRooms, loading, error } = useSelector((state) => state.booking);
 
@@ -24,6 +28,12 @@ const CheckAvailability = () => {
       dispatch(setLoading(false));
     }
   };
+
+  useEffect(() => {
+    if (checkInDate && checkOutDate) {
+      handleCheckAvailability();
+    }
+  }, [checkInDate, checkOutDate]);
 
   return (
     <div>
@@ -50,7 +60,7 @@ const CheckAvailability = () => {
                     <div className='w-fit m-auto text-center'>
                       <p className='text-lg font-semibold my-3'>{room.name}</p>
                       <p className='text-lg font-semibold my-3'>${room.price}</p>
-                      <button className='bg-[#66370c] py-3 px-6 rounded-full text-white'>Book Now</button>
+                      <button className='bg-brown-700 py-3 px-6 rounded-full text-white'>Book Now</button>
                     </div>
                 </div>
               );

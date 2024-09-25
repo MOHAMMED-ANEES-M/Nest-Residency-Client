@@ -5,6 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { CgMenuRound } from "react-icons/cg";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Drawer from '../Drawer';
+import Footer from '../Footer/Footer';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -25,17 +26,16 @@ const Navbar = () => {
             {!isDrawerOpen ? <CgMenuRound className='w-8 h-8'/> : <IoMdCloseCircleOutline className='w-8 h-8'/>}
           </button>
 
-          <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg font-semibold">
+          <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg ">
             <li><Link to='/' className="hover:text-brown-700">Home</Link></li>
             <li><a href="#rooms" className="hover:text-brown-700">Rooms</a></li>
             <li><a href="#facilities" className="hover:text-brown-700">Gallery</a></li>
-            <li><a href="#facilities" className="hover:text-brown-700">Facilities</a></li>
             <li><a href="#about" className="hover:text-brown-700">About Us</a></li>
             <li><a href="#contact" className="hover:text-brown-700">Contact</a></li>
           </ul>
 
           <div>
-              <Link to='/check-availability' className="hidden md:flex bg-brown-700 text-white px-5 py-3 rounded-full">
+              <Link to='/check-availability' className="hidden md:flex bg-brown-700 text-white px-5 py-3 ">
                 Book Now
               </Link>
           </div>
@@ -47,6 +47,7 @@ const Navbar = () => {
       <Drawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
 
       <Outlet />
+      <Footer />
     </>
   );
 };

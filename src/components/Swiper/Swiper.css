@@ -1,0 +1,37 @@
+/* Container for the scrollable image section */
+.image-scroll-container {
+    width: 100%; /* Full width of the parent */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of child elements */
+    scrollbar-width: thin; /* For Firefox */
+  }
+  
+  .image-scroll-content {
+    display: flex; /* Use flexbox for horizontal layout */
+  }
+  
+  .image-item {
+    flex: 0 0 auto; /* Prevent flex item from growing or shrinking */
+    margin-right: 15px; /* Space between images */
+  }
+  
+  .image-item img {
+    width: 500px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  }
+  
+  /* Optional styling for scrollbar in Webkit browsers */
+  .image-scroll-container::-webkit-scrollbar {
+    height: 8px; /* Height of the scrollbar */
+  }
+  
+  .image-scroll-container::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .image-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color on hover */
+  }  

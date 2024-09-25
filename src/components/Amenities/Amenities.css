@@ -1,0 +1,16 @@
+/* Amenities.css */
+.grid {
+    gap: 1rem;
+  }
+  
+  .relative {
+    overflow: hidden;
+  }
+  
+  img {
+    transition: transform 0.3s;
+  }
+  
+  .relative:hover img {
+    transform: scale(1.05);
+  }  
