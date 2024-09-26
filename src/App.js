@@ -8,6 +8,8 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import Navbar from './components/Navbar/Navbar';
 import Signin from './auth/Signin';
 import './App.css'
+import RoomsPage from './pages/RoomsPage';
+import GalleryPage from './pages/GalleryPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/check-availability" element={<CheckAvailabilityPage />} />
         <Route path="/booking/:roomId" element={<BookingPage />} />
         <Route path="/login" element={<Signin />} />
+        <Route path="/rooms" element={<RoomsPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         </Route>
         <Route
           path="/admin"

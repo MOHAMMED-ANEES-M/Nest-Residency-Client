@@ -2,7 +2,7 @@ import React from 'react';
 import './Amenities.css';
 import img from '../../assets/outdoor-pool.jpg'
 import img1 from '../../assets/93ecbf5f_z.jpg'
-import img2 from '../../assets/carousel1.jpeg'
+import img2 from '../../assets/R0016816.jpg'
 import { FaWifi } from "react-icons/fa6";
 import { FaKey } from "react-icons/fa6";
 import { IoCarSportSharp } from "react-icons/io5";
@@ -33,14 +33,14 @@ const Amenities = () => {
       </div>
 
       {/* Third Grid Item: Image */}
-      <div className="">
+      {/* <div className="">
         <img src={img1} alt="Amenity 2" className="h-96 m-auto" />
-      </div>
+      </div> */}
 
       {/* Fourth Grid Item: Image */}
-      <div className="">
+      {/* <div className="">
         <img src={img2} alt="Amenity 3" className="h-96 m-auto" />
-      </div>
+      </div> */}
 
     </div>
   );

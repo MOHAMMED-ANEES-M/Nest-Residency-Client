@@ -6,7 +6,7 @@ const Rooms = () => {
   return (
     <div>
       <div className=" p-20 bg-green-800">
-        <h1 className="text-white text-center text-[50px] font-semibold">Rooms</h1>
+        <h1 className="text-white text-[50px] mb-5 text-center">Featured Rooms</h1>
         <p className='text-white text-center text-xl mb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div className="grid grid-cols-2 gap-2 justify-center bg-white p-2">
           {roomDetails.map((room) => (
@@ -16,7 +16,7 @@ const Rooms = () => {
               <p className="text-white text-center text-lg font-semibold">{room.name}</p>
               <p className="text-white text-center text-lg font-semibold">Rs. {room.price}</p>
               <div className='w-fit m-auto'>
-                <Link to={`/rooms/${room.name.replace(/\s+/g, '')}`}><button className='bg-brown-700 text-white p-3 mt-5 '>View More</button></Link>
+                <Link to='/rooms'><button className='bg-brown-700 text-white p-3 mt-5 '>View More</button></Link>
               </div>
             </div>
           </div>

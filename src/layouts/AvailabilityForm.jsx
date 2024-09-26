@@ -15,7 +15,9 @@ const AvailabilityForm = ({
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    navigate('/check-availability', { state: { checkInDate, checkOutDate } });
+    if ( checkInDate !== '' || checkOutDate !== '' ) { 
+      navigate('/check-availability', { state: { checkInDate, checkOutDate } });
+    }
   };
 
   const today = new Date().toISOString().split('T')[0];
@@ -82,7 +84,7 @@ const AvailabilityForm = ({
 
           {/* Check Availability Button */}
         <button
-          className="px-5 mt-8 py-3 bg-brown-700 text-white shadow-sm hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-500"
+          className="px-5 mt-8 py-3 bg-brown-700 text-white shadow-sm hover:bg-brown-600 "
           onClick={handleSubmit}
           disabled={loading}
         >

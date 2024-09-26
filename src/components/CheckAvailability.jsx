@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkRoomAvailability } from '../services/api';
 import { setAvailableRooms, setLoading, setError } from '../redux/slices/bookingSlice';
 import { roomDetails } from '../data/room';
-import AvailabilityForm from './AvailabilityForm';
+import AvailabilityForm from '../layouts/AvailabilityForm';
 import { useLocation } from 'react-router-dom';
 
 const CheckAvailability = () => {

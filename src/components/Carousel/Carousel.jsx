@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Carousel.css'; 
 import img from '../../assets/outdoor-pool.jpg';
 import img1 from '../../assets/93ecbf5f_z.jpg';
-import AvailabilityForm from '../AvailabilityForm';
+import AvailabilityForm from '../../layouts/AvailabilityForm';
 
 const Carousel = () => {
   const [checkInDate, setCheckInDate] = useState('');

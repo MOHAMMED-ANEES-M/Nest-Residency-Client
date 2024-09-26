@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar bg-white text-brown-900 fixed w-full top-0 z-50 shadow-md">
+      <nav className="navbar bg-white text-brown-900 fixed w-full top-0 z-50 ">
         <div className="navbar-container flex items-center justify-between px-2 md:px-10">
           <div className="logo flex items-center">
             <img src={logo} alt="Nest Residency Logo" className="h-14 md:h-20 " />
@@ -28,15 +28,15 @@ const Navbar = () => {
 
           <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg ">
             <li><Link to='/' className="hover:text-brown-700">Home</Link></li>
-            <li><a href="#rooms" className="hover:text-brown-700">Rooms</a></li>
-            <li><a href="#facilities" className="hover:text-brown-700">Gallery</a></li>
-            <li><a href="#about" className="hover:text-brown-700">About Us</a></li>
-            <li><a href="#contact" className="hover:text-brown-700">Contact</a></li>
+            <li><Link to='/rooms' className="hover:text-brown-700">Rooms</Link></li>
+            <li><Link to="/gallery" className="hover:text-brown-700">Gallery</Link></li>
+            <li><Link to="/about" className="hover:text-brown-700">About Us</Link></li>
+            <li><Link to="/contact" className="hover:text-brown-700">Contact</Link></li>
           </ul>
 
           <div>
               <Link to='/check-availability' className="hidden md:flex bg-brown-700 text-white px-5 py-3 ">
-                Book Now
+                Reservation
               </Link>
           </div>
 
