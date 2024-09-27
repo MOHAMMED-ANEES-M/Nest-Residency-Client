@@ -1,9 +1,10 @@
 import React from 'react';
 import RoomCarousel from './RoomCarousel';
+import { Link } from 'react-router-dom';
 
-const RoomCard = ({ room }) => {
+const RoomCard = ({ room, vrbtn }) => {
   return (
-    <div className="grid grid-cols-2 gap-1 mb-10 bg-brown-700 p-1">
+    <div className="grid grid-cols-2 gap-2 mb-10 bg-brown-700 p-2 rounded">
       {/* Image section */}
       <div className="w-full h-full  ">
         <RoomCarousel images={room.images} />
@@ -22,7 +23,8 @@ const RoomCard = ({ room }) => {
                 </li>
               ))}
             </ul>
-            <a href={room.link}><button className="text-md mb-2 bg-brown-700 p-2 text-white">Virtual Tour</button></a>
+            <a href={room.link}><button className={`text-md mb-2 bg-brown-700 p-2 rounded text-white ${vrbtn?'hidden':'visible'}`}>Virtual Tour</button></a>
+            <Link to={`/booking/${room.roomId}`}><button className={`text-md mb-2 rounded bg-brown-700 p-2 text-white ${vrbtn?'visible':'hidden'}`}>Book Now</button></Link>
         </div>
         {/* <div className="mt-auto">
           <Link to={room.link}>

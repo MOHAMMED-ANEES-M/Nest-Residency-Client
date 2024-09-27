@@ -6,7 +6,7 @@ const Attractions = () => {
   return (
     <div>
       <div className='grid grid-cols-2 mx-10 mt-20'>
-        <div>
+        <div className=''>
             <h1 className='text-[50px] my-20 text-center text-brown-700'>Attractions</h1>
             <div className='m-auto w-fit text-lg'>
                 <div className='flex items-center gap-3 mb-3'><VscDebugBreakpointLog />Hygienic Environment</div>
@@ -17,7 +17,7 @@ const Attractions = () => {
                 <div className='flex items-center gap-3'><VscDebugBreakpointLog />5 km to the Beach</div>
             </div>
         </div>
-        <div>
+        <div className='bg-brown-700 p-2 rounded'>
             <img src={img} alt="" />
         </div>
       </div>

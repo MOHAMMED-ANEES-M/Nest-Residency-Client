@@ -5,7 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { CgMenuRound } from "react-icons/cg";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Drawer from '../Drawer';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -27,15 +27,15 @@ const Navbar = () => {
           </button>
 
           <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg ">
-            <li><Link to='/' className="hover:text-brown-700">Home</Link></li>
-            <li><Link to='/rooms' className="hover:text-brown-700">Rooms</Link></li>
-            <li><Link to="/gallery" className="hover:text-brown-700">Gallery</Link></li>
-            <li><Link to="/about" className="hover:text-brown-700">About Us</Link></li>
-            <li><Link to="/contact" className="hover:text-brown-700">Contact</Link></li>
+            <li><Link to='/' className="hover:text-green-800 ">Home</Link></li>
+            <li><Link to='/rooms' className="hover:text-green-800">Rooms</Link></li>
+            <li><Link to="/gallery" className="hover:text-green-800">Gallery</Link></li>
+            <li><Link to="/about" className="hover:text-green-800">About</Link></li>
+            <li><Link to="/contact" className="hover:text-green-800">Contact</Link></li>
           </ul>
 
           <div>
-              <Link to='/check-availability' className="hidden md:flex bg-brown-700 text-white px-5 py-3 ">
+              <Link to='/check-availability' className="hidden md:flex rounded bg-brown-700 hover:bg-green-800 text-white px-5 py-3 ">
                 Reservation
               </Link>
           </div>

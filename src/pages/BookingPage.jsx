@@ -6,7 +6,7 @@ const BookingPage = () => {
   const { roomId } = useParams();
 
   return (
-    <div>
+    <div className='mt-32'>
       <BookRoom roomId={roomId} />
     </div>
   );

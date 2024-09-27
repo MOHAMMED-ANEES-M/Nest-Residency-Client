@@ -15,12 +15,12 @@ const Amenities = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 space-y-16 p-5 mt-20">
       {/* First Grid Item: Image */}
-      <div className="">
+      <div className="bg-brown-700 p-2 rounded">
         <img src={img} alt="Amenity 1" className="" />
       </div>
 
       {/* Second Grid Item: Amenities list */}
-      <div className=" rounded-lg m-auto">
+      <div className=" m-auto ">
         <h2 className="text-[50px] mb-10 text-center text-brown-700">Amenities</h2>
         <div className="grid grid-cols-2 justify-center text-lg space-y-5">
           <div className='flex gap-3 items-center ms-10 mt-5'><FaWifi /> Free Wi-Fi</div>

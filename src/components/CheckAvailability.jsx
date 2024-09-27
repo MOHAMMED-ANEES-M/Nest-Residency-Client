@@ -6,6 +6,7 @@ import { setAvailableRooms, setLoading, setError } from '../redux/slices/booking
 import { roomDetails } from '../data/room';
 import AvailabilityForm from '../layouts/AvailabilityForm';
 import { useLocation } from 'react-router-dom';
+import RoomCard from '../layouts/RoomCard';
 
 const CheckAvailability = () => {
   const location = useLocation();
@@ -36,7 +37,8 @@ const CheckAvailability = () => {
   }, [checkInDate, checkOutDate]);
 
   return (
-    <div>
+    <div className='mt-32 mb-20'>
+      <h1 className='text-xl mx-20 p-3 text-white font-semibold bg-green-800 mb-10'>Check Availability</h1>
       <AvailabilityForm
         checkInDate={checkInDate}
         setCheckInDate={setCheckInDate}
@@ -50,19 +52,12 @@ const CheckAvailability = () => {
 
       {availableRooms?.length > 0 && (
         <div>
-          <h3 className='my-10 text-center font-bold text-3xl'>Available Rooms</h3>
+          <h3 className='text-xl mx-20 p-3 text-white font-semibold bg-green-800 mb-10 mt-20'>Available Rooms</h3>
           <div className='grid grid-cols-1 gap-10 justify-center mx-20'>
             {availableRooms?.map((roomId) => {
               const room = roomDetails?.find((r) => r.roomId === roomId);
               return (
-                <div key={roomId} className='flex justify-center'>
-                    <img src={room.src} alt={room.name} className='h-80'/>
-                    <div className='w-fit m-auto text-center'>
-                      <p className='text-lg font-semibold my-3'>{room.name}</p>
-                      <p className='text-lg font-semibold my-3'>${room.price}</p>
-                      <button className='bg-brown-700 py-3 px-6 rounded-full text-white'>Book Now</button>
-                    </div>
-                </div>
+                <RoomCard key={room.roomId} room={room} vrbtn='hidden' />
               );
             })}
           </div>

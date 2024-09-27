@@ -10,6 +10,12 @@ import Signin from './auth/Signin';
 import './App.css'
 import RoomsPage from './pages/RoomsPage';
 import GalleryPage from './pages/GalleryPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import TermsAndConditions from './components/Terms&Conditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import RefundAndCancellation from './components/Refund&Cancellation';
+import ShippingAndDelivery from './components/Shipping&Delivery';
 
 function App() {
   return (
@@ -22,6 +28,12 @@ function App() {
         <Route path="/login" element={<Signin />} />
         <Route path="/rooms" element={<RoomsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/terms&conditions" element={<TermsAndConditions />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/refund&cancellation" element={<RefundAndCancellation />} />
+        <Route path="/shipping&delivery" element={<ShippingAndDelivery />} />
         </Route>
         <Route
           path="/admin"

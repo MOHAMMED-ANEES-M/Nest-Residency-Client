@@ -10,13 +10,13 @@ const Gallery = () => {
   return (
     <div className='mt-20'>
       <h1 className='text-[50px] mb-10 text-center text-brown-700'>Our Spaces</h1>
-      <div className='grid grid-cols-3 gap-0'>
+      <div className='grid grid-cols-3 gap-0 bg-brown-700 py-2'>
         {images.map((img)=>(
             <img src={img} alt="" className='w-full h-full object-cover'/>
         ))}
       </div>
       <div className="w-fit m-auto">
-        <Link to='/gallery'><button className='bg-brown-700 text-white p-3 mt-5 '>View Gallery</button></Link>
+        <Link to='/gallery'><button className='bg-brown-700 hover:bg-green-800 rounded text-white p-3 mt-5 '>View Gallery</button></Link>
       </div>
     </div>
   )

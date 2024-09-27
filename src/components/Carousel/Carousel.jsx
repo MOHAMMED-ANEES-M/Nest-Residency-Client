@@ -21,15 +21,24 @@ const Carousel = () => {
       <div id="slide-container" className="relative h-[400px] md:h-[600px]">
         <div id="slide-first-element">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Beautiful" />
-          <p className="slide-text absolute bottom-4 left-4 text-white text-xl">Beautiful</p>
+          <div className='slide-text absolute bottom-4 left-4'>
+            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          </div>
         </div>
         <div id="slide-element-2">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img} alt="Amazing" />
-          <p className="slide-text absolute bottom-4 left-4 text-white text-xl">Amazing</p>
+          <div className='slide-text absolute bottom-4 left-4'>
+            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          </div>
         </div>
         <div id="slide-element-3">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Incredible" />
-          <p className="slide-text absolute bottom-4 left-4 text-white text-xl">Incredible</p>
+          <div className='slide-text absolute bottom-4 left-4'>
+            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          </div>
         </div>
 
         {/* Overlay Availability Form at the bottom */}
