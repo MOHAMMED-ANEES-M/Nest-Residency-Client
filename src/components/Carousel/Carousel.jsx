@@ -11,13 +11,11 @@ const Carousel = () => {
 
   const handleCheckAvailability = () => {
     setLoading(true);
-    // Your logic for checking availability goes here
-    setTimeout(() => setLoading(false), 2000); // Example loading timeout
+    setTimeout(() => setLoading(false), 2000); 
   };
 
   return (
     <div className="relative">
-      {/* Carousel */}
       <div id="slide-container" className="relative h-[400px] md:h-[600px]">
         <div id="slide-first-element">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Beautiful" />
@@ -41,8 +39,7 @@ const Carousel = () => {
           </div>
         </div>
 
-        {/* Overlay Availability Form at the bottom */}
-        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-50 p-4">
+        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-50 p-4 hidden md:block">
           <AvailabilityForm
             checkInDate={checkInDate}
             setCheckInDate={setCheckInDate}

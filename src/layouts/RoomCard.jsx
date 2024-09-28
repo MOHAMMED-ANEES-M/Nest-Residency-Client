@@ -25,10 +25,10 @@ const RoomCard = ({ room, vrbtn }) => {
 
           {/* Button Section */}
           <div className="flex gap-4 mt-4">
-            <a href={room.link} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-brown-800 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'hidden' : 'block'}`}>
+            <a href={room.link} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-green-800 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'hidden' : 'block'}`}>
               Virtual Tour
             </a>
-            <Link to={`/booking/${room.roomId}`} className={`flex-1 text-md mb-2 bg-green-600 hover:bg-green-700 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'block' : 'hidden'}`}>
+            <Link to={`/booking/${room.roomId}`} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-green-700 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'block' : 'hidden'}`}>
               Book Now
             </Link>
           </div>
