@@ -15,8 +15,8 @@ const Amenities = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 space-y-16 p-5 mt-20">
       {/* First Grid Item: Image */}
-      <div className="bg-brown-700 p-2 rounded">
-        <img src={img} alt="Amenity 1" className="" />
+      <div className="bg-brown-700 p-1 rounded">
+        <img src={img} alt="Amenity 1" className="rounded-sm" />
       </div>
 
       {/* Second Grid Item: Amenities list */}

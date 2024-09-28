@@ -13,7 +13,7 @@ const RoomCarousel = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden rounded-sm">
       {/* Carousel images */}
       <div
         className="flex transition-transform duration-300 ease-in-out h-full"

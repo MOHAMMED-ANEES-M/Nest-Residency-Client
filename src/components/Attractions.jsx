@@ -17,8 +17,8 @@ const Attractions = () => {
                 <div className='flex items-center gap-3'><VscDebugBreakpointLog />5 km to the Beach</div>
             </div>
         </div>
-        <div className='bg-brown-700 p-2 rounded'>
-            <img src={img} alt="" />
+        <div className='bg-brown-700 p-1 rounded'>
+            <img src={img} alt="" className='rounded-sm'/>
         </div>
       </div>
     </div>

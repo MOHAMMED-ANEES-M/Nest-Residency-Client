@@ -38,7 +38,9 @@ const AboutPage = () => {
           MIMS Hospital, Lulu Mall, and Calicut Railway Station.
         </p>
         <button className='bg-brown-700 hover:bg-green-800 rounded text-white p-3 mb-10'>360 Virtual Tour</button>
-        <img src={img} alt="" className='max-w-[85%] m-auto p-2 bg-brown-700 rounded'/>
+        <div className='bg-brown-700 rounded p-1 w-fit max-w-[80%] m-auto'>
+         <img src={img} alt="" className=' rounded-sm'/>
+        </div>
       </section>
 
       <div className='grid grid-cols-4 gap-5 mt-20'>

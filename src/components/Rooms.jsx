@@ -8,7 +8,7 @@ const Rooms = () => {
       <div className=" p-20 bg-green-800">
         <h1 className="text-white text-[50px] mb-5 text-center">Featured Rooms</h1>
         <p className='text-white text-center text-xl mb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <div className="grid grid-cols-2 gap-2 justify-center bg-white p-2 rounded">
+        <div className="grid grid-cols-2 gap-1 justify-center bg-white p-1 rounded">
           {roomDetails.map((room) => (
           <div key={room.roomId} className="relative group transition duration-300 overflow-hidden">
             <img src={room.src} alt={room.name} className="w-full h-full" />
