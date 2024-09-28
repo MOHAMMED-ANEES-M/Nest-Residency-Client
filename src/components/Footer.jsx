@@ -22,7 +22,7 @@ const Footer = () => {
                 Reservation
               </button>
             </Link>
-            <p>Enjoy a premium stay experience at our cozy and well-furnished hotel rooms.</p>
+            <p>Enjoy a premium stay experience at our cozy and well furnished hotel rooms.</p>
           </div>
           <div className='sm:mx-auto'>
             <h1 className='text-2xl font-semibold mb-5'>Quick Links</h1>

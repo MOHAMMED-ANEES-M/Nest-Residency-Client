@@ -19,7 +19,7 @@ const Drawer = ({ isOpen, toggleDrawer }) => {
         <li className='border-b pb-2 border-brown-700'><Link to='/about' onClick={toggleDrawer}>About</Link></li>
         <li className='border-b pb-2 border-brown-700'><Link to='/contact' onClick={toggleDrawer}>Contact</Link></li>
       </ul>
-      <div className='border-brown-700 mx-5 mt-5 text-center'><Link to='/check-availability' onClick={toggleDrawer} className="md:hidden visible text-center bg-brown-700 text-white px-10 py-3 rounded">Book Now</Link></div>
+      <div className='border-brown-700 mx-5 mt-5 text-center'><Link to='/check-availability' onClick={toggleDrawer} className="md:hidden visible text-center bg-brown-700 text-white px-10 py-3 rounded">Reservation</Link></div>
     </div>
   );
 };

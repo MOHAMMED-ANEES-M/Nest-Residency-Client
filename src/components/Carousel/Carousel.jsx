@@ -21,23 +21,23 @@ const Carousel = () => {
       <div id="slide-container" className="relative h-[400px] md:h-[600px]">
         <div id="slide-first-element">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Beautiful" />
-          <div className='slide-text absolute bottom-4 left-4'>
-            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
-            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          <div className='slide-text absolute bottom-2 sm:bottom-4 left-2 sm:left-4'>
+            <p className='text-[36px] sm:text-[50px] my-3 sm:my-5 '>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-lg sm:text-xl'>360 Virtual Tour</button>
           </div>
         </div>
         <div id="slide-element-2">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img} alt="Amazing" />
-          <div className='slide-text absolute bottom-4 left-4'>
-            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
-            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          <div className='slide-text absolute bottom-2 sm:bottom-4 left-2 sm:left-4'>
+            <p className='text-[36px] sm:text-[50px] my-3 sm:my-5 '>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-lg sm:text-xl'>360 Virtual Tour</button>
           </div>
         </div>
         <div id="slide-element-3">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Incredible" />
-          <div className='slide-text absolute bottom-4 left-4'>
-            <p className='text-[50px] my-5'>Best Hotel to Stay in Calicut</p>
-            <button className='bg-brown-700 rounded text-white p-3 text-xl'>360 Virtual Tour</button>
+          <div className='slide-text absolute bottom-2 sm:bottom-4 left-2 sm:left-4'>
+            <p className='text-[36px] sm:text-[50px] my-3 sm:my-5 '>Best Hotel to Stay in Calicut</p>
+            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-lg sm:text-xl'>360 Virtual Tour</button>
           </div>
         </div>
 

@@ -10,17 +10,13 @@ const GalleryPage = () => {
 
   return (
     <>
-      <h1 className='text-[50px] mb-10 text-center text-brown-700 mt-20'>Gallery</h1>
-      <div className='grid grid-cols-3 gap-1 mx-20 mb-20 bg-brown-700 p-1 rounded'>
+      <h1 className='text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-10 text-center text-brown-700 mt-20 sm:mt-28'>Gallery</h1>
+      <div className='grid grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-3 mx-3 min-[400px]:mx-10 md:mx-20 mb-10 '>
         {galleryDetails?.map((gallery, index) => (
-          <div key={index} className='relative group'>
-            <img src={gallery.src} alt="image" className='w-full h-full' />
-            {/* Link Button */}
-            <a href={gallery.link} className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-              <button className='p-4 bg-brown-700 hover:bg-green-800 text-white text-lg font-semibold rounded-md '>
-                <FaExternalLinkAlt className='w-5 h-5'/>
-              </button>
-            </a>
+          <div key={index} className=' group  bg-gray-50 rounded-md shadow-xl p-1  min-[400px]:p-2'>
+            <img src={gallery.src} alt="image" className='rounded' />
+            {/* <p className='text-center mt-3 text-xl font-semibold '>Area name</p> */}
+            <div className=''><button className='bg-brown-700 w-full hover:bg-green-800 text-white text-center text-sm min-[400px]:text-base px-3 py-1 sm:py-2 mt-3 rounded'>Virtual Tour</button></div>
           </div>
         ))}
       </div>

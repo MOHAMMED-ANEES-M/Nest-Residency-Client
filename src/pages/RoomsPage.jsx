@@ -9,8 +9,8 @@ const RoomPage = () => {
     }, []);
 
   return (
-    <div className="p-20 ">
-      <h1 className='text-[50px] mb-10 text-center text-brown-700'>Rooms</h1>
+    <div className="p-5 min-[400px]:p-10 sm:p-20 mt-5 sm:mt-0">
+      <h1 className='text-3xl sm:text-4xl md:text-5xl my-8 text-center text-brown-700'>Rooms</h1>
       <div>
         {roomDetails?.map((room) => (
           <RoomCard key={room.roomId} room={room} />

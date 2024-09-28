@@ -1,48 +1,56 @@
 import React from 'react';
 import './Amenities.css';
-import img from '../../assets/outdoor-pool.jpg'
-import img1 from '../../assets/93ecbf5f_z.jpg'
-import img2 from '../../assets/R0016816.jpg'
-import { FaWifi } from "react-icons/fa6";
-import { FaKey } from "react-icons/fa6";
-import { IoCarSportSharp } from "react-icons/io5";
-import { IoFastFood } from "react-icons/io5";
+import img from '../../assets/outdoor-pool.jpg';
+import { FaWifi, FaKey } from "react-icons/fa6";
+import { IoCarSportSharp, IoFastFood } from "react-icons/io5";
 import { RiServiceFill } from "react-icons/ri";
 import { BiSolidCctv } from "react-icons/bi";
-
+import Divider from '../../layouts/Divider';
 
 const Amenities = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 space-y-16 p-5 mt-20">
-      {/* First Grid Item: Image */}
-      <div className="bg-brown-700 p-1 rounded">
-        <img src={img} alt="Amenity 1" className="rounded-sm" />
+    <>
+    <div className="flex flex-col-reverse md:flex-row justify-center gap-4 gap-y-10 mt-10 sm:mt-20">      
+      {/* Image Section */}
+      <div className="m-5 md:w-[50%] ">
+        <img src={img} alt="Amenity 1" className="rounded w-[75%] h-auto object-cover m-auto" />
       </div>
 
-      {/* Second Grid Item: Amenities list */}
-      <div className=" m-auto ">
-        <h2 className="text-[50px] mb-10 text-center text-brown-700">Amenities</h2>
-        <div className="grid grid-cols-2 justify-center text-lg space-y-5">
-          <div className='flex gap-3 items-center ms-10 mt-5'><FaWifi /> Free Wi-Fi</div>
-          <div className='flex gap-3 items-center ms-10'><FaKey /> Key Card</div>
-          <div className='flex gap-3 items-center ms-10'><IoCarSportSharp /> Free Parking</div>
-          <div className='flex gap-3 items-center ms-10'><IoFastFood /> Breakfast Included</div>
-          <div className='flex gap-3 items-center ms-10'><RiServiceFill /> Room Service</div>
-          <div className='flex gap-3 items-center ms-10'><BiSolidCctv /> CCTV</div>
+      {/* Amenities Text Section */}
+      <div className="m-auto md:w-[50%]">
+        <h2 className="text-3xl sm:text-[50px] mb-5 sm:mb-10 text-center md:text-left text-brown-700">Amenities</h2>
+        <div className="grid grid-cols-2 justify-center text-base sm:text-lg gap-3 sm:space-y-5">
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center  mt-5'>
+            <FaWifi /> Free Wi-Fi
+          </div>
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center '>
+            <FaKey /> Key Card
+          </div>
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center '>
+            <IoCarSportSharp /> Free Parking
+          </div>
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center '>
+            <IoFastFood /> Breakfast Included
+          </div>
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center '>
+            <RiServiceFill /> Room Service
+          </div>
+          
+          <div className='flex gap-1 min-[400px]:gap-3 items-center '>
+            <BiSolidCctv /> CCTV
+          </div>
+
         </div>
       </div>
 
-      {/* Third Grid Item: Image */}
-      {/* <div className="">
-        <img src={img1} alt="Amenity 2" className="h-96 m-auto" />
-      </div> */}
-
-      {/* Fourth Grid Item: Image */}
-      {/* <div className="">
-        <img src={img2} alt="Amenity 3" className="h-96 m-auto" />
-      </div> */}
-
     </div>
+      <Divider />
+    </>
   );
 };
 

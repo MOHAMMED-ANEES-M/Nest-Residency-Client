@@ -6,6 +6,7 @@ import Amenities from '../components/Amenities/Amenities';
 import Attractions from '../components/Attractions';
 import Gallery from '../components/Gallery';
 import Location from '../layouts/Location';
+import Testimonials from '../components/Testimonials';
 
 const HomePage = () => {
 
@@ -18,6 +19,7 @@ const HomePage = () => {
       <Amenities />
       <Attractions />
       <Gallery />
+      <Testimonials />
       <Location />
       {/* <h1>Welcome to the Nest Residency</h1>
       <Link to="/check-availability">Check Availability</Link> */}

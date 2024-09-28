@@ -11,7 +11,7 @@ const ContactPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 mt-10">
-      <h1 className="text-4xl text-center font-semibold text-brown-700 mb-8">Contact Us</h1>
+      <h1 className="text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-brown-700">Contact Us</h1>
       
       <p className="text-lg text-center mb-12 max-w-3xl mx-auto">
         Get in touch with us for any inquiries, bookings, or further information about your stay at Nest Residency. 
@@ -21,20 +21,20 @@ const ContactPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {/* Contact Info */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-brown-700">Our Location</h2>
+          <h2 className="text-2xl text-brown-700">Our Location</h2>
           <p className="text-lg">
             Nest Residency, Near MIMS Hospital <br />
             Calicut, Kerala, India <br />
             Zip Code: 673012
           </p>
           
-          <h2 className="text-2xl font-semibold text-brown-700">Phone</h2>
+          <h2 className="text-2xl text-brown-700">Phone</h2>
           <p className="text-lg">+91 12345 67890</p>
           
-          <h2 className="text-2xl font-semibold text-brown-700">Email</h2>
+          <h2 className="text-2xl text-brown-700">Email</h2>
           <p className="text-lg">contact@nestresidency.com</p>
           
-          <h2 className="text-2xl font-semibold text-brown-700">Social Media</h2>
+          <h2 className="text-2xl text-brown-700">Social Media</h2>
           <div className='flex gap-5 mt-10'>
             <p><FaInstagramSquare className='w-8 h-8 text-pink-500 cursor-pointer'/></p>
             <p><FaSquareFacebook className='w-8 h-8 text-blue-500 cursor-pointer'/></p>
@@ -44,7 +44,7 @@ const ContactPage = () => {
 
         {/* Contact Form */}
         <div className=" p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-semibold text-brown-700 mb-6">Send Us a Message</h2>
+          <h2 className="text-2xl text-brown-700 mb-6">Send Us a Message</h2>
           <form className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-lg font-medium">Name</label>

@@ -24,3 +24,11 @@ body {
   background-position: center; 
   width: 100%; /* Full width to avoid overflow */
 }
+
+.rooms {
+  background-image: url('./assets/bgg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-position: center; 
+  width: 100%; /* Full width to avoid overflow */
+}
