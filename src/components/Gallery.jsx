@@ -10,7 +10,7 @@ const Gallery = () => {
   return (
     <div className='mt-20'>
       <h1 className='text-3xl sm:text-4xl md:text-5xl mb-8 text-center text-brown-700'>Our Spaces</h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mx-5 sm:mx-10'>
+      <div className='grid grid-cols-2 md:grid-cols-3 gap-2 mx-5 sm:mx-10'>
         {images.map((img)=>(
             <img src={img} alt="" className='w-full h-full object-cover p-2  shadow'/>
         ))}

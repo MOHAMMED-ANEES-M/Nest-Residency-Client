@@ -11,7 +11,7 @@ const GalleryPage = () => {
   return (
     <>
       <h1 className='text-3xl sm:text-4xl md:text-5xl mb-5 sm:mb-10 text-center text-brown-700 mt-20 sm:mt-28'>Gallery</h1>
-      <div className='grid grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-3 mx-3 min-[400px]:mx-10 md:mx-20 mb-10 '>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-3 mx-3 min-[400px]:mx-10 md:mx-20 mb-10 '>
         {galleryDetails?.map((gallery, index) => (
           <div key={index} className=' group  bg-gray-50 rounded-md shadow-xl p-1  min-[400px]:p-2'>
             <img src={gallery.src} alt="image" className='rounded' />
