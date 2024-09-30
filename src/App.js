@@ -24,7 +24,7 @@ function App() {
       <Route path="/" element={<Navbar />} >
         <Route index element={<HomePage />} />
         <Route path="/check-availability" element={<CheckAvailabilityPage />} />
-        <Route path="/booking/:roomId" element={<BookingPage />} />
+        <Route path="/booking" element={<BookingPage />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/rooms" element={<RoomsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />

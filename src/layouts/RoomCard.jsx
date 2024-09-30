@@ -1,10 +1,9 @@
 import React from 'react';
 import RoomCarousel from './RoomCarousel';
-import { Link } from 'react-router-dom';
 
-const RoomCard = ({ room, vrbtn }) => {
+const RoomCard = ({ room }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-white shadow rounded-lg overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-brown-700 shadow rounded-lg overflow-hidden">
       {/* Image section */}
       <div className="w-full h-full">
         <RoomCarousel images={room.images} />
@@ -25,12 +24,9 @@ const RoomCard = ({ room, vrbtn }) => {
 
           {/* Button Section */}
           <div className="flex gap-4 mt-4">
-            <a href={room.link} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-green-800 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'hidden' : 'block'}`}>
+            <a href={room.link} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-green-800 transition-colors p-2 rounded text-white text-center `}>
               Virtual Tour
             </a>
-            <Link to={`/booking/${room.roomId}`} className={`flex-1 text-md mb-2 bg-brown-700 hover:bg-green-700 transition-colors p-2 rounded text-white text-center ${vrbtn ? 'block' : 'hidden'}`}>
-              Book Now
-            </Link>
           </div>
         </div>
       </div>

@@ -2,21 +2,25 @@ import React from 'react';
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="flex items-center mb-4">
+  <div className="relative bg-gradient-to-r from-green-50 to-green-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+    <div className="absolute -top-6 -left-6 bg-gradient-to-br from-brown-700 to-brown-700 p-2 rounded-full shadow-md">
         <img 
           src={testimonial.avatar} 
           alt={testimonial.name} 
-          className="w-16 h-16 rounded-full object-cover mr-4" 
+          className="w-16 h-16 rounded-full object-cover border-4 border-white"
         />
-        <div>
-          <h3 className="text-xl font-semibold text-gray-800">{testimonial.name}</h3>
-          <p className="text-sm text-gray-500">{testimonial.title}</p>
+      </div>
+      <div className="mt-10">
+        <blockquote className="text-base italic mb-4">
+          <span className="text-4xl text-brown-700">&ldquo;</span>
+          {testimonial.feedback}
+          <span className="text-4xl text-brown-700">&rdquo;</span>
+        </blockquote>
+        <div className="mt-4">
+          <h3 className="text-lg font-bold text-brown-700">{testimonial.name}</h3>
+          <p className="text-sm text-gray-600">{testimonial.title}</p>
         </div>
       </div>
-      <p className="text-gray-600 text-lg">
-        {testimonial.feedback}
-      </p>
     </div>
   );
 };

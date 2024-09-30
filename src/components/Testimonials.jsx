@@ -46,7 +46,7 @@ const Testimonials = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,  // Shows 3 slides at a time
+    slidesToShow: 3,  
     slidesToScroll: 1,
     responsive: [
       {
@@ -70,8 +70,8 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="py-12 px-6 sm:px-10 lg:px-20 mt-10">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center text-brown-700">What Our Guests Say</h2>
+    <div className="py-12 px-6 sm:px-10 lg:px-20 mt-20 rounded-xl mx-2 bg-black bg-opacity-90">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center text-white">Testimonials</h2>
       <Slider {...settings}>
         {testimonials.map((testimonial) => (
           <div key={testimonial.id} className="p-3">
