@@ -11,15 +11,12 @@ const BlockAvailabilityForm = ({
   handleCheckAvailability,
 }) => {
   
-  // Helper to get today's date
   const today = new Date().toISOString().split('T')[0];
 
-  // Set tomorrow's date
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minCheckOutDate = tomorrow.toISOString().split('T')[0];
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     setBookingData((prev) => ({
       ...prev,
@@ -27,7 +24,6 @@ const BlockAvailabilityForm = ({
     }));
   };
 
-  // Form submission
   const handleSubmit = () => {
     if (checkInDate !== '' && checkOutDate !== '') {
       handleCheckAvailability();

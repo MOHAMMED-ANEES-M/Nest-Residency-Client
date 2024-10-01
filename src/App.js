@@ -16,6 +16,7 @@ import TermsAndConditions from './components/Terms&Conditions';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import RefundAndCancellation from './components/Refund&Cancellation';
 import ShippingAndDelivery from './components/Shipping&Delivery';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/refund&cancellation" element={<RefundAndCancellation />} />
         <Route path="/shipping&delivery" element={<ShippingAndDelivery />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
         </Route>
         <Route
           path="/admin"

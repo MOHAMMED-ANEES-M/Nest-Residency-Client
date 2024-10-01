@@ -70,7 +70,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="py-12 px-6 sm:px-10 lg:px-20 mt-20 rounded-xl mx-2 bg-black bg-opacity-90">
+    <div className="py-12 px-6 sm:px-10 lg:px-20 mt-20 rounded-xl mx-5 bg-black bg-opacity-95">
       <h2 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center text-white">Testimonials</h2>
       <Slider {...settings}>
         {testimonials.map((testimonial) => (

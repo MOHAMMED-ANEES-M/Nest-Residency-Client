@@ -1,38 +1,79 @@
 import React, { useEffect } from 'react';
+import { createPaymentOrder, verifyPayment } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = ({ amount, roomData, guestDetails }) => {
-  
-  const handlePayment = () => {
-    const options = {
-      key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay key
-      amount: amount * 100, // Razorpay expects the amount in paise
-      currency: 'INR',
-      name: 'Hotel Booking',
-      description: 'Room Booking Payment',
-      image: '/your-logo.png', // Replace with your logo
-      handler: function (response) {
-        alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
-        // You can now proceed with backend booking confirmation using roomData and guestDetails
-      },
-      prefill: {
-        name: `${guestDetails.fname} ${guestDetails.lname}`,
-        email: guestDetails.email,
-        contact: guestDetails.phone,
-      },
-      theme: {
-        color: '#F37254',
-      },
-    };
+  const navigate = useNavigate();
 
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
+  const handleOnlinePayment = async () => {
+    try {
+      console.log(amount, 'amount');
+
+      // Step 1: Create payment order from backend
+      let orderResponse = await createPaymentOrder(amount);
+      console.log('RazorPay order response:', orderResponse);
+
+      const options = {
+        key: 'rzp_test_tgyzb525OhQfY8', // Replace with your Razorpay key
+        amount: orderResponse.amount, // amount in paise
+        currency: 'INR',
+        name: 'Hotel Booking', 
+        description: 'Room Booking Payment',
+        order_id: orderResponse.id,  // Correctly pass Razorpay order ID
+        handler: async function (response) {
+          alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
+          alert('Order ID: ' + response.razorpay_order_id);
+
+          const body = {
+            paymentId: response.razorpay_payment_id,
+            razorId: response.razorpay_order_id,
+            signature: response.razorpay_signature,
+            amount: orderResponse.amount,  // Pass amount here
+            roomData, // Pass room data from frontend
+            guestDetails, // Pass guest details from frontend
+          };
+
+          // Step 3: Verify payment and store booking in backend
+          let receipt = await verifyPayment(body);
+          console.log('Receipt response:', receipt);
+
+          if (receipt.data.success) {
+            navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomId}`, {
+              state: {
+                roomDetails: roomData,
+                guestDetails: guestDetails,
+                amount: orderResponse.amount
+              },
+            });
+          }
+        },
+        prefill: {
+          name: `${guestDetails.fname} ${guestDetails.lname}`,
+          email: guestDetails.email,
+          contact: guestDetails.phone,
+        },
+        theme: {
+          color: '#8B4513',
+        },
+      };
+
+      // Step 2: Open Razorpay popup for payment
+      const razor = new window.Razorpay(options);
+      razor.on('payment.failed', function (response) {
+        alert('Payment Failed. Error: ' + response.error.description);
+      });
+      razor.open();
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
-    handlePayment();  // Trigger payment when component is mounted
-  }, []);
+    handleOnlinePayment();
+  }, [guestDetails]);
 
-  return <div></div>;  // This component doesn't render anything visible
+  return <div></div>;
 };
 
 export default Payment;

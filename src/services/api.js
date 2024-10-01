@@ -34,3 +34,14 @@ export const adminLogout = async () => {
   return response.data;
 };
 
+export const createPaymentOrder = async (amount) => {
+  console.log('payment order data', amount);
+  const response = await axios.post(`${API_BASE_URL}/payments/create-order`, {amount});
+  console.log('payment order response', response);
+  return response.data;
+};
+
+export const verifyPayment = async (data) => {
+  const response = await axios.post(`${API_BASE_URL}/payments/verify-payment`, data);
+  return response;
+};

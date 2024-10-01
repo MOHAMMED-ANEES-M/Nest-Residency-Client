@@ -11,26 +11,25 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
     specialRequest: '',
   });
 
-  const [isAgreed, setIsAgreed] = useState(false); // State to manage agreement checkbox
-
+  const [isAgreed, setIsAgreed] = useState(false); 
   const handleChange = (e) => {
     setGuestDetails({ ...guestDetails, [e.target.name]: e.target.value });
   };
 
   const handleCheckboxChange = () => {
-    setIsAgreed((prev) => !prev); // Toggle the checkbox state
+    setIsAgreed((prev) => !prev);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isAgreed) {
-      handleFormSubmit(guestDetails); // Pass guest details to the parent component
+    if (isAgreed) {      
+      handleFormSubmit(guestDetails); 
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium">First Name</label>
           <input
@@ -67,7 +66,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
         <div>
           <label className="block text-sm font-medium">Phone</label>
           <input
-            type="tel"
+            type="number"
             name="phone"
             value={guestDetails.phone}
             onChange={handleChange}
@@ -107,20 +106,21 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
         />
         <label htmlFor="agreement" className="text-gray-700">
           I have read and agree to the{' '}
-          <Link to="/privacypolicy" className="text-blue-600 underline hover:text-blue-800">
+          <Link to="/privacypolicy" className="text-brown-700">
             Privacy Policy
           </Link>{' '}
           and{' '}
-          <Link to="/terms&conditions" className="text-blue-600 underline hover:text-blue-800">
+          <Link to="/terms&conditions" className="text-brown-700">
             Terms & Conditions
           </Link>.
         </label>
       </div>
       <div className="col-span-2">
         <button
+        onClick={handleSubmit}
           type="submit"
           className={`mt-4 py-2 px-6 ${isAgreed ? 'bg-blue-600' : 'bg-gray-400 cursor-not-allowed'} text-white rounded-lg`}
-          disabled={!isAgreed} // Disable button if checkbox is not checked
+          disabled={!isAgreed}
         >
           Proceed to Payment
         </button>
