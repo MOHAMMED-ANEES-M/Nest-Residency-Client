@@ -21,7 +21,7 @@ const GalleryPage = () => {
               className='w-full h-56 object-cover rounded-md transition-transform duration-300 group-hover:scale-105'
             />
             <div className='p-4'>
-              <button className='bg-brown-700 w-full hover:bg-green-600 text-white font-semibold text-sm min-[400px]:text-base px-4 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center'>
+              <button className='bg-brown-700 w-full hover:bg-green-800 text-white font-semibold text-sm min-[400px]:text-base px-4 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center'>
                 Virtual Tour <FaExternalLinkAlt className='ml-2' />
               </button>
             </div>

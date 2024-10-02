@@ -29,7 +29,7 @@ const ContactPage = () => {
           </p>
           
           <h2 className="text-2xl text-brown-700">Phone</h2>
-          <p className="text-lg">+91 12345 67890</p>
+          <p className="text-lg">+91 9744005530</p>
           
           <h2 className="text-2xl text-brown-700">Email</h2>
           <p className="text-lg">contact@nestresidency.com</p>

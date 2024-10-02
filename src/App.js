@@ -17,6 +17,8 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import RefundAndCancellation from './components/Refund&Cancellation';
 import ShippingAndDelivery from './components/Shipping&Delivery';
 import PaymentSuccess from './pages/PaymentSuccess';
+import BookingDetailsPage from './pages/BookingDetailsPage';
+import AdminBookRoom from './pages/AdminBookRoom';
 
 function App() {
   return (
@@ -36,15 +38,10 @@ function App() {
         <Route path="/refund&cancellation" element={<RefundAndCancellation />} />
         <Route path="/shipping&delivery" element={<ShippingAndDelivery />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/admin" element={ <ProtectedRoute> <AdminPage /> </ProtectedRoute> }/>
+        <Route path="/admin/booking-details/:bookingId" element={ <ProtectedRoute> <BookingDetailsPage /> </ProtectedRoute> }/>
+        <Route path="/admin/book-room" element={ <ProtectedRoute> <AdminBookRoom /> </ProtectedRoute> }/>
         </Route>
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminPage />
-            </ProtectedRoute>
-          }
-        />
       </Routes>
     </BrowserRouter>
   );

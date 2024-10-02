@@ -10,7 +10,7 @@ export const checkRoomAvailability = async (checkInDate, checkOutDate) => {
 };
 
 export const bookRoom = async (bookingData) => {
-  const response = await axios.post(`${API_BASE_URL}/bookings/book`, bookingData);
+  const response = await axios.post(`${API_BASE_URL}/admin/book-room`, bookingData);
   return response.data;
 };
 
@@ -44,4 +44,9 @@ export const createPaymentOrder = async (amount) => {
 export const verifyPayment = async (data) => {
   const response = await axios.post(`${API_BASE_URL}/payments/verify-payment`, data);
   return response;
+};
+
+export const cancelBooking = async (bookingId, cancelReason) => {
+  const response = await axios.put(`${API_BASE_URL}/admin/cancel-booking/${bookingId}`, { cancelReason }); 
+  return response.data;
 };

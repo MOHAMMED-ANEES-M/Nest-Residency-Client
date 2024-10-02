@@ -14,17 +14,17 @@ const ProtectedRoute = ({ children }) => {
       const data = await getUser();
       console.log('user', data);
       if (data) {
-        dispatch(login(data)); // Log in the user if they are authenticated
+        dispatch(login(data)); 
       }
     } catch (err) {
       console.log(err);
     } finally {
-      setLoading(false); // Set loading to false once done
+      setLoading(false); 
     }
   };
 
   useEffect(() => {
-    currentUser(); // Fetch current user on page load
+    currentUser(); 
   }, [dispatch]);
 
   if (loading) {

@@ -38,7 +38,7 @@ const Footer = () => {
               <IoIosMail className='w-5 h-5' /> nestresidencyclt@gmail.com
             </p>
             <p className='mb-5 flex gap-3 justify-start items-center'>
-              <FaPhone className='w-4 h-4' /> +91 1234567890
+              <FaPhone className='w-4 h-4' /> +91 9744005530
             </p>
             <p className='flex gap-3 justify-start items-center'>
               <FaLocationDot className='w-5 h-5' /> Near M.I.M.S Hospital, Govindapuram, Kozhikode, Kerala 673016

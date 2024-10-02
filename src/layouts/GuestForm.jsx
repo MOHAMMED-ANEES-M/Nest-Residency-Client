@@ -11,19 +11,64 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
     specialRequest: '',
   });
 
-  const [isAgreed, setIsAgreed] = useState(false); 
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setGuestDetails({ ...guestDetails, [e.target.name]: e.target.value });
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' })); // Clear error on change
   };
 
   const handleCheckboxChange = () => {
     setIsAgreed((prev) => !prev);
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    return regex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    return phone.length === 10; 
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isAgreed) {      
-      handleFormSubmit(guestDetails); 
+    const newErrors = {};
+
+    for (const [key, value] of Object.entries(guestDetails)) {
+      if (key !== 'gstNumber' && key !== 'specialRequest' && !value) {
+        newErrors[key] = 'This field is required.';
+      }
+    }
+
+    if (guestDetails.fname && (guestDetails.fname.length < 2 || guestDetails.fname.length > 30)) {
+      newErrors.fname = 'First name must be between 2 and 30 characters.';
+    }
+
+    if (guestDetails.lname && (guestDetails.lname.length < 2 || guestDetails.lname.length > 30)) {
+      newErrors.lname = 'Last name must be between 2 and 30 characters.';
+    }
+
+    if (guestDetails.email && !validateEmail(guestDetails.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+
+    if (guestDetails.phone && !validatePhone(guestDetails.phone)) {
+      newErrors.phone = 'Phone number must be 10 digits.';
+    }
+
+    if (guestDetails.gstNumber && guestDetails.gstNumber.length !== 15) {
+      newErrors.gstNumber = 'GST Number must be exactly 15 characters.';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return; // Stop submission if there are errors
+    }
+
+    if (isAgreed) {
+      handleFormSubmit(guestDetails);
     }
   };
 
@@ -40,6 +85,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
+          {errors.fname && <p className="text-red-600 text-sm">{errors.fname}</p>} {/* Error message */}
         </div>
         <div>
           <label className="block text-sm font-medium">Last Name</label>
@@ -51,6 +97,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
+          {errors.lname && <p className="text-red-600 text-sm">{errors.lname}</p>} {/* Error message */}
         </div>
         <div>
           <label className="block text-sm font-medium">Email</label>
@@ -62,6 +109,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
+          {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>} {/* Error message */}
         </div>
         <div>
           <label className="block text-sm font-medium">Phone</label>
@@ -73,6 +121,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
+          {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>} {/* Error message */}
         </div>
         <div>
           <label className="block text-sm font-medium">GST Number</label>
@@ -83,6 +132,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             onChange={handleChange}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
+          {errors.gstNumber && <p className="text-red-600 text-sm">{errors.gstNumber}</p>} {/* Error message */}
         </div>
         <div className="col-span-2">
           <label className="block text-sm font-medium">Special Requests</label>
@@ -117,7 +167,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
       </div>
       <div className="col-span-2">
         <button
-        onClick={handleSubmit}
+          onClick={handleSubmit}
           type="submit"
           className={`mt-4 py-2 px-6 ${isAgreed ? 'bg-blue-600' : 'bg-gray-400 cursor-not-allowed'} text-white rounded-lg`}
           disabled={!isAgreed}

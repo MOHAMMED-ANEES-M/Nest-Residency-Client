@@ -5,6 +5,20 @@ import { useNavigate } from 'react-router-dom';
 const Payment = ({ amount, roomData, guestDetails }) => {
   const navigate = useNavigate();
 
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve(true); // If script is already loaded, resolve without loading it again
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+  
   const handleOnlinePayment = async () => {
     try {
       console.log(amount, 'amount');
@@ -14,12 +28,12 @@ const Payment = ({ amount, roomData, guestDetails }) => {
       console.log('RazorPay order response:', orderResponse);
 
       const options = {
-        key: 'rzp_test_tgyzb525OhQfY8', // Replace with your Razorpay key
-        amount: orderResponse.amount, // amount in paise
+        key: 'rzp_test_tgyzb525OhQfY8', 
+        amount: orderResponse.amount, 
         currency: 'INR',
         name: 'Hotel Booking', 
         description: 'Room Booking Payment',
-        order_id: orderResponse.id,  // Correctly pass Razorpay order ID
+        order_id: orderResponse.id,  
         handler: async function (response) {
           alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
           alert('Order ID: ' + response.razorpay_order_id);
@@ -28,9 +42,9 @@ const Payment = ({ amount, roomData, guestDetails }) => {
             paymentId: response.razorpay_payment_id,
             razorId: response.razorpay_order_id,
             signature: response.razorpay_signature,
-            amount: orderResponse.amount,  // Pass amount here
-            roomData, // Pass room data from frontend
-            guestDetails, // Pass guest details from frontend
+            amount: orderResponse.amount,  
+            roomData, 
+            guestDetails, 
           };
 
           // Step 3: Verify payment and store booking in backend
@@ -58,6 +72,14 @@ const Payment = ({ amount, roomData, guestDetails }) => {
       };
 
       // Step 2: Open Razorpay popup for payment
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+     );
+
+     if (!res) {
+        alert("Razropay failed to load!!");
+        return;
+    }
       const razor = new window.Razorpay(options);
       razor.on('payment.failed', function (response) {
         alert('Payment Failed. Error: ' + response.error.description);
