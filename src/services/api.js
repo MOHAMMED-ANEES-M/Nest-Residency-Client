@@ -19,6 +19,11 @@ export const getBookings = async () => {
   return response.data;
 };
 
+export const getBookingById = async (bookingId) => {
+  const response = await axios.get(`${API_BASE_URL}/admin/booking/${bookingId}`);
+  return response.data;
+};
+
 export const adminLogin = async (data) => {
   const response = await axios.post(`${API_BASE_URL}/auth/login`, data);
   return response.data;

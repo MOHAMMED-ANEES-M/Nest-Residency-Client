@@ -1,36 +1,17 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/nestresidency_logo.png';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { CgMenuRound } from "react-icons/cg";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Drawer from '../Drawer';
 import Footer from '../Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { adminLogout } from '../../services/api';
-import { logout } from '../../redux/slices/userSlice';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { isAuthenticated } = useSelector((state) => state.user);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  };
-
-  const handleLogout = async () => {
-    try {
-      const data = await adminLogout();
-      if (data) {
-        console.log('logout data', data);
-        dispatch(logout()); // Dispatch logout to clear user data
-        navigate('/login'); // Redirect to login after logout
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -54,15 +35,9 @@ const Navbar = () => {
           </ul>
 
           <div>
-            {isAuthenticated ?
-            <button onClick={handleLogout} className="hidden md:flex rounded bg-red-700 hover:bg-green-800 text-white px-5 py-3 ">
-            Logout
-            </button>
-             :
               <Link to='/check-availability' className="hidden md:flex rounded bg-brown-700 hover:bg-green-800 text-white px-5 py-3 ">
                 Reservation
               </Link>
-              }
           </div>
 
         </div>

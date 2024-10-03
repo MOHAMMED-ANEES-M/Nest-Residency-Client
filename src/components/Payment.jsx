@@ -28,7 +28,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
       console.log('RazorPay order response:', orderResponse);
 
       const options = {
-        key: 'rzp_test_tgyzb525OhQfY8', 
+        key: 'rzp_test_CTbLruPdIohX3s', 
         amount: orderResponse.amount, 
         currency: 'INR',
         name: 'Hotel Booking', 
@@ -47,7 +47,6 @@ const Payment = ({ amount, roomData, guestDetails }) => {
             guestDetails, 
           };
 
-          // Step 3: Verify payment and store booking in backend
           let receipt = await verifyPayment(body);
           console.log('Receipt response:', receipt);
 

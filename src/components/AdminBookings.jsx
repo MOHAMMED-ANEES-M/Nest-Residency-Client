@@ -79,10 +79,10 @@ const AdminBookings = () => {
   };
 
   return (
-    <div className="container mx-auto mt-16 p-5">
+    <div className="container mx-auto p-5">
       <h2 className="text-3xl font-semibold text-center mb-10">Room Bookings</h2>
 
-      <div className="flex justify-between items-center mb-5">
+      <div className="mb-5">
         {/* Search Bar */}
         <input
           type="text"
@@ -93,12 +93,12 @@ const AdminBookings = () => {
         />
 
         {/* Book Room Button */}
-        <button
+        {/* <button
           onClick={handleBookRoom}
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
           Book Room
-        </button>
+        </button> */}
       </div>
 
       {loading && <LoadingSpinner />}

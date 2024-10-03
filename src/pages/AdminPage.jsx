@@ -1,11 +1,14 @@
 import React from 'react';
-import AdminBookings from '../components/AdminBookings';
+import Sidebar from '../components/Sidebar';
+import { Outlet } from 'react-router-dom';
 
 const AdminPage = () => {
-  
   return (
-    <div className='my-10'>
-      <AdminBookings />
+    <div className="admin-page flex">
+      <Sidebar />
+      <div className="flex-1 p-5">
+        <Outlet />
+      </div>
     </div>
   );
 };

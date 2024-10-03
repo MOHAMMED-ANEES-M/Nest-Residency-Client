@@ -23,9 +23,10 @@ const ContactPage = () => {
         <div className="space-y-6">
           <h2 className="text-2xl text-brown-700">Our Location</h2>
           <p className="text-lg">
-            Nest Residency, Near MIMS Hospital <br />
-            Calicut, Kerala, India <br />
-            Zip Code: 673012
+            27/2402,E,G,H Nest Residency,<br /> 
+            Near MIMS Hospital, Mini Bypass Road,<br/>
+            Govindapuram, Kozhikode,<br />
+            Kerala, India - 673012
           </p>
           
           <h2 className="text-2xl text-brown-700">Phone</h2>

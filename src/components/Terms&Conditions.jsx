@@ -10,36 +10,33 @@ const TermsAndConditions = () => {
     <div className="p-6 bg-white text-black rounded shadow-lg max-w-4xl m-auto mt-32 mb-10">
       <h2 className="text-3xl font-semibold mb-4">Terms and Conditions</h2>
       <p className="mb-4">
-        Welcome to Nest Residency. By booking your stay with us, you agree to comply with and be bound by the following terms and conditions. Please review the terms carefully.
+        For the purpose of these Terms and Conditions, the term "we", "us", "our" used anywhere on this page shall mean NEST RESIDENCY, whose registered/operational office is 27/2402,E,G,H Kozhikode KERALA 673016. "You", "your", "user", "visitor" shall mean any natural or legal person visiting our website and/or agreeing to purchase from us.
       </p>
-
-      <h3 className="text-2xl font-semibold mb-2">1. Booking Policy</h3>
       <p className="mb-4">
-        All bookings are subject to availability. A confirmation will be sent via email upon successful payment. In the event of overbooking or room unavailability, we will provide a full refund.
+        Your use of the website and/or purchase from us are governed by the following Terms and Conditions. The content of the pages on this website is subject to change without notice. By continuing to use the site or making a purchase, you accept these terms.
       </p>
-
-      <h3 className="text-2xl font-semibold mb-2">2. Payment Policy</h3>
+      <h3 className="text-2xl font-semibold mb-2">1. Warranty Disclaimer</h3>
       <p className="mb-4">
-        Full payment is required to confirm your booking. We accept payments via credit card, debit card, UPI, and Razorpay. All transactions are processed securely.
+        Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness, or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information may contain inaccuracies or errors, and we expressly exclude liability for such inaccuracies to the fullest extent permitted by law.
       </p>
-
-      <h3 className="text-2xl font-semibold mb-2">3. Check-in and Check-out</h3>
+      <h3 className="text-2xl font-semibold mb-2">2. Use of Website Information</h3>
       <p className="mb-4">
-        Check-in is from 12:00 PM, and check-out is by 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.
+        Your use of any information or materials on our website and/or product pages is entirely at your own risk, for which we shall not be liable. It is your responsibility to ensure that any products, services, or information available through our website meet your specific requirements.
       </p>
-
-      <h3 className="text-2xl font-semibold mb-2">4. Cancellation Policy</h3>
+      <h3 className="text-2xl font-semibold mb-2">3. Intellectual Property</h3>
       <p className="mb-4">
-        Once a booking is confirmed, it cannot be canceled or refunded. Please ensure your travel dates and details are correct before confirming the reservation.
+        This website contains material owned by or licensed to us. This material includes, but is not limited to, design, layout, appearance, and graphics. Reproduction is prohibited unless permitted by our copyright notice.
       </p>
-
-      <h3 className="text-2xl font-semibold mb-2">5. Liability</h3>
+      <h3 className="text-2xl font-semibold mb-2">4. Unauthorized Use</h3>
       <p className="mb-4">
-        Nest Residency will not be liable for any personal injury, loss, or damage to personal property during your stay. Guests are responsible for their belongings.
+        Unauthorized use of the information provided by us may give rise to a claim for damages and/or be a criminal offense.
       </p>
-
+      <h3 className="text-2xl font-semibold mb-2">5. External Links</h3>
       <p className="mb-4">
-        By booking with us, you agree to the above terms and conditions.
+        From time to time, our website may also include links to other websites. These links are provided for your convenience and to provide further information. We do not endorse the linked websites, and have no responsibility for the content of the linked website(s).
+      </p>
+      <p className="mb-4">
+        Any disputes arising out of your use of our website, purchase, or any engagement with us shall be governed by the laws of India.
       </p>
     </div>
   );

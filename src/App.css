@@ -24,3 +24,14 @@ body {
   background-position: center; 
   width: 100%; /* Full width to avoid overflow */
 }
+
+@media (max-width: 768px) {
+  .admin-page {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+}
