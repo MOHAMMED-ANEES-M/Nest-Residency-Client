@@ -12,6 +12,7 @@ const BookRoom = () => {
   const bookedRoom = roomDetails.find((room) => room.roomId === roomId);
   const [guestDetails, setGuestDetails] = useState(null);
   
+  const roomName = bookedRoom.name
   const amount = bookedRoom.price; 
   const numberOfNights = Math.floor((new Date(checkOutDate) - new Date(checkInDate)) / (1000 * 60 * 60 * 24));
   const totalRoomPrice = amount * numberOfNights;
@@ -74,7 +75,7 @@ const BookRoom = () => {
       {guestDetails && (
         <Payment 
           amount={totalAmount} 
-          roomData={{ roomId, checkInDate, checkOutDate }} 
+          roomData={{ roomId, checkInDate, checkOutDate, roomName }} 
           guestDetails={guestDetails} 
         />
       )}

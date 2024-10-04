@@ -14,39 +14,53 @@ const PaymentSuccess = () => {
   const roomData = roomDetails.find((room) => room.roomId === roomId);
 
   // Get roomDetails and guestDetails from the location state if passed
-  const guestDetails = location.state?.guestDetails || {};
-  const bookingDetails = location.state?.roomDetails || {};
-  const amount = location.state?.amount || '';
+  const guestDetails = location?.state?.guestDetails || {};
+  const bookingDetails = location?.state?.roomDetails || {};
+  const amount = location?.state?.amount || '';
 
   return (
-    <div className="container mx-auto p-4 mt-20">
-      <h1 className="text-2xl font-bold text-center mb-4">Payment Successful</h1>
+    <div className="mx-auto p-6 mt-24 mb-5 max-w-lg bg-gray-50 rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold text-center  mb-4">Payment Receipt</h1>
+      <p className="text-md  my-2 text-center">A booking confirmation has been sent to your email.</p>
 
-      {/* Payment Details */}
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-2">Payment Information</h2>
-        <p><strong>Payment ID:</strong> {paymentId}</p>
-      </div>
-
-      {/* Room Details */}
       {roomData ? (
-        <div className="bg-white shadow-md rounded-lg p-6 mt-4">
-          <h2 className="text-xl font-semibold mb-2">Room Information</h2>
-          <p><strong>Room ID:</strong> {roomData.roomId}</p>
-          <p><strong>Room Type:</strong> {roomData.name}</p>
-          <p><strong>Check-in Date:</strong> {bookingDetails.checkInDate}</p>
-          <p><strong>Check-out Date:</strong> {bookingDetails.checkOutDate}</p>
+        <div className="bg-white shadow-md rounded-lg p-6 mb-4">
+          <h2 className="text-2xl font-semibold mb-4">Room Information</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <p className="font-semibold">Room Number:</p>
+            <p className="">{roomData.roomId}</p>
+            <p className="font-semibold">Room Type:</p>
+            <p className="">{roomData.name}</p>
+            <p className="font-semibold">Check-in Date:</p>
+            <p className="">{bookingDetails.checkInDate}</p>
+            <p className="font-semibold">Check-out Date:</p>
+            <p className="">{bookingDetails.checkOutDate}</p>
+          </div>
         </div>
       ) : (
-        <p className="text-red-500 mt-4">Room details not found</p>
+        <p className="text-red-500 text-lg">Room details not found</p>
       )}
 
-      {/* Guest Details */}
-      <div className="bg-white shadow-md rounded-lg p-6 mt-4">
-        <h2 className="text-xl font-semibold mb-2">Guest Information</h2>
-        <p><strong>Name:</strong> {guestDetails.fname} {guestDetails.lname}</p>
-        <p><strong>Email:</strong> {guestDetails.email}</p>
-        <p><strong>Phone:</strong> {guestDetails.phone}</p>
+<div className="bg-white shadow-md rounded-lg p-6 mb-4">
+        <h2 className="text-2xl font-semibold mb-4">Payment Information</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <p className="font-semibold">Payment ID:</p>
+          <p className="">{paymentId}</p>
+          <p className="font-semibold">Amount Paid:</p>
+          <p className="">₹{(amount / 100).toFixed(2)}</p>
+        </div>
+      </div>
+
+      <div className="bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-2xl font-semibold mb-4">Guest Information</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <p className="font-semibold">Name:</p>
+          <p className="">{guestDetails.fname} {guestDetails.lname}</p>
+          <p className="font-semibold">Email:</p>
+          <p className="">{guestDetails.email}</p>
+          <p className="font-semibold">Phone:</p>
+          <p className="">{guestDetails.phone}</p>
+        </div>
       </div>
     </div>
   );

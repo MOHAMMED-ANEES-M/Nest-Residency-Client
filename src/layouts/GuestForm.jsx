@@ -46,8 +46,8 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
       newErrors.fname = 'First name must be between 2 and 30 characters.';
     }
 
-    if (guestDetails.lname && (guestDetails.lname.length < 2 || guestDetails.lname.length > 30)) {
-      newErrors.lname = 'Last name must be between 2 and 30 characters.';
+    if (guestDetails.lname && (guestDetails.lname.length < 1 || guestDetails.lname.length > 30)) {
+      newErrors.lname = 'Last name must be between 1 and 30 characters.';
     }
 
     if (guestDetails.email && !validateEmail(guestDetails.email)) {
@@ -109,7 +109,9 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
             required
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           />
-          {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>} {/* Error message */}
+          {errors.email ? <p className="text-red-600 text-sm">{errors.email}</p> : 
+          <p className="text-red-600 text-sm">Enter a valid email to receive your booking confirmation</p>
+          } {/* Error message */}
         </div>
         <div>
           <label className="block text-sm font-medium">Phone</label>
