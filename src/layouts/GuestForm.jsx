@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const GuestForm = ({ bookingData, handleFormSubmit }) => {
+const GuestForm = ({ handleFormSubmit }) => {
   const [guestDetails, setGuestDetails] = useState({
     fname: '',
     lname: '',
@@ -73,87 +73,82 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
   };
 
   return (
-    <>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium">First Name</label>
-          <input
-            type="text"
-            name="fname"
-            value={guestDetails.fname}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-          {errors.fname && <p className="text-red-600 text-sm">{errors.fname}</p>} {/* Error message */}
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Last Name</label>
-          <input
-            type="text"
-            name="lname"
-            value={guestDetails.lname}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-          {errors.lname && <p className="text-red-600 text-sm">{errors.lname}</p>} {/* Error message */}
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={guestDetails.email}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-          {errors.email ? <p className="text-red-600 text-sm">{errors.email}</p> : 
-          <p className="text-red-600 text-sm">Enter a valid email to receive your booking confirmation</p>
-          } {/* Error message */}
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Phone</label>
-          <input
-            type="number"
-            name="phone"
-            value={guestDetails.phone}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-          {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>} {/* Error message */}
-        </div>
-        <div>
-          <label className="block text-sm font-medium">GST Number</label>
-          <input
-            type="text"
-            name="gstNumber"
-            value={guestDetails.gstNumber}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          />
-          {errors.gstNumber && <p className="text-red-600 text-sm">{errors.gstNumber}</p>} {/* Error message */}
-        </div>
-        <div className="col-span-2">
-          <label className="block text-sm font-medium">Special Requests</label>
-          <textarea
-            name="specialRequest"
-            value={guestDetails.specialRequest}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          ></textarea>
-        </div>
-      </form>
-
-      <div className="flex items-center mt-5">
+    <form className="flex flex-col md:grid md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+      <div className="flex flex-col">
+        <label className="block text-sm font-medium">First Name</label>
+        <input
+          type="text"
+          name="fname"
+          value={guestDetails.fname}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+        {errors.fname && <p className="text-red-600 text-sm">{errors.fname}</p>}
+      </div>
+      <div className="flex flex-col">
+        <label className="block text-sm font-medium">Last Name</label>
+        <input
+          type="text"
+          name="lname"
+          value={guestDetails.lname}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+        {errors.lname && <p className="text-red-600 text-sm">{errors.lname}</p>}
+      </div>
+      <div className="flex flex-col">
+        <label className="block text-sm font-medium">Email</label>
+        <input
+          type="email"
+          name="email"
+          value={guestDetails.email}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+        {errors.email ? <p className="text-red-600 text-sm">{errors.email}</p> : 
+        <p className=" text-sm">Enter a valid email to receive your booking confirmation</p>
+        }
+      </div>
+      <div className="flex flex-col">
+        <label className="block text-sm font-medium">Phone</label>
+        <input
+          type="tel"
+          name="phone"
+          value={guestDetails.phone}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+        {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+      </div>
+      <div className="flex flex-col">
+        <label className="block text-sm font-medium">GST Number</label>
+        <input
+          type="text"
+          name="gstNumber"
+          value={guestDetails.gstNumber}
+          onChange={handleChange}
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+        {errors.gstNumber && <p className="text-red-600 text-sm">{errors.gstNumber}</p>}
+      </div>
+      <div className="flex flex-col col-span-2">
+        <label className="block text-sm font-medium">Special Requests</label>
+        <textarea
+          name="specialRequest"
+          value={guestDetails.specialRequest}
+          onChange={handleChange}
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+        />
+      </div>
+      <div className="flex items-baseline">
         <input
           type="checkbox"
-          id="agreement"
           checked={isAgreed}
           onChange={handleCheckboxChange}
-          required
           className="mr-2"
         />
         <label htmlFor="agreement" className="text-gray-700">
@@ -167,6 +162,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
           </Link>.
         </label>
       </div>
+      
       <div className="col-span-2">
         <button
           onClick={handleSubmit}
@@ -177,7 +173,7 @@ const GuestForm = ({ bookingData, handleFormSubmit }) => {
           Proceed to Payment
         </button>
       </div>
-    </>
+    </form>
   );
 };
 

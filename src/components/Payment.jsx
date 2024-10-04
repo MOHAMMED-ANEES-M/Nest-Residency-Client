@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPaymentOrder, verifyPayment } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../utils/LoadingSpinner';
 
 const Payment = ({ amount, roomData, guestDetails }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // State to manage loading
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
       if (document.querySelector(`script[src="${src}"]`)) {
-        resolve(true); // If script is already loaded, resolve without loading it again
+        resolve(true);
         return;
       }
       const script = document.createElement("script");
@@ -20,15 +22,13 @@ const Payment = ({ amount, roomData, guestDetails }) => {
   };
   
   const handleOnlinePayment = async () => {
+    setLoading(true); // Start loading
     try {
-      console.log(amount, 'amount');
-
-      // Step 1: Create payment order from backend
       let orderResponse = await createPaymentOrder(amount);
       console.log('RazorPay order response:', orderResponse);
 
       const options = {
-        key: 'rzp_test_CTbLruPdIohX3s', 
+        key: 'rzp_test_CTbLruPdIohX3s',
         amount: orderResponse.amount, 
         currency: 'INR',
         name: 'Hotel Booking', 
@@ -51,7 +51,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
           console.log('Receipt response:', receipt);
 
           if (receipt.data.success) {
-            navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomId}`, {
+            navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomType}`, {
               state: {
                 roomDetails: roomData,
                 guestDetails: guestDetails,
@@ -70,29 +70,32 @@ const Payment = ({ amount, roomData, guestDetails }) => {
         },
       };
 
-      // Step 2: Open Razorpay popup for payment
-      const res = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
-     );
-
-     if (!res) {
-        alert("Razropay failed to load!!");
+      const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+      if (!res) {
+        alert("Razorpay failed to load!!");
+        setLoading(false); // Stop loading if Razorpay fails to load
         return;
-    }
+      }
+      
       const razor = new window.Razorpay(options);
       razor.on('payment.failed', function (response) {
         alert('Payment Failed. Error: ' + response.error.description);
+        setLoading(false); // Stop loading if payment fails
       });
       razor.open();
-
     } catch (err) {
       console.error(err);
+      setLoading(false); // Stop loading on error
     }
   };
 
   useEffect(() => {
     handleOnlinePayment();
   }, [guestDetails]);
+
+  if (loading) {
+    return <LoadingSpinner />; // Show loading spinner
+  }
 
   return <div></div>;
 };

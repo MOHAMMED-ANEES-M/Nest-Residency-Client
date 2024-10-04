@@ -4,9 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const AvailabilityForm = () => {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
-  const [rooms, setRooms] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -14,7 +11,7 @@ const AvailabilityForm = () => {
   const handleSubmit = () => {
     if (checkInDate !== '' && checkOutDate !== '') {
       navigate('/check-availability', { 
-        state: { checkInDate, checkOutDate, adults, children, rooms } 
+        state: { checkInDate, checkOutDate } 
       });
     }
   };
@@ -60,52 +57,6 @@ const AvailabilityForm = () => {
           />
         </div>
 
-        {/* Adults */}
-        <div className="flex flex-col">
-          <label htmlFor="adults" className="mb-1 font-semibold text-sm">
-            Adults
-          </label>
-          <input
-            id="adults"
-            type="number"
-            min="1"
-            value={adults}
-            className="w-14 px-2 md:px-3 rounded py-1 md:py-2 bg-gray-100 border-2 border-brown-700 focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
-            onChange={(e) => setAdults(e.target.value)}
-          />
-        </div>
-
-        {/* Children */}
-        <div className="flex flex-col">
-          <label htmlFor="children" className="mb-1 font-semibold text-sm">
-            Children
-          </label>
-          <input
-            id="children"
-            type="number"
-            min="0"
-            value={children}
-            className="w-14 px-2 md:px-3 rounded py-1 md:py-2 bg-gray-100 border-2 border-brown-700 focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
-            onChange={(e) => setChildren(e.target.value)}
-          />
-        </div>
-
-        {/* Rooms */}
-        <div className="flex flex-col">
-          <label htmlFor="rooms" className="mb-1 font-semibold text-sm">
-            Rooms
-          </label>
-          <input
-            id="rooms"
-            type="number"
-            min="1"
-            value={rooms}
-            className="w-14 px-2 md:px-3 rounded py-1 md:py-2 bg-gray-100 border-2 border-brown-700 focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
-            onChange={(e) => setRooms(e.target.value)}
-          />
-        </div>
-
-        {/* Check Availability Button */}
         <button
           className="px-3 md:px-5 mt-8 py-2 md:py-3 rounded bg-brown-700 text-white shadow-sm hover:bg-green-800"
           onClick={handleSubmit}
