@@ -5,7 +5,7 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 
 const Payment = ({ amount, roomData, guestDetails }) => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false); // State to manage loading
+  const [loading, setLoading] = useState(false);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -22,7 +22,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
   };
   
   const handleOnlinePayment = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       let orderResponse = await createPaymentOrder(amount);
       console.log('RazorPay order response:', orderResponse);

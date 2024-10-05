@@ -55,3 +55,13 @@ export const cancelBooking = async (bookingId, cancelReason) => {
   const response = await axios.put(`${API_BASE_URL}/admin/cancel-booking/${bookingId}`, { cancelReason }); 
   return response.data;
 };
+
+export const updatePrice = async (roomType, newPrice) => {
+  const response = await axios.put(`${API_BASE_URL}/admin/update-price`, { roomType, newPrice }); 
+  return response.data;
+};
+
+export const findRooms = async () => {
+  const response = await axios.get(`${API_BASE_URL}/rooms/get-rooms`); 
+  return response.data;
+};

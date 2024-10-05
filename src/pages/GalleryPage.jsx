@@ -3,6 +3,7 @@ import { galleryDetails } from '../data/gallery';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const GalleryPage = () => {
+  
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);

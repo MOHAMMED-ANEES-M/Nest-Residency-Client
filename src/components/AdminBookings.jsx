@@ -22,10 +22,11 @@ const AdminBookings = () => {
         const data = await getBookings();
         if (data) {
           console.log('bookings', data);
-          
           dispatch(setBookings(data));
         }
       } catch (err) {
+        console.log(err);
+        
         dispatch(setError('Failed to fetch bookings.'));
       } finally {
         dispatch(setLoading(false));
@@ -121,22 +122,22 @@ const AdminBookings = () => {
               </tr>
             </thead>
             <tbody>
-              {currentBookings.map((booking) => (
-                <tr key={booking._id} className="border-b hover:bg-gray-100">
-                  <td className="p-3">{booking.fname} {booking.lname}</td>
-                  <td className="p-3">{booking.phone}</td>
-                  <td className="p-3">{booking.email}</td>
-                  <td className="p-3">{booking.roomId}</td>
-                  <td className="p-3">{formatBookingDate(booking.checkInDate)}</td>
-                  <td className="p-3">{formatBookingDate(booking.checkOutDate)}</td>
+              {currentBookings?.map((booking) => (
+                <tr key={booking?._id} className="border-b hover:bg-gray-100">
+                  <td className="p-3">{booking?.fname} {booking?.lname}</td>
+                  <td className="p-3">{booking?.phone}</td>
+                  <td className="p-3">{booking?.email}</td>
+                  <td className="p-3">{booking?.roomNumber}</td>
+                  <td className="p-3">{formatBookingDate(booking?.checkInDate)}</td>
+                  <td className="p-3">{formatBookingDate(booking?.checkOutDate)}</td>
                   <td className="p-3">
-                    <span className={`p-1 rounded ${booking.status === 'Cancelled' ? 'bg-red-200 text-red-700' : 'bg-green-200 text-green-700'}`}>
-                      {booking.status}
+                    <span className={`p-1 rounded ${booking?.status === 'Cancelled' ? 'bg-red-200 text-red-700' : 'bg-green-200 text-green-700'}`}>
+                      {booking?.status}
                     </span>
                   </td>
                   <td className="p-3">
                     <button
-                      onClick={() => handleViewMore(booking._id)}
+                      onClick={() => handleViewMore(booking?._id)}
                       className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                     >
                       View Details

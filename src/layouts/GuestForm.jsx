@@ -16,7 +16,7 @@ const GuestForm = ({ handleFormSubmit }) => {
 
   const handleChange = (e) => {
     setGuestDetails({ ...guestDetails, [e.target.name]: e.target.value });
-    setErrors((prev) => ({ ...prev, [e.target.name]: '' })); // Clear error on change
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' })); 
   };
 
   const handleCheckboxChange = () => {

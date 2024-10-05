@@ -12,8 +12,8 @@ const RoomCard = ({ room }) => {
       {/* Details section */}
       <div className="p-8 flex flex-col justify-between bg-[#f8f8f8]">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-brown-700 mb-4">{room.name}</h2>
-          <p className="text-lg sm:text-xl mb-2 font-semibold">Rs. {room.price} + GST / night</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-brown-700 mb-4">{room.roomType}</h2>
+          <p className="text-lg sm:text-xl mb-2 font-semibold">Rs. {room.roomPrice} + GST / night</p>
           <p className="text-lg mb-4">{room.description}</p>
           
           <ul className="text-lg list-disc list-inside mb-5">

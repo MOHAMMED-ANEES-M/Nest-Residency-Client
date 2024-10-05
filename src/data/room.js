@@ -9,7 +9,7 @@ export const roomDetails = [
         src: residential_ac1, 
         images: [ residential_ac1, residential_ac2, superior_ac, superior_non_ac ],
         description: 'A luxurious room with all amenities and a great view.',
-        amenities: ['Free Wi-Fi', 'Breakfast Included', 'AC', 'Room Service'], 
+        amenities: ['Free Wi-Fi', 'Mini Refrigerator', 'AC', 'Room Service'], 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
@@ -25,7 +25,7 @@ export const roomDetails = [
         src: residential_ac1, 
         images: [ residential_ac1, residential_ac2, superior_ac, superior_non_ac ],
         description: 'A luxurious room with all amenities and a great view.',
-        amenities: ['Free Wi-Fi', 'Breakfast Included', 'AC', 'Room Service'], 
+        amenities: ['Free Wi-Fi', 'Mini Refrigerator', 'AC', 'Room Service'], 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 

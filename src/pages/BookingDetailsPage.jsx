@@ -14,11 +14,14 @@ const BookingDetailsPage = () => {
   const [cancelReason, setCancelReason] = useState('');
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+  
+  useEffect(() => {
     if (!booking) {
       const fetchBookingDetails = async () => {
         try {
           const fetchedBooking = await getBookingById(bookingId);
-          console.log('booking by id', fetchedBooking);
           setBooking(fetchedBooking);
         } catch (error) {
           console.error(error);
@@ -39,48 +42,115 @@ const BookingDetailsPage = () => {
     }
   };
 
-  if (!booking) return <div>Booking not found.</div>;
+  if (!booking) return <div className="text-center">Booking not found.</div>;
 
   return (
-    <div className="container mx-auto my-10">
-      <h2 className="text-3xl font-semibold text-center my-10">Booking Details</h2>
+    <div className="container mx-auto p-6">
+      <h2 className="text-2xl font-bold text-center mb-8">Booking Details</h2>
 
-      <div className="p-5 rounded-md">
-        {/* Guest Details */}
-        <h3 className="text-xl font-semibold mb-4">Guest Information</h3>
-        <p><strong>Name:</strong> {booking?.fname} {booking?.lname}</p>
-        <p><strong>Phone:</strong> {booking?.phone}</p>
-        <p><strong>Email:</strong> {booking?.email}</p>
+      <div className="bg-white p-6 rounded-md shadow-md max-w-3xl mx-auto">
+        {/* Guest Information */}
+        <section className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Guest Information</h3>
+          <table className="w-full text-left">
+            <tbody>
+              <tr>
+                <td className="py-2 w-60 font-bold">Name:</td>
+                <td>{booking?.fname} {booking?.lname}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Phone:</td>
+                <td>{booking?.phone}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Email:</td>
+                <td>{booking?.email}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
         {/* Booking Information */}
-        <h3 className="text-xl font-semibold my-4">Booking Information</h3>
-        <p><strong>Room No:</strong> {booking?.roomId}</p>
-        <p><strong>Check-in Date:</strong> {formatBookingDate(booking?.checkInDate)}</p>
-        <p><strong>Check-out Date:</strong> {formatBookingDate(booking?.checkOutDate)}</p>
-        <p><strong>Status:</strong> {booking?.status}</p>
-        <p><strong>Payment Mode:</strong> {booking?.bookingMode}</p>
-        {booking.cancelReason && (
-          <p><strong>Cancellation Reason:</strong> {booking?.cancelReason}</p>
-        )}
+        <section className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Booking Information</h3>
+          <table className="w-full text-left">
+            <tbody>
+              <tr>
+                <td className="py-2 w-60 font-bold">Room No:</td>
+                <td>{booking?.roomNumber}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Room Category:</td>
+                <td>{booking?.roomType}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Check-in Date:</td>
+                <td>{formatBookingDate(booking?.checkInDate)}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Check-out Date:</td>
+                <td>{formatBookingDate(booking?.checkOutDate)}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Status:</td>
+                <td>{booking?.status}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Payment Mode:</td>
+                <td>{booking?.bookingMode}</td>
+              </tr>
+              {booking.cancelReason && (
+                <tr>
+                  <td className="py-2 font-bold">Cancellation Reason:</td>
+                  <td>{booking?.cancelReason}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </section>
 
         {/* Payment Information */}
-        {booking?.bookingMode === 'Online' && <>
-        <h3 className="text-xl font-semibold my-4">Payment Information</h3>
-        <p><strong>Amount:</strong> ₹{booking?.paymentId?.amount} {booking?.paymentId?.currency}</p>
-        <p><strong>Order ID:</strong> {booking?.paymentId?.orderId}</p>
-        <p><strong>Payment ID:</strong> {booking?.paymentId?._id}</p>
-        <p><strong>Payment Status:</strong> {booking?.paymentId?.paymentStatus}</p>
-        <p><strong>Payment Date:</strong> {formatBookingDate(booking?.paymentId?.createdAt)}</p>
-        </>
-        }
+        {booking?.bookingMode === 'Online' && (
+          <section className="mb-6">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4 border-b pb-2">Payment Information</h3>
+            <table className="w-full text-left">
+              <tbody>
+                <tr>
+                  <td className="py-2 w-60 font-bold">Amount:</td>
+                  <td>₹{booking?.paymentId?.amount} {booking?.paymentId?.currency}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold">Order ID:</td>
+                  <td>{booking?.paymentId?.orderId}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold">Payment ID:</td>
+                  <td>{booking?.paymentId?._id}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold">Payment Status:</td>
+                  <td>{booking?.paymentId?.paymentStatus}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-bold">Payment Date:</td>
+                  <td>{formatBookingDate(booking?.paymentId?.createdAt)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        )}
 
         {/* Cancel Booking Button */}
-        <button
-          onClick={() => setShowModal(true)}
-          className={`mt-5 bg-red-600 text-white px-4 py-2 rounded ${booking.status === 'Cancelled' && 'hidden'}`}
-        >
-          Cancel Booking
-        </button>
+        {booking.status !== 'Cancelled' && (
+          <div className="flex justify-end">
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-md"
+            >
+              Cancel Booking
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Render the Modal */}

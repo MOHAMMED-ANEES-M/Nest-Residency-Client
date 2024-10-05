@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from '../components/Carousel/Carousel';
 import Hero from '../components/Hero';
 import Rooms from '../components/Rooms';
@@ -7,22 +7,37 @@ import Attractions from '../components/Attractions';
 import Gallery from '../components/Gallery';
 import Location from '../layouts/Location';
 import Testimonials from '../components/Testimonials';
+import LoadingSpinner from '../utils/LoadingSpinner';
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <LoadingSpinner />; 
+  }
 
   return (
     <div className='mb-0'>
       <Carousel />
       <Hero />
-      <Rooms />
+      <Rooms setLoading={setLoading} /> 
       <Amenities />
       <Attractions />
       <Gallery />
       <Testimonials />
       <Location />
-      {/* <h1>Welcome to the Nest Residency</h1>
-      <Link to="/check-availability">Check Availability</Link> */}
     </div>
   );
 };

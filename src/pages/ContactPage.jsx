@@ -1,13 +1,54 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaInstagramSquare } from 'react-icons/fa';
 import { FaSquareFacebook } from 'react-icons/fa6';
 import { IoLogoYoutube } from 'react-icons/io';
+import axios from 'axios';
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState('');
 
-    useEffect(() => {
-        window.scrollTo({ top: 0 });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('Sending...');
+
+    const data = {
+      formData,
+      access_key: '041a455d-30ed-4950-9a77-71db8da38494'  
+    };
+
+    try {
+      const response = await axios.post(
+        'https://api.web3forms.com/submit',
+        data,
+        {
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+
+      if (response.status === 200) {
+        setFormStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setFormStatus('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending form data:', error);
+      setFormStatus('Error sending message. Please try again.');
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 mt-10">
@@ -17,7 +58,7 @@ const ContactPage = () => {
         Get in touch with us for any inquiries, bookings, or further information about your stay at Nest Residency. 
         We are here to help you 24/7 and ensure a seamless experience during your visit.
       </p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         {/* Contact Info */}
         <div className="space-y-6">
@@ -46,22 +87,44 @@ const ContactPage = () => {
         {/* Contact Form */}
         <div className=" p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl text-brown-700 mb-6">Send Us a Message</h2>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-lg font-medium">Name</label>
-              <input type="text" id="name" className="w-full p-3 border border-gray-300 rounded" placeholder="Your Name" />
+              <input
+                type="text"
+                id="name"
+                className="w-full p-3 border border-gray-300 rounded"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
             </div>
             <div>
               <label htmlFor="email" className="block text-lg font-medium">Email</label>
-              <input type="email" id="email" className="w-full p-3 border border-gray-300 rounded" placeholder="Your Email" />
+              <input
+                type="email"
+                id="email"
+                className="w-full p-3 border border-gray-300 rounded"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
             </div>
             <div>
               <label htmlFor="message" className="block text-lg font-medium">Message</label>
-              <textarea id="message" rows="5" className="w-full p-3 border border-gray-300 rounded" placeholder="Your Message"></textarea>
+              <textarea
+                id="message"
+                rows="5"
+                className="w-full p-3 border border-gray-300 rounded"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleInputChange}
+              ></textarea>
             </div>
             <button type="submit" className="w-full bg-brown-700 text-white py-3 rounded hover:bg-green-900">
               Send Message
             </button>
+            {formStatus && <p className="mt-4 text-center">{formStatus}</p>}
           </form>
         </div>
       </div>

@@ -1,26 +1,35 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { roomDetails } from '../data/room';
 import Payment from './Payment';
 import GuestForm from '../layouts/GuestForm';
 import { formatBookingDate } from '../utils/FormateDate';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAvailableRooms } from '../redux/slices/bookingSlice';
+import { checkRoomAvailability } from '../services/api';
+import LoadingSpinner from '../utils/LoadingSpinner';
 
 const BookRoom = () => {
   const location = useLocation();
   const { roomNumber, roomType, checkInDate, checkOutDate } = location.state;
   const { availableRooms } = useSelector((state) => state.booking);
 
-  const bookedRoom1 = roomDetails.find((room) => room.roomType === roomType);
-  const bookedRoom2 = availableRooms.find((room) => room.roomNumber === roomNumber);
-  console.log(availableRooms);
-  console.log(roomNumber, roomType);
-  
   const [guestDetails, setGuestDetails] = useState(null);
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const bookedRoom1 = roomDetails?.find((room) => room.roomType === roomType);
+  const bookedRoom2 = availableRooms?.find((room) => room.roomNumber === roomNumber);
+
+  const numberOfNights = checkInDate && checkOutDate 
+    ? Math.floor((new Date(checkOutDate) - new Date(checkInDate)) / (1000 * 60 * 60 * 24)) 
+    : 0;
+  
   const amount = bookedRoom2?.roomPrice; 
-  const numberOfNights = Math.floor((new Date(checkOutDate) - new Date(checkInDate)) / (1000 * 60 * 60 * 24));
-  const totalRoomPrice = amount * numberOfNights;
+  const totalRoomPrice = amount ? amount * numberOfNights : 0;
   const tax = totalRoomPrice * 0.18;
   const totalAmount = totalRoomPrice + tax;
 
@@ -28,6 +37,36 @@ const BookRoom = () => {
     setGuestDetails(guestData);
     console.log('payment', guestData);
   };
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        setLoading(true); 
+        setError(null); 
+
+        if (!availableRooms || availableRooms.length === 0) {
+          const data = await checkRoomAvailability(checkInDate, checkOutDate);
+          dispatch(setAvailableRooms(data.availableRooms));
+        }
+      } catch (err) {
+        console.error('Error fetching available rooms:', err);
+        setError('Unable to fetch rooms. Please try again.');
+        navigate('/availability', { state: { checkInDate, checkOutDate } });
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchRooms();
+  }, [availableRooms, checkInDate, checkOutDate, dispatch, navigate]);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <div className="mt-32 text-center text-red-500">{error}</div>;
+  }
 
   return (
     <div className="mt-32 mb-20 px-4 sm:px-6 lg:px-8">
@@ -58,12 +97,12 @@ const BookRoom = () => {
                 <p className='mt-2'>No. of Nights</p>
               </div>
               <div className='text-right'>
-                <p className='mt-2'>{bookedRoom1.roomType}</p>
+                <p className='mt-2'>{bookedRoom1?.roomType || 'N/A'}</p>
                 <p className='mt-2'>{numberOfNights}</p>
               </div>
             </div>
 
-                <hr className='w-full border-brown-700 my-3' />
+            <hr className='w-full border-brown-700 my-3' />
             <div className='grid grid-cols-2 px-2 sm:px-3'>
               <div>
                 <p className='mt-2'>Room Price</p>
@@ -71,9 +110,15 @@ const BookRoom = () => {
                 <p className='font-semibold mt-2'>Total Amount</p>
               </div>
               <div className='text-right'>
-                <p className='mt-2'>₹{totalRoomPrice}</p>
-                <p className='mt-2'>₹{tax.toFixed(2)}</p>
-                <p className='font-semibold mt-2'>₹{totalAmount.toFixed(2)}</p>
+                {amount ? (
+                  <>
+                    <p className='mt-2'>₹{totalRoomPrice.toFixed(2)}</p>
+                    <p className='mt-2'>₹{tax.toFixed(2)}</p>
+                    <p className='font-semibold mt-2'>₹{totalAmount.toFixed(2)}</p>
+                  </>
+                ) : (
+                  <p className="text-red-500">Price information unavailable</p>
+                )}
               </div>
             </div>
           </div>

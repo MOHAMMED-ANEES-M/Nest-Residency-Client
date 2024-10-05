@@ -34,7 +34,7 @@ const Amenities = () => {
           </div>
           
           <div className='flex gap-1 min-[400px]:gap-3 items-center '>
-            <IoFastFood /> Breakfast Included
+            <IoFastFood /> Mini Kitchen
           </div>
           
           <div className='flex gap-1 min-[400px]:gap-3 items-center '>

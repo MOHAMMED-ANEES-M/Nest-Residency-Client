@@ -5,13 +5,15 @@ import { bookRoom } from '../services/api';
 const AdminBookRoom = () => {
   const navigate = useNavigate();
   const [bookingData, setBookingData] = useState({
-    roomId: '',
+    roomNumber: '',
     checkInDate: '',
     checkOutDate: '',
     fname: '',
     lname: '',
     phone: '',
     email: '',
+    gstNumber: '',
+    specialRequest: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -31,18 +33,26 @@ const AdminBookRoom = () => {
     return phone.length === 10;
   };
 
+  const validateGST = (gst) => {
+    return gst.length === 15;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
 
     for (const [key, value] of Object.entries(bookingData)) {
-      if (!value) {
+      if (key !== 'gstNumber' && key !== 'specialRequest' && !value) {
         newErrors[key] = 'This field is required.';
       }
     }
 
     if (bookingData.phone && !validatePhone(bookingData.phone)) {
       newErrors.phone = 'Phone number must be 10 digits.';
+    }
+
+    if (bookingData.gstNumber && !validateGST(bookingData.gstNumber)) {
+      newErrors.gstNumber = 'GST number must be 15 digits.';
     }
 
     if (bookingData.email && !validateEmail(bookingData.email)) {
@@ -70,21 +80,37 @@ const AdminBookRoom = () => {
       <h2 className="text-2xl font-semibold text-gray-700 mb-6">Admin - Book a Room</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Room Details */}
+        {/* User Information */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Room ID</label>
+            <label className="block text-sm font-medium text-gray-700">First Name</label>
             <input
               type="text"
-              name="roomId"
-              value={bookingData.roomId}
+              name="fname"
+              value={bookingData.fname}
               onChange={handleChange}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
-              placeholder="Enter Room ID"
+              placeholder="First Name"
             />
-            {errors.roomId && <p className="text-red-600 text-xs mt-1">{errors.roomId}</p>}
+            {errors.fname && <p className="text-red-600 text-xs mt-1">{errors.fname}</p>}
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Last Name</label>
+            <input
+              type="text"
+              name="lname"
+              value={bookingData.lname}
+              onChange={handleChange}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+              placeholder="Last Name"
+            />
+            {errors.lname && <p className="text-red-600 text-xs mt-1">{errors.lname}</p>}
+          </div>
+        </div>
+
+        {/* Phone and Email */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Phone</label>
             <input
@@ -96,6 +122,19 @@ const AdminBookRoom = () => {
               placeholder="10-digit phone number"
             />
             {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="text"
+              name="email"
+              value={bookingData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+              placeholder="email@example.com"
+            />
+            {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
           </div>
         </div>
 
@@ -126,46 +165,45 @@ const AdminBookRoom = () => {
           </div>
         </div>
 
-        {/* User Information */}
+        {/* Room Number and GST */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">First Name</label>
+            <label className="block text-sm font-medium text-gray-700">Room No</label>
             <input
               type="text"
-              name="fname"
-              value={bookingData.fname}
+              name="roomNumber"
+              value={bookingData.roomNumber}
               onChange={handleChange}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
-              placeholder="First Name"
+              placeholder="Enter Room Number"
             />
-            {errors.fname && <p className="text-red-600 text-xs mt-1">{errors.fname}</p>}
+            {errors.roomNumber && <p className="text-red-600 text-xs mt-1">{errors.roomNumber}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Last Name</label>
+            <label className="block text-sm font-medium text-gray-700">GST Number (Optional)</label>
             <input
               type="text"
-              name="lname"
-              value={bookingData.lname}
+              name="gstNumber"
+              value={bookingData.gstNumber}
               onChange={handleChange}
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
-              placeholder="Last Name"
+              placeholder="GST Number"
             />
-            {errors.lname && <p className="text-red-600 text-xs mt-1">{errors.lname}</p>}
+            {errors.gstNumber && <p className="text-red-600 text-xs mt-1">{errors.gstNumber}</p>}
           </div>
         </div>
 
+        {/* Special Request */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Email</label>
-          <input
-            type="text"
-            name="email"
-            value={bookingData.email}
+          <label className="block text-sm font-medium text-gray-700">Special Request (Optional)</label>
+          <textarea
+            name="specialRequest"
+            value={bookingData.specialRequest}
             onChange={handleChange}
             className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
-            placeholder="email@example.com"
+            placeholder="Any special requests"
           />
-          {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
         </div>
 
         <div className="flex justify-end mt-6">
@@ -177,7 +215,7 @@ const AdminBookRoom = () => {
           </button>
         </div>
         {error && <p className="text-red-600 text-sm text-center mt-1">{error}</p>}
-        </form>
+      </form>
     </div>
   );
 };

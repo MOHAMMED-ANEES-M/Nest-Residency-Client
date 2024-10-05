@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { roomDetails } from '../data/room';
 import { jsPDF } from 'jspdf';
@@ -30,6 +30,10 @@ const PaymentSuccess = () => {
     pdf.addImage(imgData, 'PNG', 10, 10);
     pdf.save('receipt.pdf');
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <div className="mx-auto p-6 mt-24 mb-5 max-w-lg bg-gray-50 rounded-lg shadow-lg">
