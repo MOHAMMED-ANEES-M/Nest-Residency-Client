@@ -34,6 +34,11 @@ export const getUser = async () => {
   return response.data;
 };
 
+export const refreshUser = async () => {
+  const response = await axios.get(`${API_BASE_URL}/auth/refresh`);
+  return response.data;
+};
+
 export const adminLogout = async () => {
   const response = await axios.post(`${API_BASE_URL}/auth/logout`);
   return response.data;

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { login } from '../redux/slices/userSlice';
-import { getUser } from '../services/api';
+import { useNavigate } from 'react-router-dom';
+import { login, logout } from '../redux/slices/userSlice';
+import { getUser, refreshUser } from '../services/api';
+import LoadingSpinner from './LoadingSpinner';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true); // Track loading state
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false); 
 
   const currentUser = async () => {
     try {
+      setLoading(true)
       const data = await getUser();
       console.log('user', data);
       if (data) {
@@ -23,19 +26,39 @@ const ProtectedRoute = ({ children }) => {
     }
   };
 
+  const handleTokenRefresh = async () => {
+    try {
+      setLoading(true)
+      await refreshUser(); 
+      console.log('Token refreshed successfully');
+    } catch (err) {
+      console.log('Failed to refresh token', err);
+      dispatch(logout())
+    } finally {
+      setLoading(false)
+    }
+  };
+
   useEffect(() => {
     currentUser(); 
+
+    const intervalId = setInterval(() => {
+      handleTokenRefresh();
+    }, 50 * 60 * 1000); 
+
+    return () => clearInterval(intervalId); 
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading while fetching the user
+    return <LoadingSpinner />; 
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />; // Redirect to login if not authenticated
+    navigate('/login')
+    return
   }
 
-  return children; // Render children if authenticated
+  return children; 
 };
 
 export default ProtectedRoute;

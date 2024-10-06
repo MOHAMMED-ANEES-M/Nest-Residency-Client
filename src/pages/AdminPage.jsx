@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import { Outlet } from 'react-router-dom';
 
 const AdminPage = () => {
+
   return (
     <div className="admin-page flex">
       <Sidebar />

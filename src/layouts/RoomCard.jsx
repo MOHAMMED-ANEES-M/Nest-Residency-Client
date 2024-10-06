@@ -2,6 +2,9 @@ import React from 'react';
 import RoomCarousel from './RoomCarousel';
 
 const RoomCard = ({ room }) => {
+
+  console.log(room);
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-brown-700 shadow rounded-lg overflow-hidden">
       {/* Image section */}

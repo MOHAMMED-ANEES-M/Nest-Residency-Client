@@ -15,3 +15,8 @@
 .book-now-btn:hover {
   background-color: #ff5f6d;
 }
+
+.active {
+  color: rgb(14, 121, 14);
+  font-weight: 600;
+}

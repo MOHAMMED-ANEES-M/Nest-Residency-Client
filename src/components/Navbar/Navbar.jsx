@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/nestresidency_logo.png';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link } from 'react-router-dom';
 import { CgMenuRound } from "react-icons/cg";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Drawer from '../Drawer';
@@ -27,11 +27,11 @@ const Navbar = () => {
           </button>
 
           <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg ">
-            <li><Link to='/' className="hover:text-green-800 ">Home</Link></li>
-            <li><Link to='/rooms' className="hover:text-green-800">Rooms</Link></li>
-            <li><Link to="/gallery" className="hover:text-green-800">Gallery</Link></li>
-            <li><Link to="/about" className="hover:text-green-800">About</Link></li>
-            <li><Link to="/contact" className="hover:text-green-800">Contact</Link></li>
+            <li><NavLink to='/' end className="hover:text-green-800 ">Home</NavLink></li>
+            <li><NavLink to='/rooms' className="hover:text-green-800">Rooms</NavLink></li>
+            <li><NavLink to="/gallery" className="hover:text-green-800">Gallery</NavLink></li>
+            <li><NavLink to="/about" className="hover:text-green-800">About</NavLink></li>
+            <li><NavLink to="/contact" className="hover:text-green-800">Contact</NavLink></li>
           </ul>
 
           <div>

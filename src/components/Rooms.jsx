@@ -1,59 +1,64 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { findRooms } from '../services/api'; // API call function
-import { roomDetails as localRoomDetails } from '../data/room'; 
+import { useDispatch, useSelector } from 'react-redux';
+import { findRooms } from '../services/api'; 
+import { setRooms, setLoading } from '../redux/slices/roomSlice';
+import { roomDetails as localRoomDetails } from '../data/room';
+import LoadingSpinner from '../utils/LoadingSpinner';
 
-const Rooms = ({setLoading}) => {
-  const [roomDetails, setRoomDetails] = useState([]);
+const Rooms = () => {
+  const dispatch = useDispatch();
+  const { rooms, loading } = useSelector((state) => state.room); 
 
-  // Fetch room details using the findRooms function from api.js
   useEffect(() => {
-
-    if (!roomDetails) {
-      setLoading(true)
-    } else {
-      setLoading(false)
-    }
-    
     const fetchRooms = async () => {
-      try {
-        const apiRoomData = await findRooms(); // API call to get room data
-        console.log(apiRoomData);
+      if (rooms.length === 0) { 
+        dispatch(setLoading(true));
 
-        // Merge API data with local src
-        const mergedData = apiRoomData?.rooms?.map(room => {
-          // Find the corresponding src from local roomDetails.js based on roomType
-          const localRoom = localRoomDetails.find(local => local.roomType === room.roomType);
-          return {
-            ...room,   // Include API data like roomType, roomPrice
-            src: localRoom?.src || '' // Merge src from localRoomDetails if available
-          };
-        });
+        try {
+          const apiRoomData = await findRooms();
 
-        setRoomDetails(mergedData);  // Set the merged data in state
-      } catch (error) {
-        console.error('Error fetching room details:', error);
-      } finally {
-        setLoading(false);
+          const mergedData = apiRoomData?.rooms?.map(room => {
+            const localRoom = localRoomDetails.find(local => local.roomType === room.roomType);
+            return {
+              ...room, 
+              src: localRoom?.src || '',
+              link: localRoom?.link || '',
+              images: localRoom?.images || '',
+              description: localRoom?.description || '',
+              amenities: localRoom?.amenities || [], 
+            };
+          });
+
+          dispatch(setRooms(mergedData));           
+        } catch (error) {
+          console.error('Error fetching room details:', error);
+        } finally {
+          dispatch(setLoading(false));
+        }
       }
     };
 
-    fetchRooms();
-  }, []);
+    fetchRooms(); 
+  }, [dispatch, rooms]);
 
-  if (roomDetails.length === 0) {
-    return <div>No rooms available.</div>; // Handle no rooms case
+  if (loading) {
+    return <LoadingSpinner />; 
+  }
+
+  if (rooms.length === 0) {
+    return <div></div>; 
   }
 
   return (
     <div>
-      <div className="py-10 sm:py-20 bg-green-900">
+      <div className="py-10 sm:py-20 rooms">
         <h1 className="text-white text-3xl sm:text-[50px] mb-5 text-center">Featured Rooms</h1>
         <p className='text-white text-center text-lg sm:text-xl mb-6 sm:mb-10'>Explore Affordable Luxury Hotel Rooms</p>
         
         {/* Grid Container for Room Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-10 px-5 sm:px-10">
-          {roomDetails.map((room) => (
+          {rooms.map((room) => (
             <div key={room.roomId} className="group bg-green-500 shadow-lg rounded-lg overflow-hidden p-2">
               {/* Room Image */}
               <div className="relative">

@@ -2,14 +2,27 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHome, FaDoorOpen, FaBed, FaSignOutAlt } from 'react-icons/fa';
 import LogoutModal from '../layouts/LogoutModal';
+import { useNavigate } from 'react-router-dom';
+import { adminLogout } from '../services/api'; 
+import { logout } from '../redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Sidebar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const handleLogout = () => {
-    // Handle the logout logic here, e.g., clearing user data and redirecting to the login page
-    console.log("User logged out.");
-    setIsModalOpen(false); // Close the modal after confirming logout
+  const handleLogout = async () => {
+    try {
+      const response = await adminLogout(); 
+      dispatch(logout())
+      console.log("Logout response:", response); 
+      navigate('/login')
+    } catch (error) {
+      console.error("Logout error:", error); 
+    } finally {
+      setIsModalOpen(false);
+    }
   };
 
   return (
@@ -17,7 +30,7 @@ const Sidebar = () => {
       <h2 className="text-2xl font-bold mb-10">Admin Panel</h2>
       <ul className="flex flex-col space-y-4">
         <li>
-          <NavLink to="/admin" className="flex items-center p-2 hover:bg-brown-700 hover:text-white rounded">
+          <NavLink to="/admin" end className="flex items-center p-2 hover:bg-brown-700 hover:text-white rounded">
             <FaHome className="mr-2" /> Home
           </NavLink>
         </li>

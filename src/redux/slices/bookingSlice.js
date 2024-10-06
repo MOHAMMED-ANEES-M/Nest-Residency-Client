@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const bookingSlice = createSlice({
   name: 'booking',
   initialState: {
-    rooms: ['001', '002', '003', '004'], 
     availableRooms: [],
     loading: false,
     error: null,

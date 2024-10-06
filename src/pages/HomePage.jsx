@@ -10,18 +10,10 @@ import Testimonials from '../components/Testimonials';
 import LoadingSpinner from '../utils/LoadingSpinner';
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    
-    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {

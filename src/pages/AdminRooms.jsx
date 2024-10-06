@@ -1,44 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { roomDetails } from '../data/room'; // Import room details (with description, amenities, etc.)
-import AdminRoomCard from '../layouts/AdminRoomCard'; // Custom card for admin
-import { findRooms, updatePrice } from '../services/api'; // API functions
+import { useSelector, useDispatch } from 'react-redux'; 
+import { roomDetails } from '../data/room'; 
+import AdminRoomCard from '../layouts/AdminRoomCard'; 
+import { findRooms, updatePrice } from '../services/api'; 
 import LoadingSpinner from '../utils/LoadingSpinner';
+import { setRooms } from '../redux/slices/roomSlice'; 
 
 const AdminRooms = () => {
-  const [rooms, setRooms] = useState([]); // Initially empty state for rooms
-  const [loading, setLoading] = useState(true); // Loading state
+  const dispatch = useDispatch();
+  const roomsFromStore = useSelector((state) => state.room.rooms); 
+  const [loading, setLoading] = useState(false); 
 
-  // Fetch room data from API on component mount
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const apiResponse = await findRooms(); // Fetch rooms from the backend
-        const apiRooms = apiResponse.rooms; // Access the rooms array from the response
-    
-        console.log('API Rooms:', apiRooms); // Log the rooms array to ensure it's correct
-    
+        const apiResponse = await findRooms(); 
+        const apiRooms = apiResponse.rooms; 
+        
         if (!Array.isArray(apiRooms)) {
           throw new Error('Expected an array from API response');
         }
     
-        // Merge rooms from API with local roomDetails by roomType
         const mergedRooms = apiRooms.map(apiRoom => {
           const roomDetail = roomDetails.find(detail => detail.roomType === apiRoom.roomType);
           return {
             ...apiRoom,
-            ...roomDetail, // Merge details if found
+            ...roomDetail, 
           };
         });
     
-        setRooms(mergedRooms); // Update state with the merged rooms
-        setLoading(false); // Turn off loading after successful fetch
+        dispatch(setRooms(mergedRooms)); 
+        setLoading(false); 
       } catch (error) {
         console.error('Error fetching rooms:', error);
       }
     };
 
-    fetchRooms();
-  }, []);
+    if (roomsFromStore.length === 0) {
+      fetchRooms();
+    } else {
+      setLoading(false); 
+    }
+  }, [dispatch, roomsFromStore.length]); 
 
   const handlePriceChange = async (roomType, newPrice) => {
     try {
@@ -46,10 +49,12 @@ const AdminRooms = () => {
         return alert('Price is required');
       }
       const response = await updatePrice(roomType, newPrice);
-      const updatedRooms = rooms.map((room) =>
-        room.roomType === roomType ? { ...room, roomPrice: newPrice } : room
-      );
-      setRooms(updatedRooms);
+      if (response) {   
+        const updatedRooms = roomsFromStore.map((room) =>
+          room.roomType === roomType ? { ...room, roomPrice: newPrice } : room
+        );
+        dispatch(setRooms(updatedRooms)); 
+      }
     } catch (error) {
       console.error('Error updating room price:', error);
     }
@@ -63,7 +68,7 @@ const AdminRooms = () => {
     <div className="px-5 min-[400px]:px-10 sm:px-20 mb-5">
       <h1 className="text-3xl sm:text-4xl md:text-5xl my-8 text-center text-brown-700">Manage Rooms</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {rooms.map((room) => (
+        {roomsFromStore.map((room) => (
           <AdminRoomCard key={room._id} room={room} onPriceChange={handlePriceChange} />
         ))}
       </div>

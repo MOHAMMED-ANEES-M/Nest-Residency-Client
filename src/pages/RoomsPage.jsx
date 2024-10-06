@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { findRooms } from '../services/api'; // API call function
+import { useSelector, useDispatch } from 'react-redux';
+import { findRooms } from '../services/api'; 
 import { roomDetails as localRoomDetails } from '../data/room'; 
 import RoomCard from '../layouts/RoomCard';
 import LoadingSpinner from '../utils/LoadingSpinner';
+import { setRooms } from '../redux/slices/roomSlice'; 
 
 const RoomPage = () => {
-  const [roomData, setRoomData] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const dispatch = useDispatch();
+  const roomsFromStore = useSelector((state) => state.room.rooms); 
+  const [loading, setLoading] = useState(false); 
 
-  // Fetch room details
   useEffect(() => {
     const fetchRoomData = async () => {
       try {
-        const apiRoomData = await findRooms(); // API call to get room data
-        console.log(apiRoomData);
-
-        // Merge API data with local room details
+        const apiRoomData = await findRooms(); 
         const mergedData = apiRoomData?.rooms?.map(room => {
           const localRoom = localRoomDetails.find(local => local.roomType === room.roomType);
           return {
@@ -24,20 +23,23 @@ const RoomPage = () => {
             link: localRoom?.link || '',
             images: localRoom?.images || '',
             description: localRoom?.description || '',
-            amenities: localRoom?.amenities || [], // Include amenities from localRoomDetails
+            amenities: localRoom?.amenities || [], 
           };
         });
-
-        setRoomData(mergedData); // Set the merged data in state
+        dispatch(setRooms(mergedData)); 
       } catch (error) {
         console.error('Error fetching room details:', error);
       } finally {
-        setLoading(false); // Set loading to false when fetching is done
+        setLoading(false); 
       }
     };
 
-    fetchRoomData();
-  }, []);
+    if (roomsFromStore.length === 0) { 
+      fetchRoomData();
+    } else {
+      setLoading(false); 
+    }
+  }, [dispatch, roomsFromStore.length]); 
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -48,11 +50,11 @@ const RoomPage = () => {
       <h1 className='text-3xl sm:text-4xl md:text-5xl my-8 text-center text-brown-700'>Rooms</h1>
       <div>
         {loading ? (
-          <LoadingSpinner /> // Loading message
-        ) : roomData.length === 0 ? (
-          <div>No rooms available.</div> // Handle no rooms case
+          <LoadingSpinner /> 
+        ) : roomsFromStore.length === 0 ? (
+          <div>No rooms available.</div> 
         ) : (
-          roomData.map((room) => (
+          roomsFromStore.map((room) => (
             <RoomCard key={room.roomId} room={room} />
           ))
         )}
