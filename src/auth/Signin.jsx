@@ -3,6 +3,7 @@ import { adminLogin } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/slices/userSlice';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -38,7 +39,6 @@ const AdminLogin = () => {
     console.log('Forgot Password triggered');
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -76,24 +76,16 @@ const AdminLogin = () => {
               onClick={togglePasswordVisibility}
               className="absolute inset-y-0 right-2 top-7 text-gray-700 focus:outline-none"
             >
-              {showPassword ? 'Hide' : 'Show'}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
             >
               Login
-            </button>
-
-            <button
-              type="button"
-              onClick={handleForgotPassword}
-              className="text-blue-500 hover:underline focus:outline-none"
-            >
-              Forgot Password?
             </button>
           </div>
         </form>

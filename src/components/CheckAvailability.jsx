@@ -82,7 +82,7 @@ const CheckAvailability = () => {
 
     return (
         <div className="mt-32 mb-20 px-4 md:px-8 lg:px-20">
-            <h1 className="text-xl p-3 font-semibold bg-green-800 rounded text-white text-center">Check Room Availability</h1>
+            <h1 className="text-base sm:text-xl p-3 font-semibold bg-green-800 rounded text-white text-center">Check Room Availability</h1>
             <BlockAvailabilityForm
                 checkInDate={checkInDate}
                 setCheckInDate={setCheckInDate}
@@ -92,7 +92,7 @@ const CheckAvailability = () => {
                 handleCheckAvailability={handleCheckAvailability}
             />
 
-            {hasCheckedAvailability && <h1 className='text-xl p-3 font-semibold bg-green-800 rounded text-white text-center mt-6'>Available Rooms</h1>}
+            {hasCheckedAvailability && <h1 className='text-base sm:text-xl p-3 font-semibold bg-green-800 rounded text-white text-center mt-6'>Available Rooms</h1>}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                 {distinctAvailableRooms.length > 0 ? (
                     distinctAvailableRooms.map((room) => (

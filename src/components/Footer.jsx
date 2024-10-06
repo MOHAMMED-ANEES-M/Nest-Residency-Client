@@ -40,12 +40,14 @@ const Footer = () => {
             <p className='mb-5 flex gap-3 justify-start items-center'>
               <FaPhone className='w-4 h-4' /> +91 9744005530
             </p>
-            <p className='flex gap-3 justify-start '>
-              <FaLocationDot className='w-5 h-5' /> 27/2402,E,G,H Nest Residency, 
-            Near MIMS Hospital, Mini Bypass Road,
-            Govindapuram, Kozhikode,
-            Kerala, India - 673012
-            </p>
+            <div className='flex gap-3 justify-start '>
+              <div><FaLocationDot className='w-5 h-5' /></div>
+                <p>27/2402,E,G,H Nest Residency, 
+                  Near MIMS Hospital, Mini Bypass Road,
+                  Govindapuram, Kozhikode,
+                  Kerala, India - 673012
+                </p>
+            </div>
           </div>
         </div>
 
