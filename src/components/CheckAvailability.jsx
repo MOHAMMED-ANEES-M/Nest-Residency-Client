@@ -1,5 +1,4 @@
-// src/components/CheckAvailability.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkRoomAvailability } from '../services/api';
 import { setAvailableRooms, setLoading, setError } from '../redux/slices/bookingSlice';
@@ -18,6 +17,9 @@ const CheckAvailability = () => {
     const [hasCheckedAvailability, setHasCheckedAvailability] = useState(false);
     const dispatch = useDispatch();
     const { availableRooms, loading, error } = useSelector((state) => state.booking);
+
+    // Create a reference for the availability section
+    const availabilityRef = useRef(null);
 
     const handleCheckAvailability = async () => {
         dispatch(setLoading(true));
@@ -41,6 +43,11 @@ const CheckAvailability = () => {
             dispatch(setError(err?.response?.data?.message));
         } finally {
             dispatch(setLoading(false));
+
+            // Scroll to the availability section after the check is complete
+            if (availabilityRef.current) {
+                availabilityRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
 
@@ -92,26 +99,33 @@ const CheckAvailability = () => {
                 handleCheckAvailability={handleCheckAvailability}
             />
 
-            {hasCheckedAvailability && <h1 className='text-base sm:text-xl p-3 font-semibold bg-green-800 rounded text-white text-center mt-6'>Available Rooms</h1>}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                {distinctAvailableRooms.length > 0 ? (
-                    distinctAvailableRooms.map((room) => (
-                        <BookingCard
-                            key={room.roomType} // Unique key for each room type
-                            room={room}         // Pass full room details, including price from API
-                            handleBookRoom={() => handleBookRoom(room)} // Pass the room object
-                        />
-                    ))
-                ) : (
-                    hasCheckedAvailability && !loading && (
-                        <div className="col-span-full text-center">
-                            {error && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">{error}</p>}
-                            {dateError && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">{dateError}</p>}
-                            {!error && !dateError && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">No rooms available on this date. Try with another date.</p>}
-                        </div>
-                    )
-                )}
-            </div>
+            {/* Use the ref here to scroll to the section when availability is checked */}
+            {hasCheckedAvailability && (
+                <>
+                    <h1 ref={availabilityRef} className='text-base sm:text-xl p-3 font-semibold bg-green-800 rounded text-white text-center mt-6'>
+                        Available Rooms
+                    </h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                        {distinctAvailableRooms.length > 0 ? (
+                            distinctAvailableRooms.map((room) => (
+                                <BookingCard
+                                    key={room.roomType} // Unique key for each room type
+                                    room={room}         // Pass full room details, including price from API
+                                    handleBookRoom={() => handleBookRoom(room)} // Pass the room object
+                                />
+                            ))
+                        ) : (
+                            hasCheckedAvailability && !loading && (
+                                <div className="col-span-full text-center">
+                                    {error && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">{error}</p>}
+                                    {dateError && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">{dateError}</p>}
+                                    {!error && !dateError && <p className="text-red-500 font-semibold bg-red-200 p-5 rounded">No rooms available on this date. Try with another date.</p>}
+                                </div>
+                            )
+                        )}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
