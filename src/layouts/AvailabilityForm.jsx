@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AvailabilityForm = () => {
@@ -21,6 +21,15 @@ const AvailabilityForm = () => {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minCheckOutDate = tomorrow.toISOString().split('T')[0];
+
+  useEffect(() => {
+    if (!checkInDate) {
+      setCheckInDate(today);
+    }
+    if (!checkOutDate) {
+      setCheckOutDate(minCheckOutDate);
+    }
+  }, [checkInDate, checkOutDate, setCheckInDate, setCheckOutDate, today, minCheckOutDate]);
 
   return (
     <div className="w-fit m-auto text-center">

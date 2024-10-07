@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import img from '../assets/R0016822.jpg';
+import img from '../assets/gallery/nest_1.jpg';
 import AboutCard from '../layouts/AboutCard';
 
 const AboutPage = () => {
@@ -35,9 +35,8 @@ const AboutPage = () => {
                     Welcome to Nest Residency, Calicut
                 </h1>
                 <p className="text-lg mb-5 max-w-[90%] sm:max-w-[70%] m-auto">
-                    Discover Nest Residency, a sanctuary of comfort and hygiene located in the heart of Calicut. 
-                    Whether you're visiting for medical care, business, or leisure, we're here to provide a restful stay near key landmarks such as 
-                    MIMS Hospital, Lulu Mall, and Calicut Railway Station.
+                    Discover Nest Residency, your premier hotel in Calicut, where comfort meets hygiene. Conveniently located near MIMS Hospital, Lulu Mall, and the Calicut Railway Station, our hotel is the ideal choice for visitors seeking quality accommodation.
+                    Experience exceptional service and relaxation in a welcoming atmosphere that caters to all your needs. Choose Nest Residency for your next visit and enjoy the best that Calicut has to offer.
                 </p>
                 <button className="bg-brown-700 hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button>
                 <div className="w-full sm:w-[80%] lg:w-[60%] h-auto mx-auto">
@@ -69,8 +68,8 @@ const AboutPage = () => {
                     Experience a Comfortable Stay at Nest Residency
                 </h3>
                 <p className="text-lg mb-8 max-w-5xl mx-auto">
-                    Book your stay with us today and enjoy modern amenities, exceptional service, 
-                    and a convenient location. We look forward to hosting you!
+                    Book your stay with us today to enjoy exceptional service and a prime location in Calicut.
+                    We look forward to welcoming you!
                 </p>
             </section>
         </div>

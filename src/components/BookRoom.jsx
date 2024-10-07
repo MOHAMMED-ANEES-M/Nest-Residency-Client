@@ -69,15 +69,18 @@ const BookRoom = () => {
   }
 
   return (
-    <div className="mt-32 mb-20 px-4 sm:px-6 lg:px-8">
+    <div className="mt-32 mb-20 px-0 sm:px-6 lg:px-8">
       <h1 className="text-xl font-semibold text-center">Confirm Your Booking</h1>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 p-5">
-        <div className='md:col-span-8'>
-          <h2 className="text-lg font-semibold mb-4">Guest Details</h2>
+      <div className="flex-col-reverse flex md:flex-row gap-5 p-5">
+        <div className='md:w-[70%]'>
+          <h2 className="text-lg font-semibold mb-4 mt-7 md:mt-0">Guest Details</h2>
           <GuestForm handleFormSubmit={handleFormSubmit} />
+          <div className="mt-4 text-red-500 text-sm font-semibold text-center">
+            Please stay on this page after completing your payment. Do not reload the page. You will be redirected to the receipt page automatically.
+          </div>
         </div>
 
-        <div className='md:col-span-4 bg-white shadow-md p-2 min-[400px]:p-5 rounded-lg mt-10'>
+        <div className='md:w-[30%] bg-white shadow-md p-2 min-[400px]:p-5 rounded-lg mt-10'>
           <h2 className="text-lg font-semibold mb-5 text-center">Booking Summary</h2>
           <div className="space-y-4">
             <div className='grid grid-cols-2 gap-3 border-b border-brown-700 p-2 rounded'>

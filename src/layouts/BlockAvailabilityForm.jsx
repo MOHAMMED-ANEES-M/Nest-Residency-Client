@@ -68,7 +68,7 @@ const BlockAvailabilityForm = ({
         </div>
 
         <button
-          className={`w-full mt-8 py-3 bg-brown-700 text-white font-semibold rounded shadow-md hover:bg-green-800 text-base sm:text-lg lg:py-4 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`w-full mt-8 py-2 bg-brown-700 text-white font-semibold rounded shadow-md hover:bg-green-800 text-base sm:text-lg ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handleSubmit}
           disabled={loading}
         >

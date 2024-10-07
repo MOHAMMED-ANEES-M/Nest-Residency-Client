@@ -1,79 +1,49 @@
 import residential_ac1 from '../assets/R0016816.jpg'
-import superior_ac from '../assets/R0016822.jpg'
-import superior_non_ac from '../assets/R0016822.jpg'
-import residential_ac2 from '../assets/R0016816.jpg'
+import nest_1 from '../assets/gallery/nest_1.jpg'
+import nest_2 from '../assets/gallery/nest_2.jpg'
+import nest_3 from '../assets/gallery/nest_3.jpg'
+import nest_4 from '../assets/gallery/nest_4.jpg'
+import nest_5 from '../assets/gallery/nest_5.jpg'
+import nest_6 from '../assets/gallery/nest_6.jpg'
+import nest_7 from '../assets/gallery/nest_7.jpg'
+import nest_8 from '../assets/gallery/nest_8.jpg'
+import nest_9 from '../assets/gallery/nest_9.jpg'
 
 export const galleryDetails = [
     { 
-        src: residential_ac1, 
+        src: nest_1, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: residential_ac2, 
+        src: nest_2, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: superior_ac, 
+        src: nest_3, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: superior_non_ac, 
+        src: nest_4, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: residential_ac1, 
+        src: nest_5, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: residential_ac2, 
+        src: nest_6, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: superior_ac, 
+        src: nest_7, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: superior_non_ac, 
+        src: nest_8, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
     { 
-        src: residential_ac1, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: residential_ac2, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_ac, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_non_ac, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: residential_ac1, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: residential_ac2, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_ac, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_non_ac, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_ac, 
-        link: 'https://www.cybozom.site/360/nest5/',
-    },
-    { 
-        src: superior_non_ac, 
+        src: nest_9, 
         link: 'https://www.cybozom.site/360/nest5/',
     },
 ];  

@@ -1,43 +1,47 @@
 import React from 'react';
 import Slider from 'react-slick';
 import TestimonialCard from '../layouts/TestimonialCard';
-import avatar from '../assets/93ecbf5f_z.jpg';
+import amal_dp from '../assets/testimonials/amal_dp.webp';
+import suraj_dp from '../assets/testimonials/suraj_dp.webp';
+import shanu_dp from '../assets/testimonials/shanu_dp.webp';
+import nasary_dp from '../assets/testimonials/nasary_dp.webp';
+import charles_dp from '../assets/testimonials/charles_dp.webp';
 
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    title: "CEO, Company",
-    avatar: avatar, 
-    feedback: "This hotel exceeded all expectations! The service was exceptional, and the rooms were very comfortable. Highly recommend!"
+    name: "Amal bang",
+    title: "Guest",
+    avatar: amal_dp, 
+    feedback: `Rooms: Well cleaned. Nearby activities: Calicut beach, valayanad temple, sm street. Walkability: Near to aster mims hospital calicut and lulu hypermarket`
   },
   {
     id: 2,
-    name: "Jane Smith",
-    title: "Marketing Manager, ABC Corp",
-    avatar: avatar, 
-    feedback: "Amazing experience! The amenities were top-notch, and the location was perfect for our business trip. Would definitely stay again!"
+    name: "Suraj Sivadasan",
+    title: "Local Guide",
+    avatar: suraj_dp, 
+    feedback: "Fantastic stay! The location is superb, being very close to the main road, making it incredibly accessible. This convenience was a key highlight of my experience. Highly recommended for those prioritizing ease of access and a great stay."
   },
   {
     id: 3,
-    name: "Sam Wilson",
-    title: "Travel Blogger",
-    avatar: avatar, 
-    feedback: "A perfect stay! From the comfortable rooms to the delicious breakfast, everything was great. The staff was friendly and helpful."
+    name: "Shanu Thayemanedath",
+    title: "Guest",
+    avatar: shanu_dp, 
+    feedback: "Nice rooms , hygienic and tidy , MIMS hospital at walkable distance,  worth for money"
   },
   {
     id: 4,
-    name: "Emily Clark",
-    title: "Designer",
-    avatar: avatar, 
-    feedback: "Beautiful place! The environment was peaceful, and the staff was very accommodating. Would love to visit again!"
+    name: "Nasary P T",
+    title: "Guest",
+    avatar: nasary_dp, 
+    feedback: "Very good ambience and good service also infront of Aster mims hospital overall a good experience"
   },
   {
     id: 5,
-    name: "Michael Lee",
-    title: "Software Engineer",
-    avatar: avatar, 
-    feedback: "I had a great experience! The hotel was clean, and the service was fast and efficient. Highly recommend it for business travelers."
+    name: "CHARLES J.F.",
+    title: "Local Guide",
+    avatar: charles_dp, 
+    feedback: "Really excellent room. Very affordable price. Location on the main road."
   }
 ];
 

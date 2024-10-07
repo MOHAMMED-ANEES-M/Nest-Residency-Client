@@ -18,7 +18,6 @@ const CheckAvailability = () => {
     const dispatch = useDispatch();
     const { availableRooms, loading, error } = useSelector((state) => state.booking);
 
-    // Create a reference for the availability section
     const availabilityRef = useRef(null);
 
     const handleCheckAvailability = async () => {
@@ -44,7 +43,6 @@ const CheckAvailability = () => {
         } finally {
             dispatch(setLoading(false));
 
-            // Scroll to the availability section after the check is complete
             if (availabilityRef.current) {
                 availabilityRef.current.scrollIntoView({ behavior: 'smooth' });
             }
@@ -52,33 +50,29 @@ const CheckAvailability = () => {
     };
 
     const handleBookRoom = (selectedRoom) => {
-        // Randomly select a room number of the same roomType
         const availableRoomNumbers = availableRooms.filter(room => room.roomType === selectedRoom.roomType);
         
-        // Ensure that we have available rooms to choose from
         if (availableRoomNumbers.length === 0) {
             console.error('No available rooms of the selected type.');
             return;
         }
 
-        // Randomly select a room number from available rooms
         const randomRoom = availableRoomNumbers[Math.floor(Math.random() * availableRoomNumbers.length)];
         
         navigate('/booking', {
             state: {
-                roomNumber: randomRoom.roomNumber, // Pass the correct roomNumber
-                roomType: selectedRoom.roomType,    // Pass the selected room type
+                roomNumber: randomRoom.roomNumber, 
+                roomType: selectedRoom.roomType,    
                 checkInDate,
                 checkOutDate,
             },
         });
     };
 
-    // Find distinct available room types
     const distinctAvailableRooms = Array.from(
         new Set(availableRooms.map(room => room.roomType))
     ).map(roomType => {
-        return availableRooms.find(room => room.roomType === roomType); // Get the room object from availableRooms
+        return availableRooms.find(room => room.roomType === roomType);
     });
 
     useEffect(() => {
@@ -99,7 +93,6 @@ const CheckAvailability = () => {
                 handleCheckAvailability={handleCheckAvailability}
             />
 
-            {/* Use the ref here to scroll to the section when availability is checked */}
             {hasCheckedAvailability && (
                 <>
                     <h1 ref={availabilityRef} className='text-base sm:text-xl p-3 font-semibold bg-green-800 rounded text-white text-center mt-6'>
@@ -109,9 +102,9 @@ const CheckAvailability = () => {
                         {distinctAvailableRooms.length > 0 ? (
                             distinctAvailableRooms.map((room) => (
                                 <BookingCard
-                                    key={room.roomType} // Unique key for each room type
-                                    room={room}         // Pass full room details, including price from API
-                                    handleBookRoom={() => handleBookRoom(room)} // Pass the room object
+                                    key={room.roomType} 
+                                    room={room}        
+                                    handleBookRoom={() => handleBookRoom(room)} 
                                 />
                             ))
                         ) : (

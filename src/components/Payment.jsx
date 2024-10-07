@@ -6,6 +6,11 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 const Payment = ({ amount, roomData, guestDetails }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [processingPayment, setProcessingPayment] = useState(false);
+  const [redirecting, setRedirecting] = useState(false); 
+
+  const razorpayKey = process.env.REACT_APP_RAZORPAY_KEY;
+  const razorpayLoadScript = process.env.REACT_APP_RAZORPAY_LOADSCRIPT;
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -20,44 +25,46 @@ const Payment = ({ amount, roomData, guestDetails }) => {
       document.body.appendChild(script);
     });
   };
-  
+
   const handleOnlinePayment = async () => {
-    setLoading(true);
+    setLoading(true); 
     try {
       let orderResponse = await createPaymentOrder(amount);
       console.log('RazorPay order response:', orderResponse);
 
       const options = {
-        key: 'rzp_test_CTbLruPdIohX3s',
-        amount: orderResponse.amount, 
+        key: razorpayKey,
+        amount: orderResponse.amount,
         currency: 'INR',
-        name: 'Hotel Booking', 
+        name: 'Hotel Booking',
         description: 'Room Booking Payment',
-        order_id: orderResponse.id,  
+        order_id: orderResponse.id,
         handler: async function (response) {
-          alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
-          alert('Order ID: ' + response.razorpay_order_id);
-
+          setProcessingPayment(true); 
+          
           const body = {
             paymentId: response.razorpay_payment_id,
             razorId: response.razorpay_order_id,
             signature: response.razorpay_signature,
-            amount: orderResponse.amount,  
-            roomData, 
-            guestDetails, 
+            amount: orderResponse.amount,
+            roomData,
+            guestDetails,
           };
 
           let receipt = await verifyPayment(body);
           console.log('Receipt response:', receipt);
 
           if (receipt.data.success) {
-            navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomType}`, {
-              state: {
-                roomDetails: roomData,
-                guestDetails: guestDetails,
-                amount: orderResponse.amount
-              },
-            });
+            setProcessingPayment(false); 
+            setRedirecting(true);
+
+              navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomType}`, {
+                state: {
+                  roomDetails: roomData,
+                  guestDetails: guestDetails,
+                  amount: orderResponse.amount,
+                },
+              });
           }
         },
         prefill: {
@@ -70,22 +77,23 @@ const Payment = ({ amount, roomData, guestDetails }) => {
         },
       };
 
-      const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+      const res = await loadScript(razorpayLoadScript);
       if (!res) {
-        alert("Razorpay failed to load!!");
-        setLoading(false); // Stop loading if Razorpay fails to load
+        alert("Razorpay failed to load!");
+        setLoading(false); 
         return;
       }
-      
+
+      setLoading(false);
       const razor = new window.Razorpay(options);
       razor.on('payment.failed', function (response) {
         alert('Payment Failed. Error: ' + response.error.description);
-        setLoading(false); // Stop loading if payment fails
+        setProcessingPayment(false); 
       });
       razor.open();
     } catch (err) {
       console.error(err);
-      setLoading(false); // Stop loading on error
+      setLoading(false); 
     }
   };
 
@@ -94,7 +102,15 @@ const Payment = ({ amount, roomData, guestDetails }) => {
   }, [guestDetails]);
 
   if (loading) {
-    return <LoadingSpinner />; // Show loading spinner
+    return <LoadingSpinner />;
+  }
+
+  if (processingPayment) {
+    return <LoadingSpinner />;
+  }
+
+  if (redirecting) {
+    return <LoadingSpinner />; 
   }
 
   return <div></div>;

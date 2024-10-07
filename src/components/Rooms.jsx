@@ -59,7 +59,7 @@ const Rooms = () => {
         {/* Grid Container for Room Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-10 px-5 sm:px-10">
           {rooms.map((room) => (
-            <div key={room.roomId} className="group bg-green-500 shadow-lg rounded-lg overflow-hidden p-2">
+            <div key={room.roomId} className="group bg-gradient-to-b from-[#619942] to-[#8DC26F] shadow-lg rounded-lg overflow-hidden p-2">
               {/* Room Image */}
               <div className="relative">
                 <img src={room.src} alt={room.roomType} className="w-full h-60 object-cover rounded-md" />

@@ -19,7 +19,7 @@ const Navbar = () => {
       <nav className="navbar bg-white text-brown-900 fixed w-full top-0 z-50 ">
         <div className="navbar-container flex items-center justify-between px-2 md:px-10">
           <div className="logo flex items-center">
-            <img src={logo} alt="Nest Residency Logo" className="h-14 md:h-20 " />
+            <Link to='/'><img src={logo} alt="Nest Residency Logo" className="h-14 md:h-20 " /></Link>
           </div>
 
           <button className="md:hidden flex items-center ml-auto px-3 py-2 text-brown-900 border-brown-500 hover:text-brown-700 hover:border-brown-700 focus:outline-none" onClick={toggleDrawer}>

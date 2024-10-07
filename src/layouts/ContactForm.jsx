@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ContactForm = ({ onFormSubmit }) => {
+const ContactForm = () => {
 
   const [contactForm, setContactForm] = useState({
     name: '',
@@ -9,6 +9,9 @@ const ContactForm = ({ onFormSubmit }) => {
     message: ''
   });
   const [formStatus, setFormStatus] = useState('');
+
+  const accessKey = process.env.REACT_APP_ACCESS_KEY; 
+  const web3formsApiUrl = process.env.REACT_APP_WEB3FORMS_API_URL;
 
   const handleInputChange = (e) => {
     setContactForm({ ...contactForm, [e.target.id]: e.target.value });
@@ -22,13 +25,13 @@ const ContactForm = ({ onFormSubmit }) => {
     setFormStatus('Sending...');
 
     const formData = new FormData(event.target);
-    formData.append("access_key", "041a455d-30ed-4950-9a77-71db8da38494");
+    formData.append("access_key", accessKey);
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch(web3formsApiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

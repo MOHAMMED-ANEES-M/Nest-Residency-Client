@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         brown: {
-          700: '#8B4513', // Customize shade of brown
+          700: '#8B4513', 
         },
       },
     },
