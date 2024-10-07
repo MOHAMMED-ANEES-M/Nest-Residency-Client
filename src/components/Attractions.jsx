@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../assets/93ecbf5f_z.jpg';
+import img from '../assets/gallery/nest_6.jpg';
 import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 const Attractions = () => {

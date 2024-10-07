@@ -1,4 +1,3 @@
-import residential_ac1 from '../assets/R0016816.jpg'
 import nest_1 from '../assets/gallery/nest_1.jpg'
 import nest_2 from '../assets/gallery/nest_2.jpg'
 import nest_3 from '../assets/gallery/nest_3.jpg'

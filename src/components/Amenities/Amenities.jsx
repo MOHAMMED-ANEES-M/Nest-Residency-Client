@@ -1,6 +1,6 @@
 import React from 'react';
 import './Amenities.css';
-import img from '../../assets/outdoor-pool.jpg';
+import img from '../../assets/gallery/nest_9.jpg';
 import { FaWifi, FaKey } from "react-icons/fa6";
 import { IoCarSportSharp, IoFastFood } from "react-icons/io5";
 import { RiServiceFill } from "react-icons/ri";
