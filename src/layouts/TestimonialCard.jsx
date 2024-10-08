@@ -2,7 +2,7 @@ import React from 'react';
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="relative h-80 bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+    <div className="relative sm:h-80 bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
       <div className="absolute -top-6 -left-6 bg-gradient-to-br from-brown-700 to-brown-700 p-2 rounded-full shadow-md">
         <img 
           src={testimonial.avatar} 

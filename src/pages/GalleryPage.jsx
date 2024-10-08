@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { galleryDetails } from '../data/gallery';
 
 const GalleryPage = () => {
-  
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -12,24 +11,31 @@ const GalleryPage = () => {
       <h1 className='text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-brown-700 mt-20 sm:mt-32'>
         Explore Our Photo Gallery
       </h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mx-3 min-[400px]:mx-10 md:mx-20 mb-10'>
+      
+      {/* Grid Container for a Balanced, Non-Uniform Layout */}
+      <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mx-4 sm:mx-10 md:mx-20 mb-10'>
         {galleryDetails?.map((gallery, index) => (
-          <div key={index} className='group bg-gray-100 rounded transition-shadow duration-300 overflow-hidden'>
+          <div 
+            key={index} 
+            className={`group bg-gray-100 rounded transition-shadow duration-300 overflow-hidden 
+              ${index % 10 === 0 ? 'col-span-2 row-span-2' : 
+                index % 7 === 0 ? 'col-span-2 row-span-1' : 
+                index % 5 === 0 ? 'col-span-1 row-span-2' : 
+                'col-span-1 row-span-1'}`}
+          >
             <img 
               src={gallery.src} 
               alt={`Gallery Image ${index + 1}`} 
-              className='w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105'
+              className={`w-full object-cover transition-transform duration-300 group-hover:scale-105 
+                ${index % 10 === 0 ? 'h-full' : 
+                  index % 7 === 0 ? 'h-64' : 
+                  index % 5 === 0 ? 'h-40 sm:h-72' : 'h-full'}`}
             />
-            {/* <div className='p-4'>
-              <button className='bg-brown-700 w-full hover:bg-green-800 text-white font-semibold text-sm min-[400px]:text-base px-4 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center'>
-                Virtual Tour <FaExternalLinkAlt className='ml-2' />
-              </button>
-            </div> */}
           </div>
         ))}
       </div>
     </>
   );
-}
+};
 
 export default GalleryPage;

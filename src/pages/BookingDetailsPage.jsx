@@ -96,12 +96,12 @@ const BookingDetailsPage = () => {
                 <td>{booking?.status}</td>
               </tr>
               <tr>
-                <td className="py-2 font-bold">Booking Date:</td>
-                <td>{formatBookingDate(booking?.createdAt)}</td>
-              </tr>
-              <tr>
                 <td className="py-2 font-bold">Payment Mode:</td>
                 <td>{booking?.bookingMode}</td>
+              </tr>
+              <tr>
+                <td className="py-2 font-bold">Booking Date:</td>
+                <td>{formatBookingDate(booking?.createdAt)}</td>
               </tr>
               {booking.cancelReason && (
                 <tr>

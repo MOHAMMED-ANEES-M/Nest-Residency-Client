@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Carousel.css'; 
-import img1 from '../../assets/carousel/nest_image1.webp';
-import img2 from '../../assets/carousel/nest_image2.webp';
+import img1 from '../../assets/carousel/nest_image1.jpg';
+import img2 from '../../assets/carousel/nest_image2.jpg';
 import AvailabilityForm from '../../layouts/AvailabilityForm';
 
 const Carousel = () => {

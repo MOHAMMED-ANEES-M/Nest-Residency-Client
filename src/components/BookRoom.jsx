@@ -75,12 +75,27 @@ const BookRoom = () => {
         <div className='md:w-[70%]'>
           <h2 className="text-lg font-semibold mb-4 mt-7 md:mt-0">Guest Details</h2>
           <GuestForm handleFormSubmit={handleFormSubmit} />
-          <div className="mt-4 text-red-500 text-sm font-semibold text-center">
-            Please stay on this page after completing your payment. Do not reload the page. You will be redirected to the receipt page automatically.
+          <div className="mt-5 text-red-500 text-sm sm:text-base font-semibold">
+            <p>Please stay on this page after completing your payment. Do not reload the page. You will be redirected to the receipt page automatically.</p>
           </div>
         </div>
 
         <div className='md:w-[30%] bg-white shadow-md p-2 min-[400px]:p-5 rounded-lg mt-10'>
+        <div className='grid grid-cols-2'>
+          <div>
+              <p className='mt-2'>Check-in Time</p>
+              <p className='mt-2'>Check-out Time</p>
+            </div>
+            <div className='text-right'>
+              <p className='mt-2'>2 pm</p>
+              <p className='mt-2'>12 pm</p>
+            </div>
+            </div>
+            {bookedRoom1?.roomType === 'RESIDENTIAL A/C KING' || bookedRoom1?.roomType === 'RESIDENTIAL A/C TWIN' ?
+              <p className=' mt-2'>Maximum 3 Adults. Extra ₹500 for 3rd adult, payable at check-in.</p> : <p className=' mt-2'>Maximum 2 Adults.</p>
+            }
+                        <hr className='w-full border-brown-700 my-3' />
+
           <h2 className="text-lg font-semibold mb-5 text-center">Booking Summary</h2>
           <div className="space-y-4">
             <div className='grid grid-cols-2 gap-3 border-b border-brown-700 p-2 rounded'>

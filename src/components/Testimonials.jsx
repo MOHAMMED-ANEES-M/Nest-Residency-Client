@@ -74,11 +74,11 @@ const Testimonials = () => {
   };
 
   return (
-<div className="py-12 px-6 sm:px-10 lg:px-20 mt-20 rounded-xl mx-5 bg-gradient-to-br from-gray-900 via-black to-gray-900 bg-opacity-95">
+<div className="py-12 px-8 sm:px-10 lg:px-20 mt-20 rounded-xl mx-5 bg-gradient-to-br from-gray-900 via-black to-gray-900 bg-opacity-95">
 <h2 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center text-white">Testimonials</h2>
       <Slider {...settings}>
         {testimonials.map((testimonial) => (
-          <div key={testimonial.id} className="p-3">
+          <div key={testimonial.id} className="p-1 sm:p-3">
             <TestimonialCard testimonial={testimonial} />
           </div>
         ))}

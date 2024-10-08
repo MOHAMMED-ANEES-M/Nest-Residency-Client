@@ -37,6 +37,8 @@ const CheckAvailability = () => {
         try {
             const data = await checkRoomAvailability(checkInDate, checkOutDate);
             dispatch(setAvailableRooms(data.availableRooms));
+            console.log('available rooms', data.availableRooms);
+            
         } catch (err) {
             console.error('Error fetching room availability:', err);
             dispatch(setError(err?.response?.data?.message));

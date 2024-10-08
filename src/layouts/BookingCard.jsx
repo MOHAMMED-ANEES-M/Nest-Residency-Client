@@ -4,7 +4,7 @@ import { roomDetails } from '../data/room';
 
 const BookingCard = ({ room, handleBookRoom }) => {  
 
-  const roomData = roomDetails.find(room => room.roomType);
+  const roomData = roomDetails.find(rooms => rooms.roomType === room.roomType);
 
   return (
     <div className="p-4 bg-white shadow-lg rounded-lg h-full flex flex-col justify-between">

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import img from '../assets/gallery/nest_1.jpg';
+import img from '../assets/rooms/residential_ac_twin1.jpg';
 import AboutCard from '../layouts/AboutCard';
 
 const AboutPage = () => {
@@ -39,8 +39,8 @@ const AboutPage = () => {
                     Experience exceptional service and relaxation in a welcoming atmosphere that caters to all your needs. Choose Nest Residency for your next visit and enjoy the best that Calicut has to offer.
                 </p>
                 <button className="bg-brown-700 hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button>
-                <div className="w-full sm:w-[80%] lg:w-[60%] h-auto mx-auto">
-                    <img src={img} alt="Nest Residency" className="rounded-lg w-full h-auto"/>
+                <div className="w-full sm:w-[80%] lg:w-[60%] mx-auto h-auto">
+                    <img src={img} alt="Nest Residency" className="rounded-lg w-full h-fit"/>
                 </div>
             </section>
 
