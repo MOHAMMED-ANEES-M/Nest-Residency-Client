@@ -6,6 +6,7 @@ import img4 from '../assets/carousel/nest_image2.jpg';
 import img5 from '../assets/rooms/residential_ac_twin1.jpg';
 import img6 from '../assets/rooms/residential_ac_king1.jpg';
 import { Link } from 'react-router-dom';
+import { BsFillArrowUpRightSquareFill } from "react-icons/bs";
 
 const Gallery = () => {
   const images = [img1, img2, img3, img4, img5, img6];
@@ -36,9 +37,12 @@ const Gallery = () => {
 
       <div className="w-fit mr-auto sm:ml-auto mx-5 sm:mx-20">
         <Link to='/gallery'>
-          <button className='bg-brown-700 hover:bg-green-800 rounded text-white p-2 min-[400px]:p-3 mt-5'>
+        <div className='group'>
+          <button className='bg-brown-700 hover:bg-green-800 rounded text-white p-2 min-[400px]:p-3 mt-5 flex items-center transition-transform duration-300 ease-in-out'>
             View Gallery
+            <BsFillArrowUpRightSquareFill className='ml-2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 rotate-45' />
           </button>
+        </div>
         </Link>
       </div>
     </div>

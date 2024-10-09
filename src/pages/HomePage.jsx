@@ -16,10 +16,6 @@ const HomePage = () => {
     window.scrollTo({ top: 0 });
   }, []);
 
-  if (loading) {
-    return <LoadingSpinner />; 
-  }
-
   return (
     <div className='mb-0'>
       <Carousel />
@@ -30,6 +26,7 @@ const HomePage = () => {
       <Gallery />
       <Testimonials />
       <Location />
+      {loading && <LoadingSpinner />} {/* Show loading spinner if loading is true */}
     </div>
   );
 };

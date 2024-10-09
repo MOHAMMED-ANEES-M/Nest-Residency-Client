@@ -35,8 +35,8 @@ const AvailabilityForm = () => {
     <div className="w-fit m-auto text-center">
       <div className="flex justify-center items-end flex-wrap space-x-4">
         {/* Check-in Date */}
-        <div className="flex flex-col">
-          <label htmlFor="checkInDate" className="mb-1 font-semibold text-sm">
+        <div className=" hidden md:flex flex-col">
+          <label htmlFor="checkInDate" className="mb-1 font-semibold text-sm ">
             Check-in Date
           </label>
           <input
@@ -51,7 +51,7 @@ const AvailabilityForm = () => {
         </div>
 
         {/* Check-out Date */}
-        <div className="flex flex-col">
+        <div className="hidden md:flex flex-col ">
           <label htmlFor="checkOutDate" className="mb-1 font-semibold text-sm">
             Check-out Date
           </label>
@@ -67,7 +67,7 @@ const AvailabilityForm = () => {
         </div>
 
         <button
-          className="px-3 md:px-5 mt-8 py-2 md:py-3 rounded bg-brown-700 text-white shadow-sm hover:bg-green-800"
+          className="px-3 md:px-5 mt-3 md:mt-8 py-2 md:py-3 rounded bg-brown-700 text-white shadow-sm hover:bg-green-800"
           onClick={handleSubmit}
           disabled={loading}
         >

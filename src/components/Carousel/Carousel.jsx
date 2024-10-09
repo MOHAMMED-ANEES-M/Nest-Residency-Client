@@ -19,20 +19,19 @@ const Carousel = () => {
       <div id="slide-container" className="relative h-[400px] md:h-[600px]">
         <div id="slide-first-element">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Beautiful" />
-          <div className='slide-text absolute bottom-2 sm:bottom-4 left-2 sm:left-4'>
-            <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 text-brown-700'>Best Hotel to Stay in Calicut</p>
+          <div className='absolute top-20 right-5 sm:top-28 sm:right-5'>
+          {/* <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 text-brown-700'>Best Hotel to Stay in Calicut</p> */}
             <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
           </div>
         </div>
         <div id="slide-element-2">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img2} alt="Amazing" />
-          <div className='slide-text absolute bottom-2 sm:bottom-4 left-2 sm:left-4'>
-            <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 '>Best Hotel to Stay in Calicut</p>
-            <button className='text-brown-700 rounded bg-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
+          <div className='absolute top-20 right-5 sm:top-28 sm:right-5'>
+            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-50 pt- pb-2 hidden md:block">
+        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-50 pb-2 ">
           <AvailabilityForm
             checkInDate={checkInDate}
             setCheckInDate={setCheckInDate}

@@ -6,14 +6,14 @@ import { setRooms, setLoading } from '../redux/slices/roomSlice';
 import { roomDetails as localRoomDetails } from '../data/room';
 import LoadingSpinner from '../utils/LoadingSpinner';
 
-const Rooms = () => {
+const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
   const dispatch = useDispatch();
   const { rooms, loading } = useSelector((state) => state.room); 
 
   useEffect(() => {
     const fetchRooms = async () => {
       if (rooms.length === 0) { 
-        dispatch(setLoading(true));
+        setLoading(true); // Set loading to true before fetching
 
         try {
           const apiRoomData = await findRooms();
@@ -34,13 +34,13 @@ const Rooms = () => {
         } catch (error) {
           console.error('Error fetching room details:', error);
         } finally {
-          dispatch(setLoading(false));
+          setLoading(false); // Set loading to false after fetching
         }
       }
     };
 
     fetchRooms(); 
-  }, [dispatch, rooms]);
+  }, [dispatch, rooms, setLoading]); // Include setLoading in dependencies
 
   if (loading) {
     return <LoadingSpinner />; 
