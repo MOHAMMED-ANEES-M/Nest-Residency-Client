@@ -12,7 +12,7 @@ const BookingCard = ({ room, handleBookRoom }) => {
       <div className="mt-4 flex-grow">
         <h2 className="text-lg font-semibold">{room.roomType}</h2>
         <p className="text-md font-bold mt-2">₹{room.roomPrice} / night + tax</p>
-        <p className="text-sm text-gray-500">{roomData.description}</p>
+        {/* <p className="text-sm text-gray-500">{roomData.description}</p> */}
         <ul className="text-sm text-gray-500 list-disc ml-5 mt-2">
           {roomData.amenities.map((amenity, index) => (
             <li key={index}>{amenity}</li>
