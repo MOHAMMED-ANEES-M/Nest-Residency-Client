@@ -40,7 +40,7 @@ const AboutPage = () => {
                 </p>
                 <a href="https://cybozom.site/360/nest5/"><button className="bg-[#912501] hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button></a>
                 <div className="w-full sm:w-[80%] lg:w-[60%] mx-auto h-auto">
-                    <img src={img} alt="Nest Residency" className="rounded-lg w-full h-fit"/>
+                    <img src={img} alt="Nest Residency" className="w-full h-fit"/>
                 </div>
             </section>
 
