@@ -6,9 +6,9 @@ const RoomCard = ({ room }) => {
   console.log(room);
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-[#912501] shadow overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 mb-10 shadow-lg overflow-hidden">
       {/* Image section */}
-      <div className="w-full h-full">
+      <div className="w-full h-60 sm:h-80">
         <RoomCarousel images={room.images} />
       </div>
       

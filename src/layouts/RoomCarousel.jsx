@@ -24,7 +24,7 @@ const RoomCarousel = ({ images }) => {
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full h-52 object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}

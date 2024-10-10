@@ -1,53 +1,60 @@
-/* Slideshow container */
-#slide-container {
+.carousel-container {
     position: relative;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-/* Style for the slide images */
-.slide-image {
     width: 100%;
-    object-fit: cover;
-}
-
-/* First slide */
-#slide-first-element {
+    height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+  }
+  
+  .fade-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .fade-slide.active {
     opacity: 1;
-    z-index: 2; /* First slide on top initially */
-    animation: fade-1 18s ease-in-out infinite;
-}
-
-/* Second slide */
-#slide-element-2 {
-    opacity: 0;
-    z-index: 1;
-    animation: fade-2 18s ease-in-out infinite;
-}
-
-/* Third slide */
-#slide-element-3 {
-    opacity: 0;
-    z-index: 1;
-    animation: fade-3 18s ease-in-out infinite;
-}
-
-/* Keyframes for the first slide (fade in, then fade out) */
-@keyframes fade-1 {
-    0%, 30% { opacity: 1; z-index: 2; }  /* Visible for the first 30% */
-    33.33%, 100% { opacity: 0; z-index: 1; }  /* Fade out */
-}
-
-/* Keyframes for the second slide (fade in, then fade out) */
-@keyframes fade-2 {
-    0%, 30% { opacity: 0; z-index: 1; }  /* Invisible for the first 30% */
-    33.33%, 63.33% { opacity: 1; z-index: 2; }  /* Fade in */
-    66.66%, 100% { opacity: 0; z-index: 1; }  /* Fade out */
-}
-
-/* Keyframes for the third slide (fade in, then fade out) */
-@keyframes fade-3 {
-    0%, 63.33% { opacity: 0; z-index: 1; }  /* Invisible for the first 63% */
-    66.66%, 96.66% { opacity: 1; z-index: 2; }  /* Fade in */
-    100% { opacity: 0; z-index: 1; }  /* Fade out */
-}
+  }
+  
+  .carousel-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 50px; /* Default size */
+    color: white;
+    text-align: center;
+    z-index: 1; 
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow if necessary */
+    text-overflow: ellipsis;
+  }
+  
+  /* Media query for small screens */
+  @media (max-width: 640px) { /* Adjust this breakpoint as needed */
+    .carousel-text {
+      font-size: 27px; /* Size for small screens */
+    }
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 100px; /* Adjust position as needed */
+    right: 40px; /* Adjust position as needed */
+    background-color: #912501;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 100; /* Ensure button is above the image */
+  }
+  
+  .carousel-button:hover {
+    background-color: #4a8a5d; /* Hover color */
+  }  
