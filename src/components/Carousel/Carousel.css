@@ -14,25 +14,40 @@
 /* First slide */
 #slide-first-element {
     opacity: 1;
-    z-index: 2; /* Make sure the first slide is on top initially */
-    animation: fade-1 12s ease-in-out infinite;
+    z-index: 2; /* First slide on top initially */
+    animation: fade-1 18s ease-in-out infinite;
 }
 
 /* Second slide */
 #slide-element-2 {
     opacity: 0;
-    z-index: 1; /* Second slide below initially */
-    animation: fade-2 12s ease-in-out infinite;
+    z-index: 1;
+    animation: fade-2 18s ease-in-out infinite;
+}
+
+/* Third slide */
+#slide-element-3 {
+    opacity: 0;
+    z-index: 1;
+    animation: fade-3 18s ease-in-out infinite;
 }
 
 /* Keyframes for the first slide (fade in, then fade out) */
 @keyframes fade-1 {
-    0%, 40% { opacity: 1; z-index: 2; }  /* Fully visible for the first 40% */
-    45%, 100% { opacity: 0; z-index: 1; }  /* Fade out and lower z-index */
+    0%, 30% { opacity: 1; z-index: 2; }  /* Visible for the first 30% */
+    33.33%, 100% { opacity: 0; z-index: 1; }  /* Fade out */
 }
 
-/* Keyframes for the second slide (fade out, then fade in) */
+/* Keyframes for the second slide (fade in, then fade out) */
 @keyframes fade-2 {
-    0%, 40% { opacity: 0; z-index: 1; }  /* Invisible for the first 40% */
-    45%, 100% { opacity: 1; z-index: 2; }  /* Fade in and higher z-index */
+    0%, 30% { opacity: 0; z-index: 1; }  /* Invisible for the first 30% */
+    33.33%, 63.33% { opacity: 1; z-index: 2; }  /* Fade in */
+    66.66%, 100% { opacity: 0; z-index: 1; }  /* Fade out */
+}
+
+/* Keyframes for the third slide (fade in, then fade out) */
+@keyframes fade-3 {
+    0%, 63.33% { opacity: 0; z-index: 1; }  /* Invisible for the first 63% */
+    66.66%, 96.66% { opacity: 1; z-index: 2; }  /* Fade in */
+    100% { opacity: 0; z-index: 1; }  /* Fade out */
 }

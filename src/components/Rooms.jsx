@@ -62,7 +62,7 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
             <div key={room.roomId} className="group  text-[#912501] shadow-lg  overflow-hidden">
               {/* Room Image */}
               <div className="relative">
-                <img src={room.src} alt={room.roomType} className="w-full h-60 object-cover " />
+                <img src={room.src} alt={room.roomType} className="w-full h-60 object-cover p-2" />
                 <div className="absolute inset-0 "></div>
               </div>
               

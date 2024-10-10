@@ -45,7 +45,7 @@ const AvailabilityForm = () => {
             value={checkInDate}
             required
             min={today}
-            className="w-full px-2 md:px-3 rounded py-1 md:py-2 bg-gray-100 border-2 border-[#912501] focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
+            className="w-full px-2 md:px-3 py-1 md:py-2 bg-gray-100 border-2 border-[#912501] focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
             onChange={(e) => setCheckInDate(e.target.value)}
           />
         </div>
@@ -61,13 +61,13 @@ const AvailabilityForm = () => {
             value={checkOutDate}
             required
             min={minCheckOutDate}
-            className="w-full px-2 md:px-3 rounded py-1 md:py-2 bg-gray-100 border-2 border-[#912501] focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
+            className="w-full px-2 md:px-3 py-1 md:py-2 bg-gray-100 border-2 border-[#912501] focus:border-transparent shadow-sm focus:outline-none focus:ring-2 focus:ring-green-800"
             onChange={(e) => setCheckOutDate(e.target.value)}
           />
         </div>
 
         <button
-          className="px-3 sm:px-5 mt-3 md:mt-8 py-1 md:py-3 rounded bg-[#912501] text-white shadow-sm hover:bg-green-800"
+          className="px-3 sm:px-5 mt-3 md:mt-8 py-1 md:py-3 bg-transparent sm:bg-[#912501] border sm:border-none border-[#912501] text-[#912501] sm:text-white shadow-sm hover:bg-green-800"
           onClick={handleSubmit}
           disabled={loading}
           >
@@ -75,7 +75,7 @@ const AvailabilityForm = () => {
         </button>
 
         <button
-          className="visible sm:hidden px-5 mt-3 md:mt-8 py-1 sm:py-3 rounded bg-[#912501] text-white shadow-sm hover:bg-green-800"
+          className="visible sm:hidden px-5 mt-3 md:mt-8 py-1 sm:py-3 border border-[#912501] text-[#912501] shadow-sm hover:bg-green-800"
           onClick={handleSubmit}
           disabled={loading}
         >

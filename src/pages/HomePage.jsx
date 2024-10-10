@@ -24,7 +24,7 @@ const HomePage = () => {
       <Carousel />
       
       {/* Position the form between carousel and hero */}
-      <div className="absolute w-[90%] md:w-[70%] left-1/2 transform -translate-x-1/2 -translate-y-8 md:-translate-y-12 z-20 bg-white shadow-lg pb-2 sm:pb-4 rounded">
+      <div className="absolute w-full sm:w-[70%] left-1/2 transform -translate-x-1/2 -translate-y-8 md:-translate-y-12 z-20 bg-white shadow-lg pb-2 sm:pb-4">
         <AvailabilityForm
           checkInDate={checkInDate}
           setCheckInDate={setCheckInDate}

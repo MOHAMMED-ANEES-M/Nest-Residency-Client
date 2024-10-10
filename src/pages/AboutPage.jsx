@@ -38,7 +38,7 @@ const AboutPage = () => {
                     Discover Nest Residency, your premier hotel in Calicut, where comfort meets hygiene. Conveniently located near MIMS Hospital, Lulu Mall, and the Calicut Railway Station, our hotel is the ideal choice for visitors seeking quality accommodation.
                     Experience exceptional service and relaxation in a welcoming atmosphere that caters to all your needs. Choose Nest Residency for your next visit and enjoy the best that Calicut has to offer.
                 </p>
-                <button className="bg-[#912501] hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button>
+                <a href="https://cybozom.site/360/nest5/"><button className="bg-[#912501] hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button></a>
                 <div className="w-full sm:w-[80%] lg:w-[60%] mx-auto h-auto">
                     <img src={img} alt="Nest Residency" className="rounded-lg w-full h-fit"/>
                 </div>

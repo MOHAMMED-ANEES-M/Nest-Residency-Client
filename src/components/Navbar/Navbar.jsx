@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/nestresidency_logo.png';
 import { NavLink, Outlet, Link } from 'react-router-dom';
-import { CgMenuRound } from "react-icons/cg";
-import { IoMdCloseCircleOutline } from "react-icons/io";
+import { AiOutlineMenu } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
 import Drawer from '../Drawer';
 import Footer from '../Footer';
 
@@ -23,7 +23,7 @@ const Navbar = () => {
           </div>
 
           <button className="md:hidden flex items-center ml-auto px-3 py-2  hover:text-[#912501] hover:border-[#912501] focus:outline-none" onClick={toggleDrawer}>
-            {!isDrawerOpen ? <CgMenuRound className='w-8 h-8'/> : <IoMdCloseCircleOutline className='w-8 h-8'/>}
+            {!isDrawerOpen ? <AiOutlineMenu className='w-7 h-7 text-[#912501]'/> : <IoMdClose className='w-8 h-8 text-[#912501]'/>}
           </button>
 
           <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg text-[#912501]">
@@ -35,7 +35,7 @@ const Navbar = () => {
           </ul>
 
           <div>
-              <Link to='/check-availability' className="hidden md:flex rounded bg-[#912501] hover:bg-green-800 text-white px-5 py-3 ">
+              <Link to='/check-availability' className="hidden md:flex border border-[#912501] text-[#912501] hover:bg-[#912501] hover:text-white px-5 py-3 ">
                 Reservation
               </Link>
           </div>

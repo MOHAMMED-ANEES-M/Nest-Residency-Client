@@ -3,7 +3,7 @@ import React from 'react';
 const Hero = () => {
   return (
     <>
-      <div className='py-12 sm:py-20 bg-[#912501] text-white'>
+      <div className='py-12 sm:py-20 bg-[#912501] bg-opacity-80 text-white'>
         <h2 className='text-xl sm:text-3xl text-center mb-2 sm:mb-5 opacity-75 mt-5'>
           Best Hotel Rooms in Calicut
         </h2>

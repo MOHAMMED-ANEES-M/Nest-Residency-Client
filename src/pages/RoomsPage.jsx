@@ -46,7 +46,7 @@ const RoomPage = () => {
   }, []);
 
   return (
-    <div className="p-5 min-[400px]:p-10 sm:p-20 mx-5 sm:mx-10 md:mx-20 mt-5 sm:mt-0">
+    <div className="p-5 min-[400px]:p-10 sm:p-20 mx-2 sm:mx-10 md:mx-20 mt-5 sm:mt-0">
       <h1 className='text-3xl sm:text-4xl md:text-5xl my-8 text-center text-[#912501]'>Rooms</h1>
       <div>
         {loading ? (
