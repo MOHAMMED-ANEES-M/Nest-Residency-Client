@@ -22,7 +22,6 @@ const CheckAvailability = () => {
 
     const handleCheckAvailability = async () => {
         dispatch(setLoading(true));
-        setHasCheckedAvailability(true);
         setDateError('');
         if (!checkInDate || !checkOutDate) {
             dispatch(setLoading(false));
@@ -33,10 +32,11 @@ const CheckAvailability = () => {
             dispatch(setLoading(false));
             return;
         }
-
+        
         try {
             const data = await checkRoomAvailability(checkInDate, checkOutDate);
             dispatch(setAvailableRooms(data.availableRooms));
+            setHasCheckedAvailability(true);
             console.log('available rooms', data.availableRooms);
             
         } catch (err) {
