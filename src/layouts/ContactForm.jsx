@@ -62,7 +62,7 @@ const ContactForm = () => {
 
   return (
     <div className="p-8 rounded-lg shadow-lg">
-      <h2 className="text-2xl text-brown-700 mb-6">Send Us a Message</h2>
+      <h2 className="text-2xl text-[#912501] mb-6">Send Us a Message</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-lg font-medium">Name</label>
@@ -112,7 +112,7 @@ const ContactForm = () => {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <button type="submit" className="w-full bg-brown-700 text-white py-3 rounded hover:bg-green-900">
+        <button type="submit" className="w-full bg-[#912501] text-white py-3 rounded hover:bg-green-900">
           Send Message
         </button>
         {formStatus && <p className="mt-4 text-center">{formStatus}</p>}

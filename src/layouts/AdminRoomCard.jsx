@@ -22,7 +22,7 @@ const AdminRoomCard = ({ room, onPriceChange }) => {
   };
 
   return (
-    <div className="bg-white border rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 max-w-sm mx-auto overflow-hidden">
+    <div className="bg-white border w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 max-w-sm mx-auto overflow-hidden">
       {/* Room Image */}
       {room.src && (
         <img

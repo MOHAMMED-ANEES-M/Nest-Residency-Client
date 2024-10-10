@@ -31,14 +31,14 @@ const AboutPage = () => {
         <div className="mt-10 max-w-7xl mx-auto px-4 py-16">
             {/* Welcome Section */}
             <section className="text-center mt-5 mb-12">
-                <h1 className="text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-brown-700">
+                <h1 className="text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-[#912501]">
                     Welcome to Nest Residency, Calicut
                 </h1>
                 <p className="text-lg mb-5 max-w-[90%] sm:max-w-[70%] m-auto">
                     Discover Nest Residency, your premier hotel in Calicut, where comfort meets hygiene. Conveniently located near MIMS Hospital, Lulu Mall, and the Calicut Railway Station, our hotel is the ideal choice for visitors seeking quality accommodation.
                     Experience exceptional service and relaxation in a welcoming atmosphere that caters to all your needs. Choose Nest Residency for your next visit and enjoy the best that Calicut has to offer.
                 </p>
-                <button className="bg-brown-700 hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button>
+                <button className="bg-[#912501] hover:bg-green-800 rounded text-white p-3 mb-10">360 Virtual Tour</button>
                 <div className="w-full sm:w-[80%] lg:w-[60%] mx-auto h-auto">
                     <img src={img} alt="Nest Residency" className="rounded-lg w-full h-fit"/>
                 </div>
@@ -53,7 +53,7 @@ const AboutPage = () => {
 
             {/* Why Choose Us Section */}
             <section className="mb-12 mt-20 px-4">
-                <h2 className="text-[30px] mb-5 text-center text-brown-700">Why Choose Us?</h2>
+                <h2 className="text-[30px] mb-5 text-center text-[#912501]">Why Choose Us?</h2>
                 <p className="text-lg leading-relaxed text-center max-w-5xl mx-auto">
                     At Nest Residency, we understand the importance of comfort and convenience. With proximity to key 
                     locations like MIMS Hospital and Lulu Mall, and being just 3 km from the railway station, our hotel is 
@@ -64,7 +64,7 @@ const AboutPage = () => {
 
             {/* Experience Section */}
             <section className="text-center mt-12 px-4">
-                <h3 className="text-2xl text-brown-700 mb-6">
+                <h3 className="text-2xl text-[#912501] mb-6">
                     Experience a Comfortable Stay at Nest Residency
                 </h3>
                 <p className="text-lg mb-8 max-w-5xl mx-auto">

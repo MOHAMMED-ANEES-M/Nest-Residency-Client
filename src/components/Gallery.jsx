@@ -13,14 +13,14 @@ const Gallery = () => {
 
   return (
     <div className='mt-20'>
-      <h1 className='text-3xl sm:text-4xl md:text-5xl mb-10 text-center text-brown-700'>Our Spaces</h1>
+      <h1 className='text-3xl sm:text-4xl md:text-5xl mb-10 text-center text-[#912501]'>Our Spaces</h1>
       
       {/* Non-Uniform Grid */}
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mx-2 min-[400px]:mx-5 sm:mx-20'>
         {images.map((img, index) => (
           <div
             key={index}
-            className={`group bg-gray-100 rounded transition-shadow duration-300 overflow-hidden 
+            className={`group bg-gray-100  transition-shadow duration-300 overflow-hidden 
               ${index % 7 === 0 ? 'col-span-2 row-span-2' : 
                 index % 3 === 0 ? 'col-span-1 row-span-2' : 
                 'col-span-1 row-span-1'}`}
@@ -38,7 +38,7 @@ const Gallery = () => {
       <div className="w-fit mr-auto sm:ml-auto mx-5 sm:mx-20">
         <Link to='/gallery'>
         <div className='group'>
-          <button className='bg-brown-700 hover:bg-green-800 rounded text-white p-2 min-[400px]:p-3 mt-5 flex items-center transition-transform duration-300 ease-in-out'>
+          <button className='bg-[#912501] hover:bg-green-800 rounded text-white p-2 min-[400px]:p-3 mt-5 flex items-center transition-transform duration-300 ease-in-out'>
             View Gallery
             <BsFillArrowUpRightSquareFill className='ml-2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 rotate-45' />
           </button>

@@ -7,8 +7,9 @@ import superior_ac_twin1 from '../assets/rooms/superior_ac_twin1.jpg'
 import superior_ac_twin2 from '../assets/rooms/superior_ac_twin2.jpg'
 import residential_ac_twin1 from '../assets/rooms/residential_ac_twin1.jpg'
 import residential_ac_twin2 from '../assets/rooms/residential_ac_twin2.jpg'
-import residential_ac_king1 from '../assets/rooms/residential_ac_king1.jpg'
-import residential_ac_king2 from '../assets/rooms/residential_ac_king2.jpg'
+import residential_ac_king1 from '../assets/rooms/residential_ac_king_new2.jpg'
+import residential_ac_king2 from '../assets/rooms/residential_ac_king_new1.jpg'
+import residential_ac_king3 from '../assets/rooms/residential_ac_king_new3.jpg'
 
 export const roomDetails = [
     { 
@@ -46,7 +47,7 @@ export const roomDetails = [
     { 
         roomType: 'RESIDENTIAL A/C KING', 
         src: residential_ac_king1 ,
-        images: [ residential_ac_king1, residential_ac_king2 ],
+        images: [ residential_ac_king1, residential_ac_king2, residential_ac_king3 ],
         description: 'Max 3 Adults. Extra ₹500 for 3rd adult.',
         amenities: ['Free Wi-Fi', 'Semi Kitchen', 'Mini Fridge',  'TV', 'Room Service'],
         link: 'https://www.cybozom.site/360/nest5/',

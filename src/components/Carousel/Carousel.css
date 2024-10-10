@@ -1,64 +1,38 @@
 /* Slideshow container */
 #slide-container {
     position: relative;
-    max-width: 100%; /* Full width for responsiveness */
-    overflow: hidden; /* Prevent overflow of images */
+    max-width: 100%;
+    overflow: hidden;
 }
 
-/* First element to be in block mode for responsiveness */
-#slide-first-element {
-    display: block; /* to get the dimensions set */
-    width: 100%;
-    height: 100%; /* Set to full height */
-}
-
-/* Other element to be in absolute position */
-#slide-element-2 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-/* Style images */
+/* Style for the slide images */
 .slide-image {
     width: 100%;
-    object-fit: cover; /* Maintain aspect ratio */
+    object-fit: cover;
 }
 
-/* Style text */
-.slide-text {
-    color: white;
-    width: 100%;
-    font-size: 1.5rem;
-}
-
+/* First slide */
 #slide-first-element {
-    animation: fade-1 12s ease-in-out infinite; 
+    opacity: 1;
+    z-index: 2; /* Make sure the first slide is on top initially */
+    animation: fade-1 12s ease-in-out infinite;
 }
 
+/* Second slide */
 #slide-element-2 {
-    animation: fade-2 12s ease-in-out infinite; 
+    opacity: 0;
+    z-index: 1; /* Second slide below initially */
+    animation: fade-2 12s ease-in-out infinite;
 }
 
+/* Keyframes for the first slide (fade in, then fade out) */
 @keyframes fade-1 {
-    0% { opacity: 1; }    
-    40% { opacity: 1; }  
-    50% { opacity: 1; }  
-    100% { opacity: 0; }  
+    0%, 40% { opacity: 1; z-index: 2; }  /* Fully visible for the first 40% */
+    45%, 100% { opacity: 0; z-index: 1; }  /* Fade out and lower z-index */
 }
 
+/* Keyframes for the second slide (fade out, then fade in) */
 @keyframes fade-2 {
-    0% { opacity: 0; }    
-    50% { opacity: 0; }   
-    60% { opacity: 1; }   
-    100% { opacity: 1; }  
-}
-
-/* Hide dots */
-.slick-dots {
-    display: none; /* Hide dots */
+    0%, 40% { opacity: 0; z-index: 1; }  /* Invisible for the first 40% */
+    45%, 100% { opacity: 1; z-index: 2; }  /* Fade in and higher z-index */
 }

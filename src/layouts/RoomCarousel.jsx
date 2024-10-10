@@ -33,7 +33,7 @@ const RoomCarousel = ({ images }) => {
       {/* Previous Button */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-brown-700 text-white px-3 py-2 h-10 w-10 rounded-full"
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-[#912501] text-white px-3 py-2 h-10 w-10 rounded-full"
       >
         <GrPrevious className='text-white'/>
       </button>
@@ -41,7 +41,7 @@ const RoomCarousel = ({ images }) => {
       {/* Next Button */}
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-brown-700 text-white px-3 py-2 h-10 w-10 rounded-full"
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#912501] text-white px-3 py-2 h-10 w-10 rounded-full"
       >
         <GrNext className='text-white'/>
       </button>

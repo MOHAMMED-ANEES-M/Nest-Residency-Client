@@ -8,7 +8,7 @@ const GalleryPage = () => {
 
   return (
     <>
-      <h1 className='text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-brown-700 mt-20 sm:mt-32'>
+      <h1 className='text-3xl sm:text-4xl mb-5 sm:mb-10 text-center text-[#912501] mt-20 sm:mt-32'>
         Explore Our Photo Gallery
       </h1>
       
@@ -17,7 +17,7 @@ const GalleryPage = () => {
         {galleryDetails?.map((gallery, index) => (
           <div 
             key={index} 
-            className={`group bg-gray-100 rounded transition-shadow duration-300 overflow-hidden 
+            className={`group bg-gray-100 transition-shadow duration-300 overflow-hidden 
               ${index % 10 === 0 ? 'col-span-2 row-span-2' : 
                 index % 7 === 0 ? 'col-span-2 row-span-1' : 
                 index % 5 === 0 ? 'col-span-1 row-span-2' : 

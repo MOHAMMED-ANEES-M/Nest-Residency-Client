@@ -52,17 +52,17 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
 
   return (
     <div>
-      <div className="py-10 sm:py-20 rooms">
-        <h1 className="text-white text-3xl sm:text-[50px] mb-5 text-center">Featured Rooms</h1>
-        <p className='text-white text-center text-lg sm:text-xl mb-6 sm:mb-10'>Explore Affordable Luxury Hotel Rooms</p>
+      <div className="py-10 sm:py-20 ">
+        <h1 className=" text-3xl sm:text-[50px] mb-5 text-center">Featured Rooms</h1>
+        <p className=' text-center text-lg sm:text-xl mb-6 sm:mb-10'>Explore Affordable Luxury Hotel Rooms</p>
         
         {/* Grid Container for Room Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-10 px-5 sm:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 gap-y-10 sm:gap-10 px-5 sm:px-10">
           {rooms.map((room) => (
-            <div key={room.roomId} className="group bg-gradient-to-b from-[#619942] to-[#8DC26F] shadow-lg rounded-lg overflow-hidden p-2">
+            <div key={room.roomId} className="group  text-[#912501] shadow-lg  overflow-hidden">
               {/* Room Image */}
               <div className="relative">
-                <img src={room.src} alt={room.roomType} className="w-full h-60 object-cover rounded-md" />
+                <img src={room.src} alt={room.roomType} className="w-full h-60 object-cover " />
                 <div className="absolute inset-0 "></div>
               </div>
               
@@ -73,7 +73,7 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
                 {/* View More Button */}
                 <div className="mt-5">
                   <Link to={`/rooms`}>
-                    <button className="w-full py-2 bg-brown-700 text-white font-semibold rounded hover:bg-green-800 transition-colors">
+                    <button className="w-full py-2 border border-[#912501] hover:bg-[#912501] hover:text-white transition-all duration-200 font-semibold ">
                       View More
                     </button>
                   </Link>

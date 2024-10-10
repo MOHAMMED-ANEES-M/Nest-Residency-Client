@@ -22,11 +22,11 @@ const Navbar = () => {
             <Link to='/'><img src={logo} alt="Nest Residency Logo" className="h-14 md:h-20 " /></Link>
           </div>
 
-          <button className="md:hidden flex items-center ml-auto px-3 py-2 text-brown-900 border-brown-500 hover:text-brown-700 hover:border-brown-700 focus:outline-none" onClick={toggleDrawer}>
+          <button className="md:hidden flex items-center ml-auto px-3 py-2  hover:text-[#912501] hover:border-[#912501] focus:outline-none" onClick={toggleDrawer}>
             {!isDrawerOpen ? <CgMenuRound className='w-8 h-8'/> : <IoMdCloseCircleOutline className='w-8 h-8'/>}
           </button>
 
-          <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg ">
+          <ul className="hidden md:flex md:items-center space-x-3 lg:space-x-6 lg:text-lg text-[#912501]">
             <li><NavLink to='/' end className="hover:text-green-800 ">Home</NavLink></li>
             <li><NavLink to='/rooms' className="hover:text-green-800">Rooms</NavLink></li>
             <li><NavLink to="/gallery" className="hover:text-green-800">Gallery</NavLink></li>
@@ -35,7 +35,7 @@ const Navbar = () => {
           </ul>
 
           <div>
-              <Link to='/check-availability' className="hidden md:flex rounded bg-brown-700 hover:bg-green-800 text-white px-5 py-3 ">
+              <Link to='/check-availability' className="hidden md:flex rounded bg-[#912501] hover:bg-green-800 text-white px-5 py-3 ">
                 Reservation
               </Link>
           </div>

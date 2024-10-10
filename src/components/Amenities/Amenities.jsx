@@ -13,12 +13,12 @@ const Amenities = () => {
     <div className="flex flex-col-reverse md:flex-row justify-center gap-4 gap-y-10 mt-10 sm:mt-20">      
       {/* Image Section */}
       <div className="m-5 md:w-[50%] ">
-        <img src={img} alt="Amenity 1" className="rounded w-[75%] h-auto object-cover m-auto" />
+        <img src={img} alt="Amenity 1" className=" w-[75%] h-auto object-cover m-auto" />
       </div>
 
       {/* Amenities Text Section */}
       <div className="m-auto md:w-[50%]">
-        <h2 className="text-3xl sm:text-[50px] mb-5 sm:mb-10 text-center md:text-left text-brown-700">Amenities</h2>
+        <h2 className="text-3xl sm:text-[50px] mb-5 sm:mb-10 text-center md:text-left text-[#912501]">Amenities</h2>
         <div className="grid grid-cols-2 justify-center text-base sm:text-lg gap-3 sm:space-y-5">
           
           <div className='flex gap-1 min-[400px]:gap-3 items-center  mt-5'>

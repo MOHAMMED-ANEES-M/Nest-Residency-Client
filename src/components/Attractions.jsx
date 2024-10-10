@@ -9,7 +9,7 @@ const Attractions = () => {
         
         {/* Text Section */}
         <div className="m-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center md:text-left text-brown-700">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-8 text-center md:text-left text-[#912501]">
             Attractions
           </h1>
           <div className="m-auto md:m-0 w-full text-lg">
@@ -41,8 +41,8 @@ const Attractions = () => {
         </div>
 
         {/* Image Section */}
-        <div className="w-[75%] h-auto rounded-lg overflow-hidden m-auto">
-          <img src={img} alt="Attraction Image" className="w-full h-auto rounded-lg object-cover" />
+        <div className="w-[75%] h-auto overflow-hidden m-auto">
+          <img src={img} alt="Attraction Image" className="w-full h-auto object-cover" />
         </div>
       </div>
     </div>

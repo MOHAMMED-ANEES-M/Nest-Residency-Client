@@ -6,7 +6,7 @@ const RoomCard = ({ room }) => {
   console.log(room);
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-brown-700 shadow rounded-lg overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-10 bg-[#912501] shadow rounded-lg overflow-hidden">
       {/* Image section */}
       <div className="w-full h-full">
         <RoomCarousel images={room.images} />
@@ -15,7 +15,7 @@ const RoomCard = ({ room }) => {
       {/* Details section */}
       <div className="p-8 flex flex-col justify-between bg-[#f8f8f8]">
         <div>
-          <h2 className="text-base min-[400px]:text-2xl sm:text-3xl font-semibold text-brown-700 mb-4">{room.roomType}</h2>
+          <h2 className="text-base min-[400px]:text-2xl sm:text-3xl font-semibold text-[#912501] mb-4">{room.roomType}</h2>
           <p className="text-base min-[400px]:text-lg sm:text-xl mb-5 font-semibold">Rs. {room.roomPrice} + GST / night</p>
           {/* <p className="text-lg mb-4">{room.description}</p> */}
           

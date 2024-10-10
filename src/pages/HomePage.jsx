@@ -8,17 +8,33 @@ import Gallery from '../components/Gallery';
 import Location from '../layouts/Location';
 import Testimonials from '../components/Testimonials';
 import LoadingSpinner from '../utils/LoadingSpinner';
+import AvailabilityForm from '../layouts/AvailabilityForm'; // Import the form here
 
 const HomePage = () => {
   const [loading, setLoading] = useState(false);
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
   return (
-    <div className='mb-0'>
+    <div className='relative mb-0'>
       <Carousel />
+      
+      {/* Position the form between carousel and hero */}
+      <div className="absolute w-[90%] md:w-[70%] left-1/2 transform -translate-x-1/2 -translate-y-8 md:-translate-y-12 z-20 bg-white shadow-lg pb-2 sm:pb-4 rounded">
+        <AvailabilityForm
+          checkInDate={checkInDate}
+          setCheckInDate={setCheckInDate}
+          checkOutDate={checkOutDate}
+          setCheckOutDate={setCheckOutDate}
+          loading={loading}
+          handleCheckAvailability={() => setLoading(true)}
+        />
+      </div>
+
       <Hero />
       <Rooms setLoading={setLoading} /> 
       <Amenities />
@@ -26,7 +42,7 @@ const HomePage = () => {
       <Gallery />
       <Testimonials />
       <Location />
-      {loading && <LoadingSpinner />} {/* Show loading spinner if loading is true */}
+      {loading && <LoadingSpinner />}
     </div>
   );
 };

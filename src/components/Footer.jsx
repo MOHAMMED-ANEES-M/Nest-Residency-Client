@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <>
-      <footer className="footer-container p-10 bg-[#58340f] text-white">
+      <footer className="footer-container p-10 bg-[#912501] text-white">
         <div className="text-center mb-10">
           <img src={logo} alt="Logo" className="w-16 h-16 m-auto mb-2" />
           <h2 className="font-bold text-3xl">Nest Residency</h2>
@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           <div>
             <Link to='/check-availability'>
-              <button className='text-brown-700 hover:bg-green-800 hover:text-white rounded bg-white px-5 py-3 mb-5'>
+              <button className='text-[#912501] hover:bg-green-800 hover:text-white rounded bg-white px-5 py-3 mb-5'>
                 Reservation
               </button>
             </Link>

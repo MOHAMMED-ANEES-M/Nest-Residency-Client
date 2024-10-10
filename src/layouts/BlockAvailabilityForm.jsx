@@ -46,7 +46,7 @@ const BlockAvailabilityForm = ({
             value={checkInDate}
             required
             min={today}
-            className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-gray-300 focus:border-green-800 shadow-sm text-base sm:text-lg"
+            className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-[#912501] focus:border-green-800 shadow-sm text-base sm:text-lg"
             onChange={(e) => setCheckInDate(e.target.value)}
           />
         </div>
@@ -62,13 +62,13 @@ const BlockAvailabilityForm = ({
             value={checkOutDate}
             required
             min={minCheckOutDate}
-            className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-gray-300 focus:border-green-800 shadow-sm text-base sm:text-lg"
+            className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-[#912501] focus:border-green-800 shadow-sm text-base sm:text-lg"
             onChange={(e) => setCheckOutDate(e.target.value)}
           />
         </div>
 
         <button
-          className={`w-full mt-8 py-2 bg-brown-700 text-white font-semibold rounded shadow-md hover:bg-green-800 text-base sm:text-lg ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`w-full mt-8 py-2 bg-[#912501] text-white font-semibold rounded shadow-md hover:bg-green-800 text-base sm:text-lg ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={handleSubmit}
           disabled={loading}
         >

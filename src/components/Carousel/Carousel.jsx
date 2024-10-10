@@ -1,45 +1,29 @@
-import React, { useState } from 'react';
-import './Carousel.css'; 
+import React from 'react';
 import img1 from '../../assets/carousel/nest_image1.jpg';
 import img2 from '../../assets/carousel/nest_image2.jpg';
-import AvailabilityForm from '../../layouts/AvailabilityForm';
 
 const Carousel = () => {
-  const [checkInDate, setCheckInDate] = useState('');
-  const [checkOutDate, setCheckOutDate] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleCheckAvailability = () => {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 2000); 
-  };
-
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <div id="slide-container" className="relative h-[400px] md:h-[600px]">
-        <div id="slide-first-element">
+        <div id="slide-first-element" className="absolute w-full h-full fade-1">
           <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img1} alt="Beautiful" />
           <div className='absolute top-20 right-5 sm:top-28 sm:right-5'>
-          {/* <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 text-brown-700'>Best Hotel to Stay in Calicut</p> */}
-            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
+            <button className='bg-[#912501] hover:bg-green-800 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
           </div>
-        </div>
-        <div id="slide-element-2">
-          <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img2} alt="Amazing" />
-          <div className='absolute top-20 right-5 sm:top-28 sm:right-5'>
-            <button className='bg-brown-700 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
+          <div className='absolute bottom-[40%] text-center w-full'>
+            <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 text-[#912501]'>Best Hotel to Stay in Calicut</p>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full bg-white bg-opacity-50 pb-2 ">
-          <AvailabilityForm
-            checkInDate={checkInDate}
-            setCheckInDate={setCheckInDate}
-            checkOutDate={checkOutDate}
-            setCheckOutDate={setCheckOutDate}
-            loading={loading}
-            handleCheckAvailability={handleCheckAvailability}
-          />
+        <div id="slide-element-2" className="absolute w-full h-full fade-2">
+          <img className="slide-image h-[400px] md:h-[600px] w-full object-cover" src={img2} alt="Amazing" />
+          <div className='absolute top-20 right-5 sm:top-28 sm:right-5'>
+            <button className='bg-[#912501] hover:bg-green-800 rounded text-white px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-xl'>360 Virtual Tour</button>
+          </div>
+          <div className='absolute bottom-[40%] text-center w-full'>
+            <p className='text-[27px] sm:text-[50px] my-3 sm:my-5 text-white'>Best Hotel to Stay in Calicut</p>
+          </div>
         </div>
       </div>
     </div>
