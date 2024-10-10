@@ -38,7 +38,7 @@ const Gallery = () => {
       <div className="w-fit mr-auto sm:ml-auto mx-5 sm:mx-20">
         <Link to='/gallery'>
         <div className='group'>
-          <button className='bg-[#912501] hover:bg-green-800 rounded text-white p-2 min-[400px]:p-3 mt-5 flex items-center transition-transform duration-300 ease-in-out'>
+          <button className='border border-[#912501] hover:bg-[#912501] text-[#912501] hover:text-white p-2 min-[400px]:p-3 mt-5 flex items-center transition-transform duration-500 ease-in-out'>
             View Gallery
             <BsFillArrowUpRightSquareFill className='ml-2 transform transition-transform duration-300 ease-in-out group-hover:translate-x-2 rotate-45' />
           </button>
