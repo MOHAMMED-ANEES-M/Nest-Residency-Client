@@ -57,7 +57,7 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
         <p className=' text-center text-lg sm:text-xl mb-6 sm:mb-10'>Explore Affordable Luxury Hotel Rooms</p>
         
         {/* Grid Container for Room Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 gap-y-10 sm:gap-10 px-5 sm:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 gap-y-10 sm:gap-10 px-7 sm:px-10">
           {rooms.map((room) => (
             <div key={room.roomId} className="group  text-[#912501] shadow-lg  overflow-hidden">
               {/* Room Image */}
@@ -72,7 +72,7 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
                 <p className="mb-4 font-semibold">Rs. {room.roomPrice}</p>
                 {/* View More Button */}
                 <div className="mt-5">
-                  <Link to={`/rooms`}>
+                  <Link to={`/rooms`} state={{ roomType: room.roomType }}>
                     <button className="w-full py-2 border border-[#912501] hover:bg-[#912501] hover:text-white transition-all duration-200 font-semibold ">
                       View More
                     </button>

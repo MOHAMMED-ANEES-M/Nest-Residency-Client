@@ -67,20 +67,19 @@ const AvailabilityForm = () => {
         </div>
 
         <button
-          className="px-3 sm:px-5 mt-3 md:mt-8 py-1 md:py-3 bg-transparent sm:bg-[#912501] border sm:border-none border-[#912501] text-[#912501] sm:text-white shadow-sm hover:bg-green-800"
+          className="px-3 sm:px-5 mt-3 md:mt-8 py-1 md:py-3 bg-transparent sm:bg-[#912501] border sm:border-none border-[#912501] text-[#912501] sm:text-white shadow-sm hover:bg-[#912501] hover:text-white"
           onClick={handleSubmit}
           disabled={loading}
           >
           Book Now
         </button>
 
-        <button
-          className="visible sm:hidden px-5 mt-3 md:mt-8 py-1 sm:py-3 border border-[#912501] text-[#912501] shadow-sm hover:bg-green-800"
-          onClick={handleSubmit}
+        <a href="tel:+919744005530"><button
+          className="visible sm:hidden px-5 mt-3 md:mt-8 py-1 sm:py-3 border border-[#912501] text-[#912501] shadow-sm hover:bg-[#912501] hover:text-white"
           disabled={loading}
         >
           Contact
-        </button>
+        </button></a>
 
       </div>
     </div>

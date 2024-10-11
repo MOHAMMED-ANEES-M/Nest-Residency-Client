@@ -4,6 +4,12 @@
     height: 500px; /* Adjust height as needed */
     overflow: hidden;
   }
+
+  @media (max-width: 640px) {
+    .carousel-container {
+      height: 400px; /* Height for small screens */
+    }
+  }
   
   .fade-slide {
     position: absolute;
@@ -52,7 +58,7 @@
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    z-index: 100; /* Ensure button is above the image */
+    z-index: 30; /* Ensure button is above the image */
   }
   
   .carousel-button:hover {

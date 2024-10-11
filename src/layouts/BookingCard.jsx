@@ -10,7 +10,7 @@ const BookingCard = ({ room, handleBookRoom }) => {
     <div className="p-2 bg-white shadow-lg h-full flex flex-col justify-between">
       <RoomCarousel images={roomData.images} />
       <div className="mt-4 flex-grow px-2">
-        <h2 className="text-lg font-semibold">{room.roomType}</h2>
+        <h2 className="text-lg font-semibold text-[#912501]">{room.roomType}</h2>
         <p className="text-md font-bold mt-2">₹{room.roomPrice} / night + tax</p>
         {/* <p className="text-sm text-gray-500">{roomData.description}</p> */}
         <ul className="text-sm text-gray-800 list-disc ml-5 mt-2">

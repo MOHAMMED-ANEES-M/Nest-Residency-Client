@@ -7,7 +7,7 @@ const Divider = () => {
         <div class="w-full border-t-2 border-[#912501]"></div>
       </div>
       <div class="relative flex justify-center items-center">
-        <span class="bg-white px-3 text-xl font-semibold text-[#912501]">
+        <span class="bg-[#f8f8f8] px-3 pb-1 text-xl font-semibold text-[#912501]">
           • • •
         </span>
       </div>

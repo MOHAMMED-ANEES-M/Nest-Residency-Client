@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           <div>
             <Link to='/check-availability'>
-              <button className='text-[#912501] hover:bg-green-800 hover:text-white rounded bg-white px-5 py-3 mb-5'>
+              <button className='text-[#912501] hover:bg-green-800 hover:text-white bg-white px-5 py-3 mb-5'>
                 Reservation
               </button>
             </Link>
