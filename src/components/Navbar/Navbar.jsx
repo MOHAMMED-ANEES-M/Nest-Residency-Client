@@ -35,7 +35,7 @@ const Navbar = () => {
           </ul>
 
           <div>
-              <Link to='/check-availability' className="hidden md:flex border border-[#912501] text-[#912501] hover:bg-[#912501] hover:text-white px-5 py-3 ">
+              <Link to='/check-availability' className="hidden md:flex border bg-[#912501] text-white hover:bg-green-800 px-5 py-3 ">
                 Reservation
               </Link>
           </div>
