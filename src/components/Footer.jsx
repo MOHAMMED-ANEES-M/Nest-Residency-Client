@@ -45,7 +45,7 @@ const Footer = () => {
                 <p>27/2402,E,G,H Nest Residency, 
                   Near MIMS Hospital, Mini Bypass Road,
                   Govindapuram, Kozhikode,
-                  Kerala, India - 673012
+                  Kerala, India - 673016
                 </p>
             </div>
           </div>

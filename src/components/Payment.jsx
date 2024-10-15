@@ -57,10 +57,11 @@ const Payment = ({ amount, roomData, guestDetails }) => {
           if (receipt.data.success) {
             setProcessingPayment(false); 
             setRedirecting(true);
-
-              navigate(`/payment-success?paymentId=${response.razorpay_payment_id}&roomId=${roomData.roomType}`, {
+            console.log('booked', receipt?.data?.booking);
+            
+              navigate(`/payment-success?paymentId=${response.razorpay_payment_id}`, {
                 state: {
-                  roomDetails: roomData,
+                  roomDetails: receipt?.data?.booking,
                   guestDetails: guestDetails,
                   amount: orderResponse.amount,
                 },

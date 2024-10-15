@@ -18,6 +18,7 @@ const BookingDetailsPage = () => {
   }, []);
   
   useEffect(() => {
+    console.log('booking page', booking);
     if (!booking) {
       const fetchBookingDetails = async () => {
         try {
@@ -29,6 +30,7 @@ const BookingDetailsPage = () => {
       };
       fetchBookingDetails();
     }
+
   }, [bookingId, booking]);
 
   const handleCancelBooking = async () => {
@@ -40,7 +42,7 @@ const BookingDetailsPage = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  };  
 
   if (!booking) return <div className="text-center">Booking not found.</div>;
 
@@ -103,6 +105,10 @@ const BookingDetailsPage = () => {
                 <td className="py-2 font-bold">Booking Date:</td>
                 <td>{formatBookingDate(booking?.createdAt)}</td>
               </tr>
+              <tr>
+                <td className="py-2 font-bold">Booking Id:</td>
+                <td>{booking?.bookingId}</td>
+              </tr>
               {booking.cancelReason && (
                 <tr>
                   <td className="py-2 font-bold">Cancellation Reason:</td>
@@ -129,7 +135,7 @@ const BookingDetailsPage = () => {
                 </tr>
                 <tr>
                   <td className="py-2 font-bold">Payment ID:</td>
-                  <td>{booking?.paymentId?._id}</td>
+                  <td>{booking?.paymentId?.paymentId}</td>
                 </tr>
                 <tr>
                   <td className="py-2 font-bold">Payment Status:</td>

@@ -27,7 +27,7 @@ const ContactPage = () => {
             27/2402,E,G,H Nest Residency,<br /> 
             Near MIMS Hospital, Mini Bypass Road,<br/>
             Govindapuram, Kozhikode,<br />
-            Kerala, India - 673012
+            Kerala, India - 673016
           </p>
           
           <h2 className="text-2xl text-[#912501]">Phone</h2>
