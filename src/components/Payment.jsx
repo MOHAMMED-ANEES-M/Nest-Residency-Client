@@ -8,6 +8,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
   const [loading, setLoading] = useState(false);
   const [processingPayment, setProcessingPayment] = useState(false);
   const [redirecting, setRedirecting] = useState(false); 
+  const [paymentError, setPaymentError] = useState('');
 
   const razorpayKey = process.env.REACT_APP_RAZORPAY_KEY;
   const razorpayLoadScript = process.env.REACT_APP_RAZORPAY_LOADSCRIPT;
@@ -66,6 +67,8 @@ const Payment = ({ amount, roomData, guestDetails }) => {
                   amount: orderResponse.amount,
                 },
               });
+          } else {
+            setPaymentError(receipt.data.message);
           }
         },
         prefill: {
@@ -74,7 +77,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
           contact: guestDetails.phone,
         },
         theme: {
-          color: '#8B4513',
+          color: '#912501',
         },
       };
 
@@ -88,7 +91,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
       setLoading(false);
       const razor = new window.Razorpay(options);
       razor.on('payment.failed', function (response) {
-        alert('Payment Failed. Error: ' + response.error.description);
+        setPaymentError(response.error.description);
         setProcessingPayment(false); 
       });
       razor.open();
@@ -113,6 +116,10 @@ const Payment = ({ amount, roomData, guestDetails }) => {
   if (redirecting) {
     return <LoadingSpinner />; 
   }
+
+  if (paymentError) {
+    return <div>Error: {paymentError}</div>;
+  }  
 
   return <div></div>;
 };

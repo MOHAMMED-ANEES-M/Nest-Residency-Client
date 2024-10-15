@@ -64,7 +64,7 @@ const GuestForm = ({ handleFormSubmit }) => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      return; // Stop submission if there are errors
+      return; 
     }
 
     if (isAgreed) {

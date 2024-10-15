@@ -15,8 +15,8 @@ const BookRoom = () => {
   const { availableRooms } = useSelector((state) => state.booking);
 
   const [guestDetails, setGuestDetails] = useState(null);
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -148,6 +148,7 @@ const BookRoom = () => {
           amount={totalAmount} 
           roomData={{ roomNumber, checkInDate, checkOutDate, roomType }} 
           guestDetails={guestDetails} 
+          handleFormSubmit = {handleFormSubmit}
         />
       )}
     </div>
