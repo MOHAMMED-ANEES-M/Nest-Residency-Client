@@ -14,10 +14,10 @@ const Receipt = ({ paymentId, amount, bookingDetails, guestDetails }) => {
             <p className="font-semibold text-gray-700">Booking Date:</p>
             <p className="text-gray-900">{formatBookingDate(bookingDetails.createdAt)}</p>
           </div>
-          <div className="flex justify-between bg-gray-100 p-2 sm:p-3 rounded-lg mb-4">
+          {/* <div className="flex justify-between bg-gray-100 p-2 sm:p-3 rounded-lg mb-4">
             <p className="font-semibold text-gray-700">Room Number:</p>
             <p className="text-gray-900">{bookingDetails.roomNumber}</p>
-          </div>
+          </div> */}
           <div className="flex justify-between bg-gray-100 p-2 sm:p-3 rounded-lg mb-4">
             <p className="font-semibold text-gray-700">Room Type:</p>
             <p className="text-gray-900">{bookingDetails.roomType}</p>

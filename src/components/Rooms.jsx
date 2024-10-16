@@ -32,7 +32,7 @@ const Rooms = ({ setLoading }) => { // Receive setLoading as a prop
 
           dispatch(setRooms(mergedData));           
         } catch (error) {
-          console.error('Error fetching room details:', error);
+          // console.error('Error fetching room details:', error);
         } finally {
           setLoading(false); // Set loading to false after fetching
         }

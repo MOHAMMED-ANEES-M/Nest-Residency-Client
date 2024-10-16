@@ -11,19 +11,22 @@ const BlockAvailabilityForm = ({
   loading,
   handleCheckAvailability,
 }) => {
-  
+
   const [dateError, setDateError] = useState('');
 
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
 
+  // Ensure checkout date is one day after check-in date
+  const minCheckOutDate = checkInDate ? new Date(checkInDate) : tomorrow;
+  minCheckOutDate.setDate(minCheckOutDate.getDate() + 1);
+
   const handleSubmit = () => {
     if (checkInDate && checkOutDate) {
       if (new Date(checkInDate) < new Date(checkOutDate)) {
         handleCheckAvailability();
       } else {
-        setCheckInDate('')
         setDateError('Check-in date must be before the check-out date');
       }
     } else {
@@ -32,13 +35,15 @@ const BlockAvailabilityForm = ({
   };
 
   useEffect(() => {
-    if (!checkInDate) {
-      setCheckInDate(today);
+    // Automatically set the check-out date to one day after check-in
+    if (checkInDate) {
+      const nextDay = new Date(checkInDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      setCheckOutDate(nextDay); // Ensure check-out date is at least one day after check-in
+    } else {
+      setCheckInDate(today); // Set default check-in date to today
     }
-    if (!checkOutDate) {
-      setCheckOutDate(tomorrow);
-    }
-  }, [checkInDate, checkOutDate, setCheckInDate, setCheckOutDate]);
+  }, [checkInDate, setCheckOutDate]); // Trigger effect on checkInDate changes
 
   const formatDisplayDate = (date) => moment(date).format('DD MMM YY');
 
@@ -51,9 +56,9 @@ const BlockAvailabilityForm = ({
           <label htmlFor="checkInDate" className="mb-2 text-lg">Check-in Date</label>
           <DatePicker
             id="checkInDate"
-            selected={checkInDate}
+            selected={checkInDate ? new Date(checkInDate) : null} // Ensure a valid date object is passed
             onChange={(date) => setCheckInDate(date)}
-            dateFormat="dd/MM/yyyy"
+            dateFormat="dd-MM-yyyy"
             minDate={today}
             className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-[#912501] focus:border-green-800 shadow-sm text-base sm:text-lg"
           />
@@ -64,10 +69,10 @@ const BlockAvailabilityForm = ({
           <label htmlFor="checkOutDate" className="mb-2 text-lg">Check-out Date</label>
           <DatePicker
             id="checkOutDate"
-            selected={checkOutDate}
+            selected={checkOutDate ? new Date(checkOutDate) : null} // Ensure a valid date object is passed
             onChange={(date) => setCheckOutDate(date)}
-            dateFormat="dd/MM/yyyy"
-            minDate={tomorrow}
+            dateFormat="dd-MM-yyyy"
+            minDate={minCheckOutDate}
             className="w-full px-4 py-2 rounded bg-gray-100 border-2 border-[#912501] focus:border-green-800 shadow-sm text-base sm:text-lg"
           />
         </div>

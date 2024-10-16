@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { bookRoom } from '../services/api'; 
+import { roomDetails } from '../data/room';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"; 
 
 const AdminBookRoom = () => {
-  const navigate = useNavigate();
   const [bookingData, setBookingData] = useState({
-    roomNumber: '',
+    roomType: '',
     checkInDate: '',
     checkOutDate: '',
     fname: '',
@@ -18,10 +19,16 @@ const AdminBookRoom = () => {
 
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
   const handleChange = (e) => {
     setBookingData({ ...bookingData, [e.target.name]: e.target.value });
     setErrors((prev) => ({ ...prev, [e.target.name]: '' })); 
+  };
+
+  const handleDateChange = (date, name) => {
+    setBookingData((prev) => ({ ...prev, [name]: date }));
+    setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const validateEmail = (email) => {
@@ -67,13 +74,19 @@ const AdminBookRoom = () => {
     try {
       const response = await bookRoom(bookingData);
       if (response.success) {
-        navigate('/admin');
+        setSuccessMsg('Room Booked Successfully!')
+        setBookingData('')
       }
     } catch (error) {
-        console.error('Error booking room:', error);
+        // console.error('Error booking room:', error);
         setError(error.response?.data?.message || error.message);
     }
   };
+
+  setTimeout(() => {
+    setSuccessMsg('');
+    setError('');
+  }, 5000);
 
   return (
     <div className="max-w-3xl mx-auto p-8 bg-gray-100 rounded-lg shadow-md mt-24 mb-10">
@@ -142,43 +155,48 @@ const AdminBookRoom = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Check-in Date</label>
-            <input
-              type="date"
-              name="checkInDate"
-              value={bookingData.checkInDate}
-              onChange={handleChange}
+            <DatePicker
+              selected={bookingData.checkInDate}
+              onChange={(date) => handleDateChange(date, 'checkInDate')}
+              dateFormat="dd-MM-yyyy" // Date format
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+              placeholderText="Select Check-in Date"
+              isClearable
             />
             {errors.checkInDate && <p className="text-red-600 text-xs mt-1">{errors.checkInDate}</p>}
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Check-out Date</label>
-            <input
-              type="date"
-              name="checkOutDate"
-              value={bookingData.checkOutDate}
-              onChange={handleChange}
+            <DatePicker
+              selected={bookingData.checkOutDate}
+              onChange={(date) => handleDateChange(date, 'checkOutDate')}
+              dateFormat="dd-MM-yyyy" 
               className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+              placeholderText="Select Check-out Date"
+              isClearable
             />
             {errors.checkOutDate && <p className="text-red-600 text-xs mt-1">{errors.checkOutDate}</p>}
           </div>
         </div>
 
-        {/* Room Number and GST */}
+        {/* Room Type and GST */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Room No</label>
-            <input
-              type="text"
-              name="roomNumber"
-              value={bookingData.roomNumber}
-              onChange={handleChange}
-              className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
-              placeholder="Enter Room Number"
-            />
-            {errors.roomNumber && <p className="text-red-600 text-xs mt-1">{errors.roomNumber}</p>}
-          </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Room Category</label>
+          <select
+            name="roomType"
+            value={bookingData.roomType}
+            onChange={handleChange}
+            className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled>Select Room Type</option>
+            {roomDetails.map((room, index) => (
+              <option key={index} value={room.roomType}>{room.roomType}</option>
+            ))}
+          </select>
+          {errors.roomType && <p className="text-red-600 text-xs mt-1">{errors.roomType}</p>}
+        </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">GST Number (Optional)</label>
@@ -215,6 +233,7 @@ const AdminBookRoom = () => {
           </button>
         </div>
         {error && <p className="text-red-600 text-sm text-center mt-1">{error}</p>}
+        {successMsg && <p className="text-blue-600 text-center mt-1">{successMsg}</p>}
       </form>
     </div>
   );

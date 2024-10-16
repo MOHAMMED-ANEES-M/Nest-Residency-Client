@@ -34,7 +34,7 @@ const ContactPage = () => {
           <p className="text-lg">+91 9744005530</p>
           
           <h2 className="text-2xl text-[#912501]">Email</h2>
-          <p className="text-lg">contact@nestresidency.com</p>
+          <p className="text-lg">nestresidencyclt@gmail.com</p>
           
           <h2 className="text-2xl text-[#912501]">Social Media</h2>
           <div className='flex gap-5 mt-10'>

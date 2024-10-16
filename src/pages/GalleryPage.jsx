@@ -29,7 +29,7 @@ const GalleryPage = () => {
               className={`w-full object-cover transition-transform duration-300 group-hover:scale-105 
                 ${index % 10 === 0 ? 'h-full' : 
                   index % 7 === 0 ? 'h-64' : 
-                  index % 5 === 0 ? 'h-40 sm:h-72' : 'h-full'}`}
+                  index % 5 === 0 ? 'h-40 sm:h-full' : 'h-full'}`}
             />
           </div>
         ))}

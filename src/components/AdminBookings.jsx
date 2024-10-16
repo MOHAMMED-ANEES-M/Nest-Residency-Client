@@ -5,7 +5,9 @@ import { getBookings } from '../services/api';
 import { setBookings, setLoading, setError } from '../redux/slices/bookingSlice';
 import { formatBookingDate } from '../utils/FormateDate';
 import LoadingSpinner from '../utils/LoadingSpinner';
-import { sortBookingsByCreatedAt, paginateBookings } from '../utils/BookingUtils'; 
+import { sortBookingsByCreatedAt, paginateBookings } from '../utils/BookingUtils';
+import DatePicker from 'react-datepicker'; // Import DatePicker
+import 'react-datepicker/dist/react-datepicker.css'; // Import styles for the date picker
 
 const AdminBookings = () => {
   const dispatch = useDispatch();
@@ -15,12 +17,12 @@ const AdminBookings = () => {
   const [filteredBookings, setFilteredBookings] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const bookingsPerPage = 25;
-  const [checkInDate, setCheckInDate] = useState('');
+  const [checkInDate, setCheckInDate] = useState(null); // Changed to null for DatePicker
 
   const { isAuthenticated } = useSelector((state) => state.user);
 
   if (!isAuthenticated) {
-    navigate('/login')
+    navigate('/login');
   }
 
   useEffect(() => {
@@ -29,11 +31,11 @@ const AdminBookings = () => {
         dispatch(setLoading(true));
         const data = await getBookings();
         if (data) {
-          console.log('bookings', data);
+          // console.log('bookings', data);
           dispatch(setBookings(data));
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         dispatch(setError('Please refresh and login again.'));
       } finally {
         dispatch(setLoading(false));
@@ -43,12 +45,13 @@ const AdminBookings = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const sortedBookings = sortBookingsByCreatedAt(bookings); 
+    const sortedBookings = sortBookingsByCreatedAt(bookings);
 
     const filtered = sortedBookings.filter((booking) => {
       const fullName = `${booking.fname || ''} ${booking.lname || ''}`.toLowerCase();
       const phoneStr = String(booking.phone || '');
       const emailStr = (booking.email || '').toLowerCase();
+      const bookingIdStr = String(booking.bookingId || ''); // Convert booking ID to string for comparison
 
       const checkInDateObj = new Date(booking.checkInDate);
       const isWithinDateRange = !checkInDate || checkInDateObj.toDateString() === new Date(checkInDate).toDateString();
@@ -56,15 +59,16 @@ const AdminBookings = () => {
       return (
         (fullName.includes(searchTerm.toLowerCase()) ||
         phoneStr.includes(searchTerm) ||
-        emailStr.includes(searchTerm)) &&
-        isWithinDateRange 
+        emailStr.includes(searchTerm) ||
+        bookingIdStr.includes(searchTerm)) && // Add search by booking ID
+        isWithinDateRange
       );
     });
 
     setFilteredBookings(filtered);
   }, [searchTerm, bookings, checkInDate]);
 
-  const currentBookings = paginateBookings(filteredBookings, currentPage, bookingsPerPage); 
+  const currentBookings = paginateBookings(filteredBookings, currentPage, bookingsPerPage);
 
   const handleNextPage = () => {
     if (currentPage * bookingsPerPage < filteredBookings.length) {
@@ -83,11 +87,10 @@ const AdminBookings = () => {
   };
 
   const handleBookRoom = () => {
-    navigate('/admin/book-room'); 
+    navigate('/admin/book-room');
   };
 
   const handleSearch = () => {
-    // Trigger filtering based on checkInDate
     setCurrentPage(1); // Reset to the first page
   };
 
@@ -99,7 +102,7 @@ const AdminBookings = () => {
         {/* Search Bar */}
         <input
           type="text"
-          placeholder="Search by name, phone, or email..."
+          placeholder="Search by name, phone, email, or booking ID..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border p-2 w-1/2 rounded-md"
@@ -111,13 +114,15 @@ const AdminBookings = () => {
         <label htmlFor="checkInDate" className="me-3 font-medium">
           Search by Check-In Date
         </label>
-        <input
-          type="date"
-          id="checkInDate"
-          onClick={handleSearch}
-          value={checkInDate}
-          onChange={(e) => setCheckInDate(e.target.value)}
-          className="border p-2 w-1/4 rounded-md"
+        <DatePicker
+          selected={checkInDate}
+          onChange={(date) => {
+            setCheckInDate(date);
+            handleSearch(); // Trigger search on date change
+          }}
+          className="border p-2 rounded-md"
+          dateFormat="dd-MM-yyyy" 
+          placeholderText="Select a date"
         />
       </div>
 
@@ -133,7 +138,7 @@ const AdminBookings = () => {
                 <th className="p-3 text-left">Name</th>
                 <th className="p-3 text-left">Phone</th>
                 <th className="p-3 text-left">Email</th>
-                <th className="p-3 text-left">Room No</th>
+                <th className="p-3 text-left">Room Type</th>
                 <th className="p-3 text-left">Check In</th>
                 <th className="p-3 text-left">Check Out</th>
                 <th className="p-3 text-left">Status</th>
@@ -146,7 +151,7 @@ const AdminBookings = () => {
                   <td className="p-3">{booking?.fname} {booking?.lname}</td>
                   <td className="p-3">{booking?.phone}</td>
                   <td className="p-3">{booking?.email}</td>
-                  <td className="p-3">{booking?.roomNumber}</td>
+                  <td className="p-3">{booking?.roomType}</td>
                   <td className="p-3">{formatBookingDate(booking?.checkInDate)}</td>
                   <td className="p-3">{formatBookingDate(booking?.checkOutDate)}</td>
                   <td className="p-3">

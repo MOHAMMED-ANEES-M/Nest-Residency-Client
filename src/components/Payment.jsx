@@ -31,7 +31,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
     setLoading(true); 
     try {
       let orderResponse = await createPaymentOrder(amount);
-      console.log('RazorPay order response:', orderResponse);
+      // console.log('RazorPay order response:', orderResponse);
 
       const options = {
         key: razorpayKey,
@@ -58,7 +58,7 @@ const Payment = ({ amount, roomData, guestDetails }) => {
           if (receipt.data.success) {
             setProcessingPayment(false); 
             setRedirecting(true);
-            console.log('booked', receipt?.data?.booking);
+            // console.log('booked', receipt?.data?.booking);
             
               navigate(`/payment-success?paymentId=${response.razorpay_payment_id}`, {
                 state: {

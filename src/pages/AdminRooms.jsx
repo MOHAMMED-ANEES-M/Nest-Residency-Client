@@ -32,7 +32,7 @@ const AdminRooms = () => {
         dispatch(setRooms(mergedRooms)); 
         setLoading(false); 
       } catch (error) {
-        console.error('Error fetching rooms:', error);
+        // console.error('Error fetching rooms:', error);
       }
     };
 

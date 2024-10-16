@@ -33,7 +33,7 @@ const RoomPage = () => {
         });
         dispatch(setRooms(mergedData));
       } catch (error) {
-        console.error('Error fetching room details:', error);
+        // console.error('Error fetching room details:', error);
       } finally {
         setLoading(false);
       }

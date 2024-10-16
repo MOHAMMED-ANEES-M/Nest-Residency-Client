@@ -78,10 +78,6 @@ const BookingDetailsPage = () => {
           <table className="w-full text-left">
             <tbody>
               <tr>
-                <td className="py-2 w-60 font-bold">Room No:</td>
-                <td>{booking?.roomNumber}</td>
-              </tr>
-              <tr>
                 <td className="py-2 font-bold">Room Category:</td>
                 <td>{booking?.roomType}</td>
               </tr>

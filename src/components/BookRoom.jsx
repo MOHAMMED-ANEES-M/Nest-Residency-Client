@@ -30,12 +30,12 @@ const BookRoom = () => {
   
   const amount = bookedRoom2?.roomPrice; 
   const totalRoomPrice = amount ? amount * numberOfNights : 0;
-  const tax = totalRoomPrice * 0.18;
+  const tax = totalRoomPrice * 0.12;
   const totalAmount = totalRoomPrice + tax;
 
   const handleFormSubmit = (guestData) => {
     setGuestDetails(guestData);
-    console.log('payment', guestData);
+    // console.log('payment', guestData);
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const BookRoom = () => {
           dispatch(setAvailableRooms(data.availableRooms));
         }
       } catch (err) {
-        console.error('Error fetching available rooms:', err);
+        // console.error('Error fetching available rooms:', err);
         setError('Unable to fetch rooms. Please try again.');
         navigate('/availability', { state: { checkInDate, checkOutDate } });
       } finally {
@@ -90,11 +90,11 @@ const BookRoom = () => {
               <p className='mt-2'>2 pm</p>
               <p className='mt-2'>12 pm</p>
             </div>
-            </div>
+        </div>
             {bookedRoom1?.roomType === 'RESIDENTIAL A/C KING' || bookedRoom1?.roomType === 'RESIDENTIAL A/C TWIN' ?
-              <p className=' mt-2'>Maximum 3 Adults. Extra ₹500 for 3rd adult, payable at check-in.</p> : <p className=' mt-2'>Maximum 2 Adults.</p>
+              <p className=' mt-2'>Maximum 3 Adults.</p> : <p className=' mt-2'>Maximum 2 Adults.</p>
             }
-                        <hr className='w-full border-brown-700 my-3' />
+            <hr className='w-full border-brown-700 my-3' />
 
           <h2 className="text-lg font-semibold mb-5 text-center">Booking Summary</h2>
           <div className="space-y-4">
@@ -124,7 +124,7 @@ const BookRoom = () => {
             <div className='grid grid-cols-2 px-2 sm:px-3'>
               <div>
                 <p className='mt-2'>Room Price</p>
-                <p className='mt-2'>Tax (18%)</p>
+                <p className='mt-2'>Tax</p>
                 <p className='font-semibold mt-2'>Total Amount</p>
               </div>
               <div className='text-right'>
